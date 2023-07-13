@@ -5,6 +5,8 @@
 #include <string.h>
 #include <ctype.h>
 #include "preprocessor.h"
+#include "first_pass.h"
+#define MAX_LABEL 30
 #define MAX_LEN 80
 #define MAX_LINE 80
 #define MAX_MCRO_LEN 30
