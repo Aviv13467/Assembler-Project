@@ -6,7 +6,6 @@ void first_pass(char *ifp)
 {
     char *line = (char*)malloc(sizeof(char)*MAX_LINE);
     char *token = NULL;
-    unsigned int pos;
     char *input_file_name = str_allocate_cat(ifp, ".am");
     FILE *input_file_des = fopen(input_file_name,"r");
     if (input_file_des == NULL) {

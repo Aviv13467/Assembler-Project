@@ -1,6 +1,5 @@
 #include "memory.h"
 #include "utils.h"
-
 /*
  * This function shifts the bits of the opcode to slots 5-8
  */
@@ -34,10 +33,19 @@ unsigned int encode_combine(unsigned int opcode, unsigned int origin_operand,uns
     combine = opcode | origin_operand | des_operand | ARE;
     return combine;
 }
-unsigned int encode_combine_direct(unsigned int value, unsigned int ARE)
+unsigned int encode_combine_immediate(unsigned int value, unsigned int ARE)
 {
     unsigned int combine;
     combine = value|ARE;
+    return combine;
+}
+unsigned int encode_combine_direct(char* label, unsigned int ARE)
+{
+    char* ptr = label;
+    unsigned int combine;
+    /*
+    combine = get_symbol(label)|ARE;
+     */
     return combine;
 }
 

@@ -1,4 +1,6 @@
 #include "symbol_table.h"
+#include "includes.h"
+
 symbol *create_symbol(void)
 {
     symbol *new;
@@ -17,10 +19,15 @@ void add_symbol(symbol **head, char *label, unsigned int pos)
     symbol *new = create_symbol();
     set_symbol(new,label,pos);
     new->next = NULL;
-    struct symbol *curr = *head;
-    while (curr->next != NULL)
-        curr = curr->next;
-    curr->next = new;
+    if (*head == NULL)
+    {
+        *head = new;
+        return;
+    }
+    symbol *curr = *head;
+        while (curr->next != NULL)
+            curr = curr->next;
+        curr->next = new;
 }
 void print_symbol(symbol *head)
 {
@@ -30,6 +37,17 @@ void print_symbol(symbol *head)
         printf("%s\t%d\n", curr->label, curr->label_pos);
         curr = curr->next;
     }
+}
+int get_symbol(symbol *node,char* name)
+{
+    symbol *curr = node;
+    while (curr != NULL)
+    {
+        if (strcmp(curr->label,name)==0)
+            return curr->label_pos;
+        curr = curr->next;
+    }
+    return -1;
 }
 void free_symbol(symbol *head) {
     symbol* curr = head;

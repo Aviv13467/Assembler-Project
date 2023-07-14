@@ -1,11 +1,12 @@
 #include "includes.h"
 #include "utils.h"
 #include "memory.h"
+#include "first_pass.h"
 #include "globals.h"
 int main(int argc, char *argv[])
 {
     preproces_file(argv[1]);
-    /* first_pass(argv[1]); */
+    first_pass(argv[1]);
     /* decimalToBinary(5,6); */
 
     unsigned int opcode = sub, origin_operand = DIRECT_REGISTER, des_operand = DIRECT_REGISTER;
@@ -72,7 +73,7 @@ int main(int argc, char *argv[])
      */
     signed x = -5;
     unsigned mask = encode_direct(-5);
-    unsigned int result = encode_combine_direct((mask&4095),ABSOLUTE);
+    unsigned int result = encode_combine_immediate(two_complement(mask),ABSOLUTE);
     decimalToBinary(result,12);
     putchar('\n');
     encodeBase64(result);
