@@ -1,5 +1,4 @@
 #include "symbol_table.h"
-#include "includes.h"
 symbol *create_symbol(void)
 {
     symbol *new;
