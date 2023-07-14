@@ -1,5 +1,6 @@
 #include "memory.h"
 #include "utils.h"
+#include "symbol_table.h"
 /*
  * This function shifts the bits of the opcode to slots 5-8
  */
@@ -39,13 +40,14 @@ unsigned int encode_combine_immediate(unsigned int value, unsigned int ARE)
     combine = value|ARE;
     return combine;
 }
-unsigned int encode_combine_direct(char* label, unsigned int ARE)
+/*
+ * Used to encode label address code, 10 bits are the address, the 2 rightmost are A,R,E
+ */
+unsigned int encode_combine_direct(symbol *head,char* label, unsigned int ARE)
 {
     char* ptr = label;
     unsigned int combine;
-    /*
-    combine = get_symbol(label)|ARE;
-     */
+    combine = get_symbol(head,label)|ARE;
     return combine;
 }
 

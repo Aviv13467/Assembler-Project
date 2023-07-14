@@ -1,5 +1,6 @@
 #include "includes.h"
 #include "utils.h"
+#include "globals.h"
 #include "symbol_table.h"
 
 void first_pass(char *ifp)
@@ -15,7 +16,6 @@ void first_pass(char *ifp)
     }
     symbol *head;
     int count;
-    count = 100;
     while (fgets(line,MAX_LINE,input_file_des) != NULL)
     {
         if (strchr(line,':') == NULL) {

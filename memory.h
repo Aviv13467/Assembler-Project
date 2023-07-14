@@ -9,6 +9,6 @@ char encodeSecond(unsigned int code);
 char* returnEncode(char first, char second);
 void encodeBase64(unsigned int code);
 unsigned int encode_combine_immediate(unsigned int value, unsigned int ARE);
-unsigned int encode_combine_direct(char* label, unsigned int ARE);
+unsigned int encode_combine_direct(symbol *head,char* label, unsigned int ARE);
 int encode_direct(unsigned int num);
 unsigned int two_complement(signed int num);

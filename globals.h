@@ -1,4 +1,4 @@
-
+#define IC_START 100
 enum {
     mov,cmp,add,sub,not,clr,lea,inc,dec,jmp,bne,red,prn,jsr,rts,stop, ILLEGAL_OPCODE = -1
 }opcode;
