@@ -9,3 +9,9 @@ enum{
     DIRECT = 3,
     DIRECT_REGISTER = 5
 }ADDRESS_ORIGIN;
+
+enum{
+    ABSOLUTE,
+    EXTERN,
+    RELOCATABLE
+}ARE;

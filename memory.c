@@ -34,19 +34,13 @@ unsigned int encode_combine(unsigned int opcode, unsigned int origin_operand,uns
     combine = opcode | origin_operand | des_operand | ARE;
     return combine;
 }
-/*
-void encodeBase64(unsigned int code)
+unsigned int encode_combine_direct(unsigned int value, unsigned int ARE)
 {
-    unsigned int base64a,base64b;
-    base64a = code >> 6;
-    base64b = code << 6;
-    unsigned int mask64 = 4032;
-    base64b &= mask64;
-    base64b >>= 6;
-    printf("%d\n",base64b);
-    printf("The encoded Base64 is: %c%c", modifyASCII(base64a), modifyASCII(base64b));
+    unsigned int combine;
+    combine = value|ARE;
+    return combine;
 }
- */
+
 char encodeFirst(unsigned int code)
 {
     unsigned int first;
@@ -81,4 +75,12 @@ void encodeBase64(unsigned int code)
     c = returnEncode(a,b);
     printf("%s",c);
     free(c);
+}
+int encode_direct(unsigned int num)
+{
+    return num<<2;
+}
+unsigned int two_complement(signed int num)
+{
+    return num&4095;
 }

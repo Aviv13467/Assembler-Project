@@ -68,8 +68,14 @@ int main(int argc, char *argv[])
     c = returnEncode(a,b);
     printf("%s",c);
     free(c);
-     */
     encodeBase64(code);
+     */
+    signed x = -5;
+    unsigned mask = encode_direct(-5);
+    unsigned int result = encode_combine_direct((mask&4095),ABSOLUTE);
+    decimalToBinary(result,12);
+    putchar('\n');
+    encodeBase64(result);
     return 0;
 
 
