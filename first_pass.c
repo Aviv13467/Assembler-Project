@@ -2,7 +2,7 @@
 #include "utils.h"
 #include "globals.h"
 #include "symbol_table.h"
-
+#include "parse_line.h"
 void first_pass(char *ifp)
 {
     char *line = (char*)malloc(sizeof(char)*MAX_LINE);
@@ -15,7 +15,22 @@ void first_pass(char *ifp)
         return;
     }
     symbol *head;
-    int count;
+    int count = IC_START;
+    int IC,DC = 0;
+
+    while (fgets(line,MAX_LINE,input_file_des) != NULL)
+    {
+        token = strtok(line," ");
+        if (strchr(token,':') != NULL) {
+            token[strlen(token)-1] = '\0';
+            add_symbol(&head, token, count);
+        }
+        /*
+         * Continue from here: Last edited 15/07/2023 00:00, I want to implement parsing of lines to the corresponding commands.
+        token = strtok(NULL," ");
+         */
+    }
+    /*
     while (fgets(line,MAX_LINE,input_file_des) != NULL)
     {
         if (strchr(line,':') == NULL) {
@@ -32,6 +47,7 @@ void first_pass(char *ifp)
         }
         count++;
     }
+     */
     print_symbol(head);
     free(line);
     fclose(input_file_des);

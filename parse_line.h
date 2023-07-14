@@ -1,0 +1,1 @@
+void two_args(char* line);
