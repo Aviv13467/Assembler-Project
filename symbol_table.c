@@ -14,7 +14,25 @@ void set_symbol(symbol *sym,char *name,unsigned int pos)
     strcpy(sym->label,name);
     sym->label_pos = pos;
 }
-void add_symbol(symbol **head, char *label, unsigned int pos)
+void set_type(symbol *sym, TYPE type)
+{
+    sym->type = type;
+}
+
+void set_str(symbol *sym, char* str)
+{
+    strcpy(sym->str,str);
+}
+void set_IC(symbol *sym,int IC)
+{
+    sym->IC = IC;
+}
+void set_DC(symbol *sym,int DC)
+{
+    sym->DC = DC;
+}
+
+symbol* add_symbol(symbol **head, char *label, unsigned int pos)
 {
     symbol *new = create_symbol();
     set_symbol(new,label,pos);
@@ -22,12 +40,13 @@ void add_symbol(symbol **head, char *label, unsigned int pos)
     if (*head == NULL)
     {
         *head = new;
-        return;
+        return new;
     }
     symbol *curr = *head;
         while (curr->next != NULL)
             curr = curr->next;
         curr->next = new;
+        return new;
 }
 void print_symbol(symbol *head)
 {

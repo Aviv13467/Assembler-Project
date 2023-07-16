@@ -4,8 +4,11 @@
 #include "first_pass.h"
 #include "globals.h"
 int main(int argc, char *argv[]) {
+
     preproces_file(argv[1]);
+
     first_pass(argv[1]);
+
 
     /*
     unsigned int opcode = sub, origin_operand = DIRECT_REGISTER, des_operand = DIRECT_REGISTER;
@@ -21,7 +24,6 @@ int main(int argc, char *argv[]) {
     unsigned int result3 = encode_combine_reg(result1,result2);
     decimalToBinary(result3,12);
      */
-
     return 0;
 
 

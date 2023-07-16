@@ -87,3 +87,15 @@ int doesExist_macro(char* name)
     }
     return 0;
 }
+void print_arr(char* arr)
+{
+    int i = 0;
+    for (i = 0; i < strlen(arr); ++i) {
+        if (arr[i] == 10) printf(" newline ");
+        if (arr[i] == '\0') printf(" null ");
+        if (arr[i] == '\xe2') printf(" \" ");
+        else printf("%c ",arr[i]);
+    }
+    putchar('\n');
+}
+

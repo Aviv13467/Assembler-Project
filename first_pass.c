@@ -16,42 +16,50 @@ void first_pass(char *ifp)
         free(input_file_name);
         return;
     }
-    symbol *head;
+    symbol *head, *curr;
     int count = IC_START;
-    int IC,DC = 0;
-    int status;
-
+    int IC = 0, DC = 0,L = 0;
+    int i = 0;
     while (fgets(line,MAX_LINE,input_file_des) != NULL)
     {
+        i = 0, DC = 0;
         token = strtok(line," ");
         if (strchr(token,':') != NULL) {
             token[strlen(token)-1] = '\0';
-            add_symbol(&head, token, count);
+            curr = add_symbol(&head, token, count);
             token = strtok(NULL," ");
-        }
-    }
-        /*
-         * Continue from here: Last edited 15/07/2023 00:00, I want to implement parsing of lines to the corresponding commands.
-        token = strtok(NULL," ");
-         */
-    /*
-    while (fgets(line,MAX_LINE,input_file_des) != NULL)
-    {
-        if (strchr(line,':') == NULL) {
-            count++;
-            continue;
-        }
-        else
-        {
-            token = strtok(line, ":");
-            flush_strtok();
-            if (token != NULL) {
-                add_symbol(&head, token, count);
+            if (strcspn(token,".") == 0) {
+                if (strcmp(token,".data") == 0)
+                {
+                    while (token != NULL) {
+                        token = strtok(NULL, ",");
+                        if (token != NULL) {
+                            curr->nums[i] = atoi(token);
+                            i++;
+                            DC++;
+                        }
+                    }
+                    curr->DC = DC;
+                    continue;
+                }
+                if (strcmp(token,".string") == 0)
+                {
+                    token = strtok(NULL," \"“”");
+                    if (token!=NULL) {
+                        if (token[strlen(token)-1] == '\n') token[strlen(token)-1] = '\0';
+                        set_str(curr,token);
+                        DC = (int)strlen(token)+1;
+                        L = DC;
+                    }
+                    curr->DC=DC;
+                    continue;
+
+                }
             }
+
         }
-        count++;
     }
-     */
+
     print_symbol(head);
     free(line);
     fclose(input_file_des);

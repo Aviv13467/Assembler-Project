@@ -17,4 +17,8 @@ typedef enum ARE{
     EXTERN,
     RELOCATABLE
 }ARE;
+
+typedef enum TYPE{
+    data,string,ent,ext
+}TYPE;
 #endif

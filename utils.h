@@ -6,3 +6,4 @@ char* remove_newline(char* str);
 char* opcode_string(enum opcode index);
 int opcode_no(char* name);
 int doesExist_macro(char* name);
+void print_arr(char* arr);
