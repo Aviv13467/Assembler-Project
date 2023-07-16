@@ -1,4 +1,5 @@
 #include "includes.h"
+#include "string.h"
 
 char *str_allocate_cat(char *first_str, char* second_str) {
     char *str = (char *)malloc(strlen(first_str) + strlen(second_str) + 1);
@@ -6,6 +7,9 @@ char *str_allocate_cat(char *first_str, char* second_str) {
     strcat(str, second_str);
     return str;
 }
+/*
+ * Flushes the strtok buffer.
+ */
 void flush_strtok(void)
 {
     char *trash = NULL;
@@ -34,7 +38,10 @@ void decimalToBinary(unsigned int decimal,int zeros) {
         printf("%d ", binary[j]);
     }
 }
-int modifyASCII(int num)
+/*
+ * This function modifies ASCII values, so it can return the corresponding values to translate to Base64
+ */
+unsigned int modifyASCII(int num)
 {
     if (num >= 0 && num <= 25)
         return num+65;
@@ -46,4 +53,37 @@ int modifyASCII(int num)
         return 43;
     else if (num == 63)
         return 47;
+}
+char* remove_newline(char* str)
+{
+    str[strlen(str)-1] = '\0';
+    return str;
+}
+char* opcode_string(enum opcode index)
+{
+    char* str[] = {"mov","cmp","add","sub","not","clr","lea","inc","dec","jmp","bne","red","prn","jsr","rts","stop"};
+    return str[index];
+}
+int opcode_no(char* name)
+{
+    char *cpy = name;
+    cpy = remove_newline(cpy);
+    int i;
+    for (i = 0; i < 15; ++i) {
+        if (strcmp(cpy, opcode_string(i)) == 0)
+            return i;
+        else
+            fprintf(stderr,"INVALID COMMAND\n");
+    }
+    return -1;
+}
+int doesExist_macro(char* name)
+{
+    int i;
+    for (i = 0; i < 15 ; ++i)
+    {
+        if (strcmp(name,opcode_string(i)) == 0)
+            return 1;
+    }
+    return 0;
 }

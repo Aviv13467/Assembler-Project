@@ -1,6 +1,7 @@
 #include "includes.h"
 #include "utils.h"
 #include "hashtable.h"
+#include "globals.h"
 
 void preproces_file(char *ifp) {
     hash_table *ht = ht_create();
@@ -39,9 +40,6 @@ void preproces_file(char *ifp) {
         ht_free(ht);
         return;
     }
-    /* helllo world my name is aviv
-     * Parsing macros
-     */
 
     while (fgets(line, MAX_LINE, input_file_des) != NULL) {
         strcpy(linecpy,line);
@@ -74,8 +72,8 @@ void preproces_file(char *ifp) {
             isMacro = true;
             macro_name = (char *) malloc(sizeof(char) * MAX_MCRO_LEN);
             strcpy(macro_name, strtok(NULL, " "));
-            ht_set(ht, macro_name, "");
-            continue;
+                ht_set(ht, macro_name, "");
+                continue;
         }
         fputs(linecpy, am_file_des);
     }
