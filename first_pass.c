@@ -26,7 +26,7 @@ void first_pass(char *ifp)
         token = strtok(line," ");
         if (strchr(token,':') != NULL) {
             token[strlen(token)-1] = '\0';
-            curr = add_symbol(&head, token, count);
+            curr = add_symbol(&head, token, L+count);
             token = strtok(NULL," ");
             if (strcspn(token,".") == 0) {
                 if (strcmp(token,".data") == 0)
@@ -39,6 +39,7 @@ void first_pass(char *ifp)
                             DC++;
                         }
                     }
+                    L += DC;
                     curr->DC = DC;
                     continue;
                 }
@@ -49,7 +50,7 @@ void first_pass(char *ifp)
                         if (token[strlen(token)-1] == '\n') token[strlen(token)-1] = '\0';
                         set_str(curr,token);
                         DC = (int)strlen(token)+1;
-                        L = DC;
+                        L += DC;
                     }
                     curr->DC=DC;
                     continue;
