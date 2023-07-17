@@ -129,6 +129,30 @@ new/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/build
 .PHONY : new/fast
 
+LinkedList.o: LinkedList.c.o
+.PHONY : LinkedList.o
+
+# target to build an object file
+LinkedList.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/LinkedList.c.o
+.PHONY : LinkedList.c.o
+
+LinkedList.i: LinkedList.c.i
+.PHONY : LinkedList.i
+
+# target to preprocess a source file
+LinkedList.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/LinkedList.c.i
+.PHONY : LinkedList.c.i
+
+LinkedList.s: LinkedList.c.s
+.PHONY : LinkedList.s
+
+# target to generate assembly for a file
+LinkedList.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/LinkedList.c.s
+.PHONY : LinkedList.c.s
+
 first_pass.o: first_pass.c.o
 .PHONY : first_pass.o
 
@@ -330,6 +354,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... new"
+	@echo "... LinkedList.o"
+	@echo "... LinkedList.i"
+	@echo "... LinkedList.s"
 	@echo "... first_pass.o"
 	@echo "... first_pass.i"
 	@echo "... first_pass.s"

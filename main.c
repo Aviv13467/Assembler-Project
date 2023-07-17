@@ -3,10 +3,10 @@
 #include "memory.h"
 #include "first_pass.h"
 #include "globals.h"
+#include "LinkedList.h"
 int main(int argc, char *argv[]) {
 
     preproces_file(argv[1]);
-
     first_pass(argv[1]);
 
 

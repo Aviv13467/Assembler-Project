@@ -1,7 +1,5 @@
 #include "symbol_table.h"
-#include "includes.h"
-#include "utils.h"
-#include "memory.h"
+
 symbol *create_symbol(void)
 {
     symbol *new;
@@ -33,22 +31,26 @@ void set_DC(symbol *sym,int DC)
     sym->DC = DC;
 }
 
-symbol* add_symbol(symbol **head, char *label, unsigned int pos)
-{
+symbol* add_symbol(symbol **head, char *label, unsigned int pos) {
     symbol *new = create_symbol();
-    set_symbol(new,label,pos);
+    if (new == NULL)
+        return NULL; // Handle allocation failure
+
+    set_symbol(new, label, pos);
     new->next = NULL;
-    if (*head == NULL)
-    {
+
+    if (*head == NULL) {
         *head = new;
-        return new;
-    }
-    symbol *curr = *head;
+    } else {
+        symbol *curr = *head;
         while (curr->next != NULL)
             curr = curr->next;
         curr->next = new;
-        return new;
+    }
+
+    return new;
 }
+
 void print_symbol(symbol *head)
 {
     symbol *curr = head;
@@ -85,7 +87,8 @@ void print_num_arr(symbol *curr)
     }
     putchar('\n');
 }
-void free_symbol(symbol *head) {
+void free_symbol(symbol *head)
+{
     symbol* curr = head;
     while (curr != NULL) {
         symbol* temp = curr;

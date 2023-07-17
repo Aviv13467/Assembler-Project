@@ -1,6 +1,4 @@
 #include "memory.h"
-#include "utils.h"
-#include "symbol_table.h"
 
 /*
  * This function shifts the bits of the opcode to slots 5-8

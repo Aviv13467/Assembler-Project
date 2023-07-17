@@ -5,7 +5,9 @@
 #include "symbol_table.h"
 #include "parse_line.h"
 #include "memory.h"
+#include "LinkedList.h"
 
+#define add_line line_info = add_node(&head_list,x++,0);
 void first_pass(char *ifp)
 {
     /*
@@ -23,8 +25,9 @@ void first_pass(char *ifp)
     }
     char *line = (char*)malloc(sizeof(char)*MAX_LINE); /* line output from fgets */
     char *token = NULL; /* for strtok function */
-    symbol *head, *curr; /* symbol table nodes */
-    int IC = IC_START, DC = 0,L = 0, i,j,counter = 0; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
+    symbol *head = NULL, *curr = NULL; /* symbol table nodes */
+    node *head_list = NULL;
+    int IC = IC_START, DC = 0,L = 0, i,j,x = 0,counter = 0; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
     char* first, *second; /* commands will be tokenized into 2 separate words */
     int command_code; /* opcode command (1-15) */
     char* command; /* command name string*/
@@ -38,9 +41,10 @@ void first_pass(char *ifp)
     /*
      * The main loop in this function, parses each line in the .am file
      */
-
     while (fgets(line,MAX_LINE,input_file_des) != NULL) /* As long line != EOF */
     {
+        node *line_info = add_node(&head_list,x,0);
+        x++;
         counter++;
         i = 0; L = 0; /* Reset IC and 'i' */
         token = strtok(line," "); /* Tokenize the next word */
@@ -123,7 +127,7 @@ void first_pass(char *ifp)
                     }
                     curr->DC = DC;
                     IC += DC;
-                    print_num_arr(curr);
+                    /* print_num_arr(curr); */
                     continue;
                 }
 
@@ -138,7 +142,7 @@ void first_pass(char *ifp)
                     if (token!=NULL) {
                         if (token[strlen(token)-1] == '\n') token[strlen(token)-1] = '\0';
                         set_str(curr,token);
-                        print_arr(curr->str);
+                        /* print_arr(curr->str); */
                         DC = (int)strlen(token)+1;
                         L = DC;
                         IC += L;
@@ -162,7 +166,7 @@ void first_pass(char *ifp)
                 first = strtok(NULL,",");
                 second = strtok(NULL," ");
                 if (second!=NULL) remove_newline(second);
-                printf("opcode: %s first: %s second: %s\n",opcode_string(command_code),first,second);
+                /*printf("opcode: %s first: %s second: %s\n",opcode_string(command_code),first,second);*/
                 /*
                  * Check if origin and destination operand are both registers that share a single code.
                  */
@@ -177,12 +181,16 @@ void first_pass(char *ifp)
                         if (isRegister(first) == 1) {
 
                             if (isRegister(second) == 1) {
-                                curr->code[0] = encode_combine(command_code,DIRECT_REGISTER,DIRECT_REGISTER);
-                                curr->code[1] = encode_combine_reg(register_no(first), register_no(second));
+                                line_info->code = encode_combine(command_code,DIRECT_REGISTER,DIRECT_REGISTER);
+                                add_line
+                                line_info->code = encode_combine_reg(register_no(first), register_no(second));
                                 L += 2; /* Only need to add 2 lines, one for the command and one for the operands*/
                             }
                         }
-                        else L+=3; /* else, needs additional lines for the destination operand*/
+                        else{ /* else, needs additional lines for the destination operand*/
+                            add_line
+                            L+=3;
+                        }
                     }
                         break;
                     case lea:
@@ -190,9 +198,18 @@ void first_pass(char *ifp)
                         if (isRegister(first) || isDigit(first)) fprintf(stderr,"ERROR line: %d, origin operand of lea needs to be a label\n",counter);
                         L+=2;
                         if (!isRegister(second) && !isDigit(second)) { /* then it's a label */
-                            curr->code[0] = encode_combine(lea,DIRECT,DIRECT);
-                            curr->code[1] = 0; /* Only in the second pass we can assign address to a label */
-                            curr->code[2] = 0; /* Only in the second pass we can assign address to a label */
+                            line_info->code = encode_combine(lea,DIRECT,DIRECT);
+                            add_line
+                            line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                            add_line
+                            line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                        }
+                        if (isRegister(second)){
+                            line_info->code = encode_combine(lea,DIRECT,DIRECT_REGISTER);
+                            add_line
+                            line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                            add_line
+                            line_info->code = encode_des_reg_direct(register_no(second));
                         }
                     }
                     break;
@@ -201,11 +218,11 @@ void first_pass(char *ifp)
             else if(number_of_operands(command_code) == 1){
                 first = strtok(NULL,",");
                 if (first!=NULL) remove_newline(first);
-                printf("opcode: %s first: %s\n",opcode_string(command_code),first);
+                /*printf("opcode: %s first: %s\n",opcode_string(command_code),first);*/
                 L+=2;
             }
             else if(number_of_operands(command_code) == 0){
-                printf("opcode: %s \n",opcode_string(command_code));
+                /*printf("opcode: %s \n",opcode_string(command_code));*/
                 L+=1;
             }
             IC += L;
@@ -213,9 +230,12 @@ void first_pass(char *ifp)
         }
     }
 
-    print_symbol(head);
+    print_node(head_list);
+    /* print_symbol(head); */
     free(line);
     free(command);
+    free_symbol(head);
+    free_list(head_list);
     fclose(input_file_des);
     free(input_file_name);
 }

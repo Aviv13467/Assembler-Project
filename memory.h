@@ -1,5 +1,9 @@
+#ifndef MEMORY_H
+#define MEMORY_H
 #include "includes.h"
 #include "symbol_table.h"
+#include "utils.h"
+#endif
 
 /*
  * These functions are responsible to shift each of the code to the corresponding location

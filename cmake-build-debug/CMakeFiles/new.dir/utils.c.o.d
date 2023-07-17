@@ -90,4 +90,5 @@ CMakeFiles/new.dir/utils.c.o: \
   /Users/aviv/CLionProjects/Maman14\ copy/preprocessor.h \
   /Users/aviv/CLionProjects/Maman14\ copy/globals.h \
   /Users/aviv/CLionProjects/Maman14\ copy/memory.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/symbol_table.h
+  /Users/aviv/CLionProjects/Maman14\ copy/symbol_table.h \
+  /Users/aviv/CLionProjects/Maman14\ copy/utils.h
