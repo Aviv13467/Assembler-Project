@@ -94,7 +94,8 @@ CMakeFiles/new.dir/first_pass.c.o: /Users/aviv/CLionProjects/Maman14\ copy/first
   /Users/aviv/CLionProjects/Maman14\ copy/preprocessor.h \
   /Users/aviv/CLionProjects/Maman14\ copy/utils.h \
   /Users/aviv/CLionProjects/Maman14\ copy/symbol_table.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/parse_line.h
+  /Users/aviv/CLionProjects/Maman14\ copy/parse_line.h \
+  /Users/aviv/CLionProjects/Maman14\ copy/memory.h
 
 CMakeFiles/new.dir/hashtable.c.o: /Users/aviv/CLionProjects/Maman14\ copy/hashtable.c \
   /Users/aviv/CLionProjects/Maman14\ copy/hashtable.h \
@@ -700,8 +701,6 @@ CMakeFiles/new.dir/utils.c.o: /Users/aviv/CLionProjects/Maman14\ copy/utils.c \
 
 /Users/aviv/CLionProjects/Maman14\ copy/symbol_table.c:
 
-/Users/aviv/CLionProjects/Maman14\ copy/memory.h:
-
 /Users/aviv/CLionProjects/Maman14\ copy/parse_line.h:
 
 /Users/aviv/CLionProjects/Maman14\ copy/symbol_table.h:
@@ -784,13 +783,13 @@ CMakeFiles/new.dir/utils.c.o: /Users/aviv/CLionProjects/Maman14\ copy/utils.c \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_pthread/_pthread_attr_t.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/machine/_structs.h:
-
-/Users/aviv/CLionProjects/Maman14\ copy/main.c:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_off_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/arm/_structs.h:
+
+/Users/aviv/CLionProjects/Maman14\ copy/main.c:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/machine/_structs.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/arm/_mcontext.h:
 
@@ -851,6 +850,8 @@ CMakeFiles/new.dir/utils.c.o: /Users/aviv/CLionProjects/Maman14\ copy/utils.c \
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityVersions.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int16_t.h:
+
+/Users/aviv/CLionProjects/Maman14\ copy/memory.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int64_t.h:
 

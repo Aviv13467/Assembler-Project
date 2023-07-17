@@ -7,6 +7,7 @@ char* opcode_string(enum opcode index);
 char* register_string(enum REGISTER reg);
 char* type_string(enum TYPE index);
 int opcode_no(char* name);
+int register_no(char* reg);
 int command_valid(char* opcode);
 int doesExist_macro(char* name);
 void print_arr(char* arr);

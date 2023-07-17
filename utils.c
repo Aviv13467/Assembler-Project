@@ -86,6 +86,14 @@ int opcode_no(char* name)
     }
     return -1;
 }
+int register_no(char* reg)
+{
+    if (reg[strlen(reg)-1] == '\n') reg[strlen(reg)-1] = '\0';
+    int i;
+    for (i = 0; i < 8; ++i) {
+        if (strcmp(reg, register_string(i)) == 0) return i;
+    }
+}
 int command_valid(char* opcode)
 {
     int result;
@@ -109,6 +117,11 @@ int isValid_macro(char* name)
     i = 0;
     for (i = 0; i < 4; ++i) {
         if (strcmp(name, type_string(i)) == 0)
+            return 1;
+    }
+    i = 0;
+    for (i = 0; i <8; ++i) {
+        if (strcmp(name, register_string(i)) == 0)
             return 1;
     }
     return 0;

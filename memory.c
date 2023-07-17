@@ -36,6 +36,9 @@ unsigned int encode_des_operand(unsigned int des_operand)
  */
 unsigned int encode_combine(unsigned int opcode, unsigned int origin_operand,unsigned int des_operand)
 {
+    opcode = encode_opcode(opcode);
+    origin_operand = encode_origin_operand(origin_operand);
+    des_operand = encode_des_operand(des_operand);
     unsigned int ARE = 0; /* In Instructions code, ARE bits are always ABSOLUTE */
     unsigned int combine;
     combine = opcode | origin_operand | des_operand | ARE;
@@ -120,6 +123,8 @@ unsigned int encode_des_reg_direct(unsigned int num)
  */
 unsigned int encode_combine_reg(unsigned int r1, unsigned int r2)
 {
+    r1 = encode_origin_reg_direct(r1);
+    r2 = encode_des_reg_direct(r2);
     return r1|r2;
 }
 /*
