@@ -84,7 +84,7 @@ void preproces_file(char *ifp) {
                 continue;
             }
             else {
-                fprintf(stderr, "Error: Invalid Name");
+                fprintf(stderr, "ERROR: INVALID MACRO NAME");
                 exit(1);
             }
         }

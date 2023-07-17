@@ -57,7 +57,7 @@ unsigned int modifyASCII(int num)
 }
 char* remove_newline(char* str)
 {
-    str[strlen(str)-1] = '\0';
+    if (str[strlen(str)-1] == '\n') str[strlen(str)-1] = '\0';
     return str;
 }
 char* opcode_string(enum opcode index)
@@ -65,23 +65,35 @@ char* opcode_string(enum opcode index)
     char* str[] = {"mov","cmp","add","sub","not","clr","lea","inc","dec","jmp","bne","red","prn","jsr","rts","stop"};
     return str[index];
 }
+char* register_string(enum REGISTER reg)
+{
+    char* str[] = {"r0","r1","r2","r3","r4","r5","r6","r7"};
+    return str[reg];
+}
+
 char* type_string(enum TYPE index)
 {
-    char* str[] = {".data",".string",".entry",".extern"};
+    char* str[] = {".data",".string",".entry",".extern","IC"};
     return str[index];
 }
 int opcode_no(char* name)
 {
-    char *cpy = name;
-    cpy = remove_newline(cpy);
+    if (name[strlen(name)-1] == '\n') name[strlen(name)-1] = '\0';
     int i;
-    for (i = 0; i < 15; ++i) {
-        if (strcmp(cpy, opcode_string(i)) == 0)
+    for (i = 0; i < 15; i++) {
+        if (strcmp(name, opcode_string(i)) == 0)
             return i;
-        else
-            fprintf(stderr,"INVALID COMMAND\n");
     }
     return -1;
+}
+int command_valid(char* opcode)
+{
+    int result;
+    result = opcode_no(opcode);
+    if (result == -1){
+        fprintf(stderr,"ERROR: ILLEGAL COMMAND\n");
+    }
+    else return 0;
 }
 int isValid_macro(char* name)
 {
@@ -111,13 +123,15 @@ void print_arr(char* arr)
     for (j = 0; j < strlen(arr)+1; ++j) {
         printf("%d ",arr[j]);
     }
+    /*
+     * prints the machine code
+     *
     putchar('\n');
     for (j = 0; j < strlen(arr)+1; ++j) {
         decimalToBinary(encode_combine_direct(arr[j],ABSOLUTE),12);
         putchar('\n');
     }
-
-
+     */
 
     putchar('\n');
 }

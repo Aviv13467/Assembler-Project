@@ -5,6 +5,10 @@ typedef enum opcode{
     mov,cmp,add,sub,not,clr,lea,inc,dec,jmp,bne,red,prn,jsr,rts,stop, ILLEGAL_OPCODE = -1
 }opcode;
 
+typedef enum REGISTER{
+    r0,r1,r2,r3,r4,r5,r6,r7
+}REGISTER;
+
 typedef enum ADDRESS{
     NONE = 0,
     IMMEDIATE = 1,
@@ -14,11 +18,11 @@ typedef enum ADDRESS{
 
 typedef enum ARE{
     ABSOLUTE,
-    EXTERN,
+    EXTERNAL,
     RELOCATABLE
 }ARE;
 
 typedef enum TYPE{
-    data,string,ent,ext
+    data,string,entry,ext,ic
 }TYPE;
 #endif

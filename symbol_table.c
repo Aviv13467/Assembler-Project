@@ -54,7 +54,7 @@ void print_symbol(symbol *head)
     symbol *curr = head;
     while (curr!= NULL)
     {
-        printf("%s\t%d\n", curr->label, curr->label_pos);
+        printf("%s\t%d\t%s\n", curr->label, curr->label_pos, type_string(curr->type));
         curr = curr->next;
     }
 }
@@ -72,12 +72,13 @@ int get_symbol(symbol *node,char* name)
 void print_num_arr(symbol *curr)
 {
     int i;
-    for (i = 0; i < 3; ++i) {
+    putchar('\n');
+    for (i = 0; i < 3, curr->nums[i]!=0; ++i) {
         printf("%d ",curr->nums[i]);
     }
     putchar('\n');
     int j;
-    for (j = 0; j < 3; ++j) {
+    for (j = 0; j < 3, curr->nums[j]!=0; ++j) {
         if (curr->nums[j] > 0) decimalToBinary(curr->nums[j],12);
         else decimalToBinary(two_complement(curr->nums[j]),12);
         putchar('\n');

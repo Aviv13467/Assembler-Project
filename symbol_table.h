@@ -5,7 +5,8 @@
 typedef struct symbol{
     char label[31];
     int label_pos;
-    int type,DC, IC;
+    int type,DC,IC;
+    unsigned int opcode;
     int nums[30];
     char str[30];
     struct symbol *next;
