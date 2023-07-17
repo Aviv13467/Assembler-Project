@@ -32,7 +32,7 @@ unsigned int encode_des_operand(unsigned int des_operand)
 }
 
 /*
- * This function combines all the codes into one 12-bit word
+ * This function combines all the codes into one 12-bit word with immediate address
  */
 unsigned int encode_combine(unsigned int opcode, unsigned int origin_operand,unsigned int des_operand)
 {

@@ -10,5 +10,7 @@ int opcode_no(char* name);
 int register_no(char* reg);
 int command_valid(char* opcode);
 int doesExist_macro(char* name);
+int isDigit(char *c);
+int isRegister(char*str);
 void print_arr(char* arr);
 int isValid_macro(char* name);

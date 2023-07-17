@@ -166,14 +166,37 @@ void first_pass(char *ifp)
                 /*
                  * Check if origin and destination operand are both registers that share a single code.
                  */
-                if (is_register(first) == 1) {
-                    if (is_register(second) == 1) {
-                        curr->code[1] = encode_combine(command_code,DIRECT_REGISTER,DIRECT_REGISTER);
-                        curr->code[2] = encode_combine_reg(register_no(first), register_no(second));
-                        L += 2; /* Only need to add 2 lines, one for the command and one for the operands*/
+                switch (command_code) {
+                    case mov:
+                    case cmp:
+                        if (isDigit(remove_newline(second)))
+                            fprintf(stderr,"ERROR line: %d, 'mov' destination operand can't be a number\n",counter);
+                    case add:
+                    case sub:
+                    {
+                        if (isRegister(first) == 1) {
+
+                            if (isRegister(second) == 1) {
+                                curr->code[0] = encode_combine(command_code,DIRECT_REGISTER,DIRECT_REGISTER);
+                                curr->code[1] = encode_combine_reg(register_no(first), register_no(second));
+                                L += 2; /* Only need to add 2 lines, one for the command and one for the operands*/
+                            }
+                        }
+                        else L+=3; /* else, needs additional lines for the destination operand*/
                     }
+                        break;
+                    case lea:
+                    {
+                        if (isRegister(first) || isDigit(first)) fprintf(stderr,"ERROR line: %d, origin operand of lea needs to be a label\n",counter);
+                        L+=2;
+                        if (!isRegister(second) && !isDigit(second)) { /* then it's a label */
+                            curr->code[0] = encode_combine(lea,DIRECT,DIRECT);
+                            curr->code[1] = 0; /* Only in the second pass we can assign address to a label */
+                            curr->code[2] = 0; /* Only in the second pass we can assign address to a label */
+                        }
+                    }
+                    break;
                 }
-                else L+=3; /* else, needs additional lines for the destination operand*/
             }
             else if(number_of_operands(command_code) == 1){
                 first = strtok(NULL,",");

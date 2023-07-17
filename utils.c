@@ -126,6 +126,22 @@ int isValid_macro(char* name)
     }
     return 0;
 }
+
+int isDigit(char *c)
+{
+    char* ptr;
+    int result;
+    result = (int)strtol(c,&ptr,10);
+    return (ptr[0]=='\0')? 1:0;
+}
+int isRegister(char*str)
+{
+    int i;
+    for (i = 0; i < 8; ++i) {
+        if (strcmp(str, register_string(i)) == 0) return 1;
+    }
+    return 0;
+}
 void print_arr(char* arr)
 {
     int i = 0, j;

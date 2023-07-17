@@ -40,11 +40,3 @@ int number_of_operands(opcode command)
         case ILLEGAL_OPCODE: return -1;
     }
 }
-int is_register(char* var)
-{
-    int i;
-    for (i = 0; i < 8; ++i) {
-        if(strcmp(var, register_string(i)) == 0) return 1;
-    }
-    return 0;
-}

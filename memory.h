@@ -37,8 +37,9 @@ unsigned int encode_combine_direct(unsigned int code,ARE type);
 
 /*
  * Encoding of registers
- * encode_origin_reg_direct encodes the origin register
- * encode_de_reg_direct encodes_t
+ * encode_origin_reg_direct encodes the origin register 2-6
+ * encode_des_reg_direct encodes the destination register in bits 7-11
+ * encode_combine_reg encodes both registers into a single word.
  */
 unsigned int encode_origin_reg_direct(unsigned int num);
 unsigned int encode_des_reg_direct(unsigned int num);
