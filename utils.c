@@ -67,7 +67,7 @@ char* opcode_string(enum opcode index)
 }
 char* register_string(enum REGISTER reg)
 {
-    char* str[] = {"r0","r1","r2","r3","r4","r5","r6","r7"};
+    char* str[] = {"@r0","@r1","@r2","@r3","@r4","@r5","@r6","@r7"};
     return str[reg];
 }
 
@@ -80,7 +80,7 @@ int opcode_no(char* name)
 {
     if (name[strlen(name)-1] == '\n') name[strlen(name)-1] = '\0';
     int i;
-    for (i = 0; i < 15; i++) {
+    for (i = 0; i <= 15; i++) {
         if (strcmp(name, opcode_string(i)) == 0)
             return i;
     }

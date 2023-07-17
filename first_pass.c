@@ -79,11 +79,11 @@ void first_pass(char *ifp)
                         if (token != NULL) {
                             curr->nums[i] = atoi(token);
                             i++;
-                            DC++;
                         }
+                        DC = i;
                     }
                     curr->DC = DC;
-                    curr->label_pos = curr->label_pos+=DC;
+                    IC += DC;
                     print_num_arr(curr);
                     continue;
                 }
@@ -96,11 +96,11 @@ void first_pass(char *ifp)
                         set_str(curr,token);
                         print_arr(curr->str);
                         DC = (int)strlen(token)+1;
-                        L += DC;
+                        L = DC;
+                        IC += L;
+                        curr->DC=DC;
                     }
-                    curr->DC=DC;
                     continue;
-
                 }
             }
             continue;
@@ -114,10 +114,11 @@ void first_pass(char *ifp)
                 second = strtok(NULL," ");
                 if (second!=NULL) remove_newline(second);
                 printf("opcode: %s first: %s second: %s\n",opcode_string(command_code),first,second);
-                if (is_register(first))
-                    if (is_register(second))
-                        L+=2;
-                L+=3;
+                if (is_register(first) == 1) {
+                    if (is_register(second) == 1)
+                        L += 2;
+                }
+                else L+=3;
             }
             else if(number_of_operands(command_code) == 1){
                 first = strtok(NULL,",");
