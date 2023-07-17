@@ -1,6 +1,7 @@
 #include "symbol_table.h"
 #include "includes.h"
-
+#include "utils.h"
+#include "memory.h"
 symbol *create_symbol(void)
 {
     symbol *new;
@@ -67,6 +68,21 @@ int get_symbol(symbol *node,char* name)
         curr = curr->next;
     }
     return -1;
+}
+void print_num_arr(symbol *curr)
+{
+    int i;
+    for (i = 0; i < 3; ++i) {
+        printf("%d ",curr->nums[i]);
+    }
+    putchar('\n');
+    int j;
+    for (j = 0; j < 3; ++j) {
+        if (curr->nums[j] > 0) decimalToBinary(curr->nums[j],12);
+        else decimalToBinary(two_complement(curr->nums[j]),12);
+        putchar('\n');
+    }
+    putchar('\n');
 }
 void free_symbol(symbol *head) {
     symbol* curr = head;

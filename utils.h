@@ -4,6 +4,8 @@ void decimalToBinary(unsigned int decimal,int zeros);
 unsigned int modifyASCII(int num);
 char* remove_newline(char* str);
 char* opcode_string(enum opcode index);
+char* type_string(enum TYPE index);
 int opcode_no(char* name);
 int doesExist_macro(char* name);
 void print_arr(char* arr);
+int isValid_macro(char* name);

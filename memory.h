@@ -9,7 +9,7 @@ char encodeSecond(unsigned int code);
 char* returnEncode(char first, char second);
 void encodeBase64(unsigned int code);
 unsigned int encode_immediate(unsigned int value);
-unsigned int encode_combine_direct(symbol *head,char* label,ARE type);
+unsigned int encode_combine_direct(unsigned int code,ARE type);
 unsigned int encode_origin_reg_direct(unsigned int num);
 unsigned int encode_des_reg_direct(unsigned int num);
 unsigned int encode_combine_reg(unsigned int r1, unsigned int r2);

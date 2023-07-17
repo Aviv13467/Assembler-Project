@@ -39,16 +39,18 @@ void first_pass(char *ifp)
                             DC++;
                         }
                     }
+                    print_num_arr(curr);
                     L += DC;
                     curr->DC = DC;
                     continue;
                 }
                 if (strcmp(token,".string") == 0)
                 {
-                    token = strtok(NULL," \"“”");
+                    token = strtok(NULL,"\"“”");
                     if (token!=NULL) {
                         if (token[strlen(token)-1] == '\n') token[strlen(token)-1] = '\0';
                         set_str(curr,token);
+                        print_arr(curr->str);
                         DC = (int)strlen(token)+1;
                         L += DC;
                     }

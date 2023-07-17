@@ -10,7 +10,7 @@ void preproces_file(char *ifp) {
     char *linecpy = (char*)malloc(sizeof(char)*MAX_LINE);
     char *macro_name = NULL;
     char line[MAX_LINE];
-
+    char* copy;
     char *input_file_name = str_allocate_cat(ifp, ".as");
     char *output_file_name = str_allocate_cat(ifp, ".am");
 
@@ -72,8 +72,21 @@ void preproces_file(char *ifp) {
             isMacro = true;
             macro_name = (char *) malloc(sizeof(char) * MAX_MCRO_LEN);
             strcpy(macro_name, strtok(NULL, " "));
+            if (strtok(NULL," ") != NULL){
+                fprintf(stderr,"ERROR: EXTRANEOUS TEXT AFTER MACRO");
+                exit(1);
+            }
+            copy = (char*) malloc(sizeof(char) * strlen(macro_name));
+            strcpy(copy,macro_name);
+            copy[strlen(copy)-1]='\0';
+            if (isValid_macro(copy) == 0) {
                 ht_set(ht, macro_name, "");
                 continue;
+            }
+            else {
+                fprintf(stderr, "Error: Invalid Name");
+                exit(1);
+            }
         }
         fputs(linecpy, am_file_des);
     }

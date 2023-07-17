@@ -52,11 +52,9 @@ unsigned int encode_immediate(unsigned int value)
 /*
  * Used to encode label address code, 10 left-most bits are the address, the 2 rightmost are A,R,E (which is 1/2 depends on if EXTERN/RELOCATABLE)
  */
-unsigned int encode_combine_direct(symbol *head,char* label,ARE type)
+unsigned int encode_combine_direct(unsigned int code,ARE type)
 {
-    char* ptr = label;
-    unsigned int combine;
-    combine = get_symbol(head,label)|type;
+    unsigned int combine = code|type;
     return combine;
 }
 /*

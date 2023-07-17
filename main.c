@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
     unsigned int result3 = encode_combine_reg(result1,result2);
     decimalToBinary(result3,12);
      */
+
     return 0;
 
 

@@ -1,5 +1,6 @@
 #include "includes.h"
 #include "string.h"
+#include "memory.h"
 
 char *str_allocate_cat(char *first_str, char* second_str) {
     char *str = (char *)malloc(strlen(first_str) + strlen(second_str) + 1);
@@ -64,6 +65,11 @@ char* opcode_string(enum opcode index)
     char* str[] = {"mov","cmp","add","sub","not","clr","lea","inc","dec","jmp","bne","red","prn","jsr","rts","stop"};
     return str[index];
 }
+char* type_string(enum TYPE index)
+{
+    char* str[] = {".data",".string",".entry",".extern"};
+    return str[index];
+}
 int opcode_no(char* name)
 {
     char *cpy = name;
@@ -77,25 +83,42 @@ int opcode_no(char* name)
     }
     return -1;
 }
-int doesExist_macro(char* name)
+int isValid_macro(char* name)
 {
+    char* copy;
+    copy = (char*) malloc(sizeof(char)* strlen(name));
+    strcpy(copy,name);
     int i;
     for (i = 0; i < 15 ; ++i)
     {
         if (strcmp(name,opcode_string(i)) == 0)
             return 1;
     }
+    i = 0;
+    for (i = 0; i < 4; ++i) {
+        if (strcmp(name, type_string(i)) == 0)
+            return 1;
+    }
     return 0;
 }
 void print_arr(char* arr)
 {
-    int i = 0;
-    for (i = 0; i < strlen(arr); ++i) {
-        if (arr[i] == 10) printf(" newline ");
-        if (arr[i] == '\0') printf(" null ");
-        if (arr[i] == '\xe2') printf(" \" ");
-        else printf("%c ",arr[i]);
+    int i = 0, j;
+    for (i = 0; i < strlen(arr)+1; ++i) {
+        printf("%c ",arr[i]);
     }
+    putchar('\n');
+    for (j = 0; j < strlen(arr)+1; ++j) {
+        printf("%d ",arr[j]);
+    }
+    putchar('\n');
+    for (j = 0; j < strlen(arr)+1; ++j) {
+        decimalToBinary(encode_combine_direct(arr[j],ABSOLUTE),12);
+        putchar('\n');
+    }
+
+
+
     putchar('\n');
 }
 
