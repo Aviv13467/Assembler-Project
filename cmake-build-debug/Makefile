@@ -177,6 +177,30 @@ entry_table.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/entry_table.c.s
 .PHONY : entry_table.c.s
 
+extern_table.o: extern_table.c.o
+.PHONY : extern_table.o
+
+# target to build an object file
+extern_table.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/extern_table.c.o
+.PHONY : extern_table.c.o
+
+extern_table.i: extern_table.c.i
+.PHONY : extern_table.i
+
+# target to preprocess a source file
+extern_table.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/extern_table.c.i
+.PHONY : extern_table.c.i
+
+extern_table.s: extern_table.c.s
+.PHONY : extern_table.s
+
+# target to generate assembly for a file
+extern_table.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/extern_table.c.s
+.PHONY : extern_table.c.s
+
 first_pass.o: first_pass.c.o
 .PHONY : first_pass.o
 
@@ -408,6 +432,9 @@ help:
 	@echo "... entry_table.o"
 	@echo "... entry_table.i"
 	@echo "... entry_table.s"
+	@echo "... extern_table.o"
+	@echo "... extern_table.i"
+	@echo "... extern_table.s"
 	@echo "... first_pass.o"
 	@echo "... first_pass.i"
 	@echo "... first_pass.s"

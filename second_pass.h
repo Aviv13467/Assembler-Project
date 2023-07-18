@@ -3,5 +3,6 @@
 #include "LinkedList.h"
 #include "symbol_table.h"
 #include "entry_table.h"
+#include "extern_table.h"
 void second_pass(node *head, symbol *label, entry_table *entry);
 #endif //SECOND_PASS_H

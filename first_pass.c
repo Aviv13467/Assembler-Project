@@ -8,6 +8,7 @@
 #include "LinkedList.h"
 #include "second_pass.h"
 #include "entry_table.h"
+#include "extern_table.h"
 #define add_line line_info = add_node(&head_list,counter++,0);
 void first_pass(char *ifp)
 {
@@ -30,6 +31,8 @@ void first_pass(char *ifp)
     node *head_list = NULL;
 
     entry_table *head_entry = NULL, *curr_entry = NULL;
+
+    extern_table  *head_extern = NULL, *curr_extern = NULL;
 
     int IC = IC_START, DC = 0,L = 0, i = 0,counter = 0; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
     char* first, *second; /* commands will be tokenized into 2 separate words */
@@ -79,6 +82,7 @@ void first_pass(char *ifp)
                 if (isValid_macro(token) == 0) {
                     curr = add_symbol(&head, token, 0);
                     set_type(curr,ext);
+                    curr_extern = add_extern(&head_extern,token,0);
                     delete_node(&head_list,line_info);
                 }
                 continue;
@@ -342,15 +346,18 @@ void first_pass(char *ifp)
     DC_total = print_symbol(head);
     printf("%d %d\n",counter-DC_total,DC_total);
      */
-    printf("Extern:");
+    free(line);
+    free(command);
+    second_pass(head_list,head,head_entry);
+    /* printf("Extern:\n"); */
+    /*
     print_extern(head);
+     */
+    /* print_extern_table(head_extern);*/
     putchar('\n');
     printf("Entry:\n");
     print_entry_table(head_entry);
     putchar('\n');
-    free(line);
-    free(command);
-    second_pass(head_list,head,head_entry);
     print_node(head_list);
     b64(head_list);
     free_symbol(head);

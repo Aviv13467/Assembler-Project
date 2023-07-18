@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/aviv/CLionProjects/Maman14 copy/LinkedList.c" "CMakeFiles/new.dir/LinkedList.c.o" "gcc" "CMakeFiles/new.dir/LinkedList.c.o.d"
   "/Users/aviv/CLionProjects/Maman14 copy/entry_table.c" "CMakeFiles/new.dir/entry_table.c.o" "gcc" "CMakeFiles/new.dir/entry_table.c.o.d"
+  "/Users/aviv/CLionProjects/Maman14 copy/extern_table.c" "CMakeFiles/new.dir/extern_table.c.o" "gcc" "CMakeFiles/new.dir/extern_table.c.o.d"
   "/Users/aviv/CLionProjects/Maman14 copy/first_pass.c" "CMakeFiles/new.dir/first_pass.c.o" "gcc" "CMakeFiles/new.dir/first_pass.c.o.d"
   "/Users/aviv/CLionProjects/Maman14 copy/hashtable.c" "CMakeFiles/new.dir/hashtable.c.o" "gcc" "CMakeFiles/new.dir/hashtable.c.o.d"
   "/Users/aviv/CLionProjects/Maman14 copy/main.c" "CMakeFiles/new.dir/main.c.o" "gcc" "CMakeFiles/new.dir/main.c.o.d"

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/new.dir/LinkedList.c.o.d"
   "CMakeFiles/new.dir/entry_table.c.o"
   "CMakeFiles/new.dir/entry_table.c.o.d"
+  "CMakeFiles/new.dir/extern_table.c.o"
+  "CMakeFiles/new.dir/extern_table.c.o.d"
   "CMakeFiles/new.dir/first_pass.c.o"
   "CMakeFiles/new.dir/first_pass.c.o.d"
   "CMakeFiles/new.dir/hashtable.c.o"

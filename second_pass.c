@@ -4,20 +4,10 @@
 #include "LinkedList.h"
 #include "symbol_table.h"
 #include "entry_table.h"
+#include "extern_table.h"
 void second_pass(node *head, symbol *label, entry_table *entry)
 {
-    entry_table *curr_entry;
-    int position_entry;
     node *curr = head;
-
-    /*
-    while (curr_entry != NULL)
-    {
-        position_entry = get_symbol(label,curr_entry->label);
-
-    }
-     */
-
     int position;
     while (curr != NULL)
     {
@@ -31,4 +21,25 @@ void second_pass(node *head, symbol *label, entry_table *entry)
         }
         curr = curr->next;
     }
+    entry_table *curr_entry = entry;
+    int pos_entry;
+    while (curr_entry != NULL)
+    {
+        pos_entry = get_symbol(label,curr_entry->label);
+        if (pos_entry != -1) curr_entry->label_pos = pos_entry;
+        curr_entry = curr_entry->next;
+    }
+    curr = head;
+    extern_table *ext = NULL, *curr_ext = NULL;
+
+    while(curr != NULL)
+    {
+        if (curr->code == 1){
+            curr_ext = add_extern(&ext,curr->label,curr->pos+100);
+            curr_ext = curr_ext->next;
+        }
+        curr = curr->next;
+    }
+    print_extern_table(ext);
+
 }

@@ -88,6 +88,12 @@
 		<Unit filename="/Users/aviv/CLionProjects/Maman14 copy/entry_table.h">
 			<Option target="new"/>
 		</Unit>
+		<Unit filename="/Users/aviv/CLionProjects/Maman14 copy/extern_table.c">
+			<Option target="new"/>
+		</Unit>
+		<Unit filename="/Users/aviv/CLionProjects/Maman14 copy/extern_table.h">
+			<Option target="new"/>
+		</Unit>
 		<Unit filename="/Users/aviv/CLionProjects/Maman14 copy/first_pass.c">
 			<Option target="new"/>
 		</Unit>
