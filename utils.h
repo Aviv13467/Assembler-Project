@@ -1,3 +1,4 @@
+#include "LinkedList.h"
 char *str_allocate_cat(char *first_str, char* second_str);
 void flush_strtok(void);
 void decimalToBinary(unsigned int decimal,int zeros);
@@ -14,3 +15,4 @@ int isDigit(char *c);
 int isRegister(char*str);
 void print_arr(char* arr);
 int isValid_macro(char* name);
+void b64(node *head);

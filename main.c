@@ -6,9 +6,9 @@
 #include "LinkedList.h"
 int main(int argc, char *argv[]) {
 
+
     preproces_file(argv[1]);
     first_pass(argv[1]);
-
 
     /*
     unsigned int opcode = sub, origin_operand = DIRECT_REGISTER, des_operand = DIRECT_REGISTER;

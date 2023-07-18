@@ -120,7 +120,10 @@ void first_pass(char *ifp)
                     while (token != NULL) {
                         token = strtok(NULL, ",");
                         if (token != NULL) {
-                            curr->nums[i] = atoi(token);
+                            if (atoi(token)<0)
+                                line_info->code = two_complement(atoi(token));
+                            else line_info->code = atoi(token);
+                            add_line
                             i++;
                         }
                         DC = i;
@@ -142,6 +145,11 @@ void first_pass(char *ifp)
                     if (token!=NULL) {
                         if (token[strlen(token)-1] == '\n') token[strlen(token)-1] = '\0';
                         set_str(curr,token);
+                        int k;
+                        for (k = 0; k < strlen(token)+1 ; ++k) {
+                            line_info->code = (int)token[k];
+                            add_line;
+                        }
                         /* print_arr(curr->str); */
                         DC = (int)strlen(token)+1;
                         L = DC;
@@ -179,12 +187,19 @@ void first_pass(char *ifp)
                     case sub:
                     {
                         if (isRegister(first) == 1) {
-
                             if (isRegister(second) == 1) {
                                 line_info->code = encode_combine(command_code,DIRECT_REGISTER,DIRECT_REGISTER);
                                 add_line
                                 line_info->code = encode_combine_reg(register_no(first), register_no(second));
                                 L += 2; /* Only need to add 2 lines, one for the command and one for the operands*/
+                            }
+                            else {
+                                line_info->code = encode_combine(command_code, DIRECT_REGISTER, DIRECT);
+                                add_line
+                                line_info->code = encode_origin_reg_direct(register_no(first));
+                                add_line
+                                line_info->code = 0; /* Address will be added in second pass */
+                                L += 3;
                             }
                         }
                         else{ /* else, needs additional lines for the destination operand*/
@@ -195,8 +210,11 @@ void first_pass(char *ifp)
                         break;
                     case lea:
                     {
-                        if (isRegister(first) || isDigit(first)) fprintf(stderr,"ERROR line: %d, origin operand of lea needs to be a label\n",counter);
-                        L+=2;
+                        if (isRegister(first) || isDigit(first)){
+                            fprintf(stderr,"ERROR line: %d, origin operand of lea needs to be a label\n",counter);
+                            L+=2;
+                            break;
+                        }
                         if (!isRegister(second) && !isDigit(second)) { /* then it's a label */
                             line_info->code = encode_combine(lea,DIRECT,DIRECT);
                             add_line
@@ -218,10 +236,76 @@ void first_pass(char *ifp)
             else if(number_of_operands(command_code) == 1){
                 first = strtok(NULL,",");
                 if (first!=NULL) remove_newline(first);
+                switch (command_code) {
+                    case not:
+                    case clr:
+                    case inc:
+                    case dec:
+                    case jmp:
+                    case bne:
+                    case red:
+                    case jsr:
+                    {
+                        if (isDigit(first)){
+                            fprintf(stderr,"ERROR line: %d %s can't have immediate destination operand",counter,first);
+                            break;
+                        }
+                        if (!isRegister(first)){
+                            line_info->code = encode_combine(command_code,0,DIRECT);
+                            add_line
+                            line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                            L+=2;
+                        }
+                        else if (isRegister(first))
+                        {
+                            line_info->code = encode_combine(command_code,0,DIRECT_REGISTER);
+                            add_line
+                            line_info->code = encode_des_reg_direct(register_no(first));
+                            L+=2;
+                        }
+                        break;
+                    }
+                    case prn:
+                    {
+                        if (isDigit(first))
+                        {
+                            line_info->code = encode_combine(command_code,0,IMMEDIATE);
+                            add_line
+                            if (atoi(first) < 0) {
+                                line_info->code = two_complement(encode_immediate((atoi(first))));
+                            }
+                            else
+                                line_info->code = encode_immediate((atoi(first)));
+                            L+=2;
+                            break;
+                        }
+                        if (!isRegister(first) && !isDigit(first)){
+                            line_info->code = encode_combine(command_code,0,DIRECT);
+                            add_line
+                            line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                            L+=2;
+                        }
+                        else if (isRegister(first))
+                        {
+                            line_info->code = encode_combine(command_code,0,DIRECT_REGISTER);
+                            add_line
+                            line_info->code = encode_des_reg_direct(register_no(first));
+                            L+=2;
+                        }
+                        break;
+                    }
+                }
                 /*printf("opcode: %s first: %s\n",opcode_string(command_code),first);*/
-                L+=2;
             }
             else if(number_of_operands(command_code) == 0){
+                switch (command_code) {
+                    case rts:
+                    case stop:
+                    {
+                        line_info->code = encode_combine(command_code,0,0);
+                    }
+
+                }
                 /*printf("opcode: %s \n",opcode_string(command_code));*/
                 L+=1;
             }
@@ -229,7 +313,7 @@ void first_pass(char *ifp)
             continue;
         }
     }
-
+    b64(head_list);
     print_node(head_list);
     /* print_symbol(head); */
     free(line);

@@ -1,7 +1,7 @@
 #include "includes.h"
 #include "string.h"
 #include "memory.h"
-
+#include "LinkedList.h"
 char *str_allocate_cat(char *first_str, char* second_str) {
     char *str = (char *)malloc(strlen(first_str) + strlen(second_str) + 1);
     strcpy(str, first_str);
@@ -22,7 +22,7 @@ void flush_strtok(void)
  */
 void decimalToBinary(unsigned int decimal,int zeros) {
 
-    unsigned binary[12]; // Assuming 16-bit short integers
+    unsigned binary[16]; // Assuming 16-bit short integers
     int i = 0;
 
     while (decimal > 0) {
@@ -136,6 +136,7 @@ int isDigit(char *c)
 }
 int isRegister(char*str)
 {
+    if (str[strlen(str)-1] =='\n' ||str[strlen(str)-1] ==' ')  str[strlen(str)-1] = '\0';
     int i;
     for (i = 0; i < 8; ++i) {
         if (strcmp(str, register_string(i)) == 0) return 1;
@@ -163,5 +164,14 @@ void print_arr(char* arr)
      */
 
     putchar('\n');
+}
+void b64(node *head)
+{
+    while(head!=NULL) {
+        encodeBase64(head->code);
+        putchar('\n');
+        head = head->next;
+    }
+
 }
 

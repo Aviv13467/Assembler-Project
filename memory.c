@@ -48,8 +48,11 @@ unsigned int encode_combine(unsigned int opcode, unsigned int origin_operand,uns
  */
 unsigned int encode_immediate(unsigned int value)
 {
-    return value<<2;
+    int ARE = 0;
+    value = value<<2;
+    return value|ARE;
 }
+
 /*
  * Used to encode label address code, 10 left-most bits are the address, the 2 rightmost are A,R,E (which is 1/2 depends on if EXTERN/RELOCATABLE)
  */
