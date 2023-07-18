@@ -14,6 +14,7 @@ typedef struct node {
 node *create_list(void);
 void set_node(node *sym, int pos, unsigned int code);
 node *get_node(node *head, int pos);
+node *return_label(node* head);
 node *add_node(node **head, int pos, unsigned int code);
 void delete_node(node **head, node *removed);
 void set_label(node *curr,char *label);

@@ -188,7 +188,8 @@ CMakeFiles/new.dir/first_pass.c.o: /Users/aviv/CLionProjects/Maman14\ copy/first
   /Users/aviv/CLionProjects/Maman14\ copy/LinkedList.h \
   /Users/aviv/CLionProjects/Maman14\ copy/symbol_table.h \
   /Users/aviv/CLionProjects/Maman14\ copy/memory.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/parse_line.h
+  /Users/aviv/CLionProjects/Maman14\ copy/parse_line.h \
+  /Users/aviv/CLionProjects/Maman14\ copy/second_pass.h
 
 CMakeFiles/new.dir/hashtable.c.o: /Users/aviv/CLionProjects/Maman14\ copy/hashtable.c \
   /Users/aviv/CLionProjects/Maman14\ copy/hashtable.h \
@@ -663,6 +664,7 @@ CMakeFiles/new.dir/preprocessor.c.o: /Users/aviv/CLionProjects/Maman14\ copy/pre
 
 CMakeFiles/new.dir/second_pass.c.o: /Users/aviv/CLionProjects/Maman14\ copy/second_pass.c \
   /Users/aviv/CLionProjects/Maman14\ copy/second_pass.h \
+  /Users/aviv/CLionProjects/Maman14\ copy/LinkedList.h \
   /Users/aviv/CLionProjects/Maman14\ copy/includes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_stdio.h \
@@ -752,9 +754,8 @@ CMakeFiles/new.dir/second_pass.c.o: /Users/aviv/CLionProjects/Maman14\ copy/seco
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_wint_t.h \
   /Users/aviv/CLionProjects/Maman14\ copy/preprocessor.h \
   /Users/aviv/CLionProjects/Maman14\ copy/globals.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/utils.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/LinkedList.h \
   /Users/aviv/CLionProjects/Maman14\ copy/symbol_table.h \
+  /Users/aviv/CLionProjects/Maman14\ copy/utils.h \
   /Users/aviv/CLionProjects/Maman14\ copy/memory.h
 
 CMakeFiles/new.dir/symbol_table.c.o: /Users/aviv/CLionProjects/Maman14\ copy/symbol_table.c \

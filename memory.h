@@ -38,6 +38,7 @@ void encodeBase64(unsigned int code);
  */
 unsigned int encode_immediate(unsigned int value);
 unsigned int encode_combine_direct(unsigned int code,ARE type);
+unsigned int encode_combine_label(unsigned int code);
 
 /*
  * Encoding of registers

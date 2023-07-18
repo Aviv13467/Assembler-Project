@@ -6,6 +6,7 @@
 #include "parse_line.h"
 #include "memory.h"
 #include "LinkedList.h"
+#include "second_pass.h"
 
 #define add_line line_info = add_node(&head_list,counter++,0);
 void first_pass(char *ifp)
@@ -337,6 +338,9 @@ void first_pass(char *ifp)
     print_entry(head);
     free(line);
     free(command);
+    second_pass(head_list,head);
+    print_node(head_list);
+    b64(head_list);
     free_symbol(head);
     free_list(head_list);
     fclose(input_file_des);

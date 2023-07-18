@@ -23,6 +23,16 @@ node *get_node(node *head, int pos) {
     return NULL;
 }
 
+node *return_label(node* head)
+{
+    node *curr = head;
+    while (curr != NULL){
+        if (curr->label[0] != 0)
+            return curr;
+    }
+    return NULL;
+}
+
 node* add_node(node **head, int pos, unsigned int code) {
     node *new = create_list();
     if (new == NULL)

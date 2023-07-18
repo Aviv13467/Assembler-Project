@@ -61,6 +61,13 @@ unsigned int encode_combine_direct(unsigned int code,ARE type)
     unsigned int combine = code|type;
     return combine;
 }
+unsigned int encode_combine_label(unsigned int code)
+{
+    unsigned int ARE = RELOCATABLE;
+    unsigned int combine = code<<2;
+    return combine|ARE;
+}
+
 /*
  * Encodes the first 6 digit to the left to the modified ASCII to be later used to convert ot Base64
  */
