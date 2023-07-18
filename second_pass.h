@@ -1,8 +1,4 @@
-//
-// Created by Aviv Mordechai on 18/07/2023.
-//
+#ifndef SECOND_PASS_H
+#define SECOND_PASS_H
 
-#ifndef NEW_SECOND_PASS_H
-#define NEW_SECOND_PASS_H
-
-#endif //NEW_SECOND_PASS_H
+#endif //SECOND_PASS_H

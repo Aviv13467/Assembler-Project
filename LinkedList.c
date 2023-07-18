@@ -45,7 +45,7 @@ void print_node(node *head)
 {
     node *curr = head;
     while (curr != NULL) {
-        printf("%d\t%d\n", curr->pos,curr->code);
+        printf("%d\t%d\t%s\n", curr->pos,curr->code,curr->label);
         curr = curr->next;
     }
 }
@@ -68,7 +68,10 @@ void delete_node(node **head, node *removed)
     curr->next = removed->next;
     free(removed);
 }
-
+void set_label(node *curr,char *label)
+{
+    strcpy(curr->label,label);
+}
 void free_list(node *head)
 {
     node* curr = head;

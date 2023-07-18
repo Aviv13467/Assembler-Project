@@ -205,6 +205,7 @@ void first_pass(char *ifp)
                                 line_info->code = encode_origin_reg_direct(register_no(first));
                                 add_line
                                 line_info->code = 0; /* Address will be added in second pass */
+                                set_label(line_info,second);
                                 L += 3;
                             }
                         }
@@ -225,13 +226,16 @@ void first_pass(char *ifp)
                             line_info->code = encode_combine(lea,DIRECT,DIRECT);
                             add_line
                             line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                            set_label(line_info,first);
                             add_line
                             line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                            set_label(line_info,second);
                         }
                         if (isRegister(second)){
                             line_info->code = encode_combine(lea,DIRECT,DIRECT_REGISTER);
                             add_line
                             line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                            set_label(line_info,first);
                             add_line
                             line_info->code = encode_des_reg_direct(register_no(second));
                         }
@@ -260,6 +264,7 @@ void first_pass(char *ifp)
                             line_info->code = encode_combine(command_code,0,DIRECT);
                             add_line
                             line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                            set_label(line_info,first);
                             L+=2;
                         }
                         else if (isRegister(first))
@@ -289,6 +294,7 @@ void first_pass(char *ifp)
                             line_info->code = encode_combine(command_code,0,DIRECT);
                             add_line
                             line_info->code = 0; /* Only in the second pass we can assign address to a label */
+                            set_label(line_info,first);
                             L+=2;
                         }
                         else if (isRegister(first))
