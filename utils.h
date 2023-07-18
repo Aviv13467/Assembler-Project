@@ -23,4 +23,5 @@ int isValid_macro(char* name);
 void b64(node *head);
 void export_extern(char *ofp,extern_table *head);
 void export_entry(char *ofp,entry_table *entry);
+void export_obj(char *ofp, node *head);
 #endif

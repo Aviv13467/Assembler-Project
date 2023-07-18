@@ -46,6 +46,7 @@ void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
     if (!isEmpty_entry(entry)){
         export_entry(ifp,entry);
     }
+    export_obj(ifp,head);
     free_extern(ext);
 
 }

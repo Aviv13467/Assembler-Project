@@ -30,6 +30,7 @@ char encodeFirst(unsigned int code);
 char encodeSecond(unsigned int code);
 char* returnEncode(char first, char second);
 void encodeBase64(unsigned int code);
+void file_encodeBase64(unsigned int code,FILE *ofp);
 
 /*
  * These functions are responsible for the type of encoding

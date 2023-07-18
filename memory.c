@@ -117,6 +117,16 @@ void encodeBase64(unsigned int code)
     printf("%s",c);
     free(c);
 }
+void file_encodeBase64(unsigned int code,FILE *ofp)
+{
+    char a,b;
+    char *c;
+    a = encodeFirst(code);
+    b = encodeSecond(code);
+    c = returnEncode(a,b);
+    fprintf(ofp,"%s\n",c);
+    free(c);
+}
 /*
  * Shift the bits on the origin register code to bits 7-11
  */

@@ -19,6 +19,7 @@ node *add_node(node **head, int pos, unsigned int code);
 void delete_node(node **head, node *removed);
 void set_label(node *curr,char *label);
 void print_node(node *head);
+void fprint_node(node *head,FILE *ofp);
 void free_list(node *head);
 
 #endif

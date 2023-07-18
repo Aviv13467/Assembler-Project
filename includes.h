@@ -8,6 +8,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "preprocessor.h"
+
 #define MAX_LABEL 31
 #define MAX_LEN 80
 #define MAX_LINE 80

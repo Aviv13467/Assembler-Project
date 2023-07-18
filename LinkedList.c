@@ -1,5 +1,5 @@
 #include "LinkedList.h"
-
+#include "memory.h"
 node *create_list(void) {
     node *new = (node*)malloc(sizeof(node));
     if (new == NULL)
@@ -55,6 +55,14 @@ void print_node(node *head)
     node *curr = head;
     while (curr != NULL) {
         printf("%d\t%d\t%s\n", curr->pos,curr->code,curr->label);
+        curr = curr->next;
+    }
+}
+void fprint_node(node *head,FILE *ofp)
+{
+    node *curr = head;
+    while (curr != NULL) {
+        file_encodeBase64(curr->code,ofp);
         curr = curr->next;
     }
 }

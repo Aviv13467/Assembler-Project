@@ -191,6 +191,17 @@ void export_entry(char *ofp,entry_table *entry)
     fprint_entry_table(entry,output_file_des);
 }
 
+void export_obj(char *ofp, node *head)
+{
+    char *output_file_name = str_allocate_cat(ofp, ".ob");
+    FILE *output_file_des = fopen(output_file_name,"w+");
+    if (output_file_des == NULL) {
+        fprintf(stderr,"Error occurred while opening the file %s\n", output_file_name);
+        free(output_file_name);
+        return;
+    }
+    fprint_node(head,output_file_des);
+}
 void b64(node *head)
 {
     while(head!=NULL) {
