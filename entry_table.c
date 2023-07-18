@@ -44,6 +44,15 @@ void print_entry_table(entry_table *head)
         curr = curr->next;
     }
 }
+void fprint_entry_table(entry_table *head,FILE *ofp)
+{
+    entry_table *curr = head;
+    while (curr!= NULL)
+    {
+        fprintf(ofp,"%s\t%d\n", curr->label, curr->label_pos);
+        curr = curr->next;
+    }
+}
 
 int get_entry(entry_table *node,char* name)
 {
@@ -56,9 +65,13 @@ int get_entry(entry_table *node,char* name)
     }
     return -1;
 }
-
+int isEmpty_entry(entry_table *head)
+{
+    return head == NULL;
+}
 void free_entry(entry_table *head)
 {
+    if (head == NULL) return;
     entry_table* curr = head;
     while (curr != NULL) {
         entry_table* temp = curr;

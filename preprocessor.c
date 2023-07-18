@@ -3,7 +3,7 @@
 #include "hashtable.h"
 #include "globals.h"
 
-void preproces_file(char *ifp) {
+int preproces_file(char *ifp) {
     hash_table *ht = ht_create();
     bool isMacro = false;
     char *token = NULL;
@@ -24,7 +24,7 @@ void preproces_file(char *ifp) {
         free(input_file_name);
         free(output_file_name);
         ht_free(ht);
-        return;
+        exit(1);
     }
 
     /*
@@ -38,7 +38,7 @@ void preproces_file(char *ifp) {
         fclose(input_file_des);
         fclose(am_file_des);
         ht_free(ht);
-        return;
+        exit(1);
     }
 
     while (fgets(line, MAX_LINE, input_file_des) != NULL) {
@@ -96,6 +96,7 @@ void preproces_file(char *ifp) {
     fclose(input_file_des);
     fclose(am_file_des);
     ht_free(ht);
-    if (macro_name != NULL)
-        free(macro_name);
+    if (macro_name != NULL) free(macro_name);
+
+    return 0;
 }

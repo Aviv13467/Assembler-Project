@@ -91,4 +91,6 @@ CMakeFiles/new.dir/parse_line.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_ctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/runetype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_wint_t.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/preprocessor.h
+  /Users/aviv/CLionProjects/Maman14\ copy/preprocessor.h \
+  /Users/aviv/CLionProjects/Maman14\ copy/extern_table.h \
+  /Users/aviv/CLionProjects/Maman14\ copy/entry_table.h

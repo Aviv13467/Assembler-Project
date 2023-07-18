@@ -1,6 +1,5 @@
 #include "LinkedList.h"
 
-
 node *create_list(void) {
     node *new = (node*)malloc(sizeof(node));
     if (new == NULL)
@@ -84,6 +83,7 @@ void set_label(node *curr,char *label)
 }
 void free_list(node *head)
 {
+    if (head == NULL) return;
     node* curr = head;
     while (curr != NULL) {
         node* temp = curr;

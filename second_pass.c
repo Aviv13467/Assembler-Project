@@ -5,7 +5,7 @@
 #include "symbol_table.h"
 #include "entry_table.h"
 #include "extern_table.h"
-void second_pass(node *head, symbol *label, entry_table *entry)
+void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
 {
     node *curr = head;
     int position;
@@ -40,6 +40,12 @@ void second_pass(node *head, symbol *label, entry_table *entry)
         }
         curr = curr->next;
     }
-    print_extern_table(ext);
+    if (!isEmpty_ext(ext)){
+        export_extern(ifp,ext);
+    }
+    if (!isEmpty_entry(entry)){
+        export_entry(ifp,entry);
+    }
+    free_extern(ext);
 
 }

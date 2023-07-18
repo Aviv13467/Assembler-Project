@@ -1,3 +1,5 @@
+#ifndef HASHTABLE_H
+#define HASHTABLE_H
 typedef struct item {
     char *key;
     char *value;
@@ -14,3 +16,5 @@ void ht_set(hash_table *hashtable, const char *key, const char *value);
 char *ht_get(hash_table *hashtable, const char *key);
 void ht_del(hash_table *hashtable, const char *key);
 void ht_free(hash_table *hashtable);
+
+#endif

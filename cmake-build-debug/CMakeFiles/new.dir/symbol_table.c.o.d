@@ -92,4 +92,6 @@ CMakeFiles/new.dir/symbol_table.c.o: \
   /Users/aviv/CLionProjects/Maman14\ copy/preprocessor.h \
   /Users/aviv/CLionProjects/Maman14\ copy/utils.h \
   /Users/aviv/CLionProjects/Maman14\ copy/LinkedList.h \
+  /Users/aviv/CLionProjects/Maman14\ copy/extern_table.h \
+  /Users/aviv/CLionProjects/Maman14\ copy/entry_table.h \
   /Users/aviv/CLionProjects/Maman14\ copy/memory.h

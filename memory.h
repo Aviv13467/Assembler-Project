@@ -1,9 +1,9 @@
 #ifndef MEMORY_H
 #define MEMORY_H
+
 #include "includes.h"
 #include "symbol_table.h"
 #include "utils.h"
-#endif
 
 /*
  * These functions are responsible to shift each of the code to the corresponding location
@@ -51,3 +51,5 @@ unsigned int encode_origin_reg_direct(unsigned int num);
 unsigned int encode_des_reg_direct(unsigned int num);
 unsigned int encode_combine_reg(unsigned int r1, unsigned int r2);
 unsigned int two_complement(signed int num);
+
+#endif

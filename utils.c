@@ -2,6 +2,8 @@
 #include "string.h"
 #include "memory.h"
 #include "LinkedList.h"
+#include "extern_table.h"
+#include "entry_table.h"
 char *str_allocate_cat(char *first_str, char* second_str) {
     char *str = (char *)malloc(strlen(first_str) + strlen(second_str) + 1);
     strcpy(str, first_str);
@@ -165,6 +167,30 @@ void print_arr(char* arr)
 
     putchar('\n');
 }
+void export_extern(char *ofp,extern_table *head)
+{
+    char *output_file_name = str_allocate_cat(ofp, ".ext");
+    FILE *output_file_des = fopen(output_file_name,"w+");
+    if (output_file_des == NULL) {
+        fprintf(stderr,"Error occurred while opening the file %s\n", output_file_name);
+        free(output_file_name);
+        return;
+    }
+    fprint_extern_table(head,output_file_des);
+}
+
+void export_entry(char *ofp,entry_table *entry)
+{
+    char *output_file_name = str_allocate_cat(ofp, ".ent");
+    FILE *output_file_des = fopen(output_file_name,"w+");
+    if (output_file_des == NULL) {
+        fprintf(stderr,"Error occurred while opening the file %s\n", output_file_name);
+        free(output_file_name);
+        return;
+    }
+    fprint_entry_table(entry,output_file_des);
+}
+
 void b64(node *head)
 {
     while(head!=NULL) {

@@ -21,4 +21,4 @@ void set_label(node *curr,char *label);
 void print_node(node *head);
 void free_list(node *head);
 
-#endif // LINKEDLIST_H
+#endif

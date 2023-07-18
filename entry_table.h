@@ -1,9 +1,9 @@
-#ifndef NEW_ENTRY_TABLE_H
-#define NEW_ENTRY_TABLE_H
-#include "globals.h"
-#include "includes.h"
-#include "utils.h"
-#include "memory.h"
+#ifndef ENTRY_TABLE_H
+#define ENTRY_TABLE_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct entry_table{
     char label[31];
@@ -14,7 +14,9 @@ entry_table *create_entry(void);
 void set_entry(entry_table *sym,char *name,int pos);
 entry_table* add_entry(entry_table **head, char *label,int pos);
 void print_entry_table(entry_table *head);
+void fprint_entry_table(entry_table *head,FILE *ofp);
 int get_entry(entry_table *node,char* name);
+int isEmpty_entry(entry_table *head);
 void free_entry(entry_table *head);
 
-#endif //NEW_ENTRY_TABLE_H
+#endif

@@ -1,2 +1,7 @@
+#ifndef PREPROCESSOR_H
+#define PREPROCESSOR_H
+
 #include "globals.h"
-void preproces_file(char *ifp);
+int preproces_file(char *ifp);
+
+#endif

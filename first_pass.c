@@ -10,7 +10,7 @@
 #include "entry_table.h"
 #include "extern_table.h"
 #define add_line line_info = add_node(&head_list,counter++,0);
-void first_pass(char *ifp)
+int first_pass(char *ifp)
 {
     /*
      * Opening the preprocessed file .am to start the first assembler pass
@@ -23,7 +23,7 @@ void first_pass(char *ifp)
     if (input_file_des == NULL) {
         fprintf(stderr,"Error occurred while opening the file %s\n", input_file_name);
         free(input_file_name);
-        return;
+        exit(1);
     }
     char *line = (char*)malloc(sizeof(char)*MAX_LINE); /* line output from fgets */
     char *token = NULL; /* for strtok function */
@@ -335,6 +335,10 @@ void first_pass(char *ifp)
             continue;
         }
     }
+
+    /*
+     ********* Test Commands | Can be deleted later ************
+     */
     /*
     b64(head_list);
      */
@@ -346,22 +350,39 @@ void first_pass(char *ifp)
     DC_total = print_symbol(head);
     printf("%d %d\n",counter-DC_total,DC_total);
      */
+
+
+    /********  EXCEPT THESE COMMAND **************/
     free(line);
     free(command);
-    second_pass(head_list,head,head_entry);
+    second_pass(ifp,head_list,head,head_entry);
+    /********  EXCEPT THESE COMMAND **************/
+
+
     /* printf("Extern:\n"); */
     /*
     print_extern(head);
      */
-    /* print_extern_table(head_extern);*/
+    /* print_extern_table(head_extern);
     putchar('\n');
     printf("Entry:\n");
     print_entry_table(head_entry);
     putchar('\n');
     print_node(head_list);
     b64(head_list);
+     */
+
+    /*
+    ********* Test Commands | Can be deleted later ************
+    */
+    /*
+     *
+     */
     free_symbol(head);
     free_list(head_list);
+    free_entry(head_entry);
     fclose(input_file_des);
     free(input_file_name);
+
+    return 0;
 }

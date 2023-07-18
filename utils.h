@@ -1,4 +1,9 @@
+#ifndef UTILS_H
+#define UTILS_H
 #include "LinkedList.h"
+#include "extern_table.h"
+#include "entry_table.h"
+
 char *str_allocate_cat(char *first_str, char* second_str);
 void flush_strtok(void);
 void decimalToBinary(unsigned int decimal,int zeros);
@@ -16,3 +21,6 @@ int isRegister(char*str);
 void print_arr(char* arr);
 int isValid_macro(char* name);
 void b64(node *head);
+void export_extern(char *ofp,extern_table *head);
+void export_entry(char *ofp,entry_table *entry);
+#endif

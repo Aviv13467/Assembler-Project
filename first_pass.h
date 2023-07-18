@@ -1,2 +1,7 @@
+#ifndef FIRST_PASS_H
+#define FIRST_PASS_H
+
 #include "globals.h"
-void first_pass(char *ifp);
+int first_pass(char *ifp);
+
+#endif

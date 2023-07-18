@@ -1,5 +1,6 @@
 #ifndef SYMBOL_TABLE_H
 #define SYMBOL_TABLE_H
+
 #include "globals.h"
 #include "includes.h"
 #include "utils.h"
@@ -29,4 +30,5 @@ void print_num_arr(symbol *curr);
 void print_entry(symbol *head);
 void print_extern(symbol *head);
 void free_symbol(symbol *head);
+
 #endif

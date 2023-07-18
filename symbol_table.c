@@ -122,6 +122,7 @@ void print_num_arr(symbol *curr)
 }
 void free_symbol(symbol *head)
 {
+    if (head == NULL) return;
     symbol* curr = head;
     while (curr != NULL) {
         symbol* temp = curr;
