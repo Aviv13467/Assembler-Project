@@ -14,6 +14,7 @@ node *create_list(void);
 void set_node(node *sym, int pos, unsigned int code);
 node *get_node(node *head, int pos);
 node *add_node(node **head, int pos, unsigned int code);
+void delete_node(node **head, node *removed);
 void print_node(node *head);
 void free_list(node *head);
 

@@ -297,6 +297,30 @@ preprocessor.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/preprocessor.c.s
 .PHONY : preprocessor.c.s
 
+second_pass.o: second_pass.c.o
+.PHONY : second_pass.o
+
+# target to build an object file
+second_pass.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/second_pass.c.o
+.PHONY : second_pass.c.o
+
+second_pass.i: second_pass.c.i
+.PHONY : second_pass.i
+
+# target to preprocess a source file
+second_pass.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/second_pass.c.i
+.PHONY : second_pass.c.i
+
+second_pass.s: second_pass.c.s
+.PHONY : second_pass.s
+
+# target to generate assembly for a file
+second_pass.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/second_pass.c.s
+.PHONY : second_pass.c.s
+
 symbol_table.o: symbol_table.c.o
 .PHONY : symbol_table.o
 
@@ -375,6 +399,9 @@ help:
 	@echo "... preprocessor.o"
 	@echo "... preprocessor.i"
 	@echo "... preprocessor.s"
+	@echo "... second_pass.o"
+	@echo "... second_pass.i"
+	@echo "... second_pass.s"
 	@echo "... symbol_table.o"
 	@echo "... symbol_table.i"
 	@echo "... symbol_table.s"

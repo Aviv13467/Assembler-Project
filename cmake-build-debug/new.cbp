@@ -121,6 +121,12 @@
 		<Unit filename="/Users/aviv/CLionProjects/Maman14 copy/preprocessor.h">
 			<Option target="new"/>
 		</Unit>
+		<Unit filename="/Users/aviv/CLionProjects/Maman14 copy/second_pass.c">
+			<Option target="new"/>
+		</Unit>
+		<Unit filename="/Users/aviv/CLionProjects/Maman14 copy/second_pass.h">
+			<Option target="new"/>
+		</Unit>
 		<Unit filename="/Users/aviv/CLionProjects/Maman14 copy/symbol_table.c">
 			<Option target="new"/>
 		</Unit>

@@ -7,7 +7,7 @@
 #include "memory.h"
 #include "LinkedList.h"
 
-#define add_line line_info = add_node(&head_list,x++,0);
+#define add_line line_info = add_node(&head_list,counter++,0);
 void first_pass(char *ifp)
 {
     /*
@@ -27,7 +27,7 @@ void first_pass(char *ifp)
     char *token = NULL; /* for strtok function */
     symbol *head = NULL, *curr = NULL; /* symbol table nodes */
     node *head_list = NULL;
-    int IC = IC_START, DC = 0,L = 0, i,j,x = 0,counter = 0; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
+    int IC = IC_START, DC = 0,L = 0, i = 0,counter = 0; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
     char* first, *second; /* commands will be tokenized into 2 separate words */
     int command_code; /* opcode command (1-15) */
     char* command; /* command name string*/
@@ -43,10 +43,9 @@ void first_pass(char *ifp)
      */
     while (fgets(line,MAX_LINE,input_file_des) != NULL) /* As long line != EOF */
     {
-        node *line_info = add_node(&head_list,x,0);
-        x++;
-        counter++;
-        i = 0; L = 0; /* Reset IC and 'i' */
+        node *line_info = add_node(&head_list,counter,0);
+        counter++; /* Increment line counter used for error output */
+        i = 0; L = 0; /* Reset command line counter and 'i' */
         token = strtok(line," "); /* Tokenize the next word */
         strcpy(command,token); /* Copy token into command, so it won't interfere with the token pointer itself */
         command_code = opcode_no(command); /* Assign an integer value (opcode) to the command */
@@ -57,20 +56,24 @@ void first_pass(char *ifp)
         if (strchr(token,'.') != NULL)
         {
             if (strcmp(token,".entry") == 0){
+                counter--;
                 token = strtok(NULL," ");
                 token[strlen(token)-1] = '\0';
                 if (isValid_macro(token) == 0) {
-                    curr = add_symbol(&head, token, IC);
+                    curr = add_symbol(&head, token, 0);
                     set_type(curr,entry);
+                    delete_node(&head_list,line_info);
                 }
                 continue;
             }
             else if (strcmp(token,".extern") == 0){
+                counter--;
                 token = strtok(NULL," ");
                 token[strlen(token)-1] = '\0';
                 if (isValid_macro(token) == 0) {
-                    curr = add_symbol(&head, token, IC);
+                    curr = add_symbol(&head, token, 0);
                     set_type(curr,ext);
+                    delete_node(&head_list,line_info);
                 }
                 continue;
             }
@@ -85,6 +88,7 @@ void first_pass(char *ifp)
             /* Checks if the name is valid, in other words, if it doesn't interfere with known commands such as opcodes,registers or label types */
             if (isValid_macro(token) == 0) {
                 curr = add_symbol(&head, token, IC);
+                curr->IC = IC;
             }
             /*
              * Name interferes with known command, output an error
@@ -105,7 +109,6 @@ void first_pass(char *ifp)
              */
             if (command_code >= 0 && command_code<=15){
                 set_type(curr,ic);
-                curr->opcode = command_code;
                 goto check_opcode; /* goto the command parsing section */
             }
 
@@ -116,14 +119,16 @@ void first_pass(char *ifp)
             if (strcspn(token,".") == 0) {
                 if (strcmp(token,".data") == 0)
                 {
+                    delete_node(&head_list,line_info);
+                    counter--;
                     set_type(curr,data);
                     while (token != NULL) {
                         token = strtok(NULL, ",");
                         if (token != NULL) {
+                            add_line
                             if (atoi(token)<0)
                                 line_info->code = two_complement(atoi(token));
                             else line_info->code = atoi(token);
-                            add_line
                             i++;
                         }
                         DC = i;
@@ -140,6 +145,8 @@ void first_pass(char *ifp)
 
                 if (strcmp(token,".string") == 0)
                 {
+                    delete_node(&head_list,line_info);
+                    counter--;
                     set_type(curr,string);
                     token = strtok(NULL,"\"“”");
                     if (token!=NULL) {
@@ -147,8 +154,8 @@ void first_pass(char *ifp)
                         set_str(curr,token);
                         int k;
                         for (k = 0; k < strlen(token)+1 ; ++k) {
-                            line_info->code = (int)token[k];
                             add_line;
+                            line_info->code = (int)token[k];
                         }
                         /* print_arr(curr->str); */
                         DC = (int)strlen(token)+1;
@@ -168,7 +175,6 @@ void first_pass(char *ifp)
 
         if(command_valid(command) == 0)
         {
-            j = 0;
             check_opcode:
             if(number_of_operands(command_code) == 2){
                 first = strtok(NULL,",");
@@ -313,9 +319,16 @@ void first_pass(char *ifp)
             continue;
         }
     }
+    /*
     b64(head_list);
+     */
+    printf("LinkedList:\n");
     print_node(head_list);
-    /* print_symbol(head); */
+    putchar('\n');
+    int DC_total;
+    DC_total = print_symbol(head);
+    printf("%d %d",counter-DC_total,DC_total);
+    print_entry(head);
     free(line);
     free(command);
     free_symbol(head);

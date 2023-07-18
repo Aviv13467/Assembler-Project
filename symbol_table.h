@@ -8,10 +8,9 @@
 typedef struct symbol{
     char label[31];
     int label_pos;
-    int type,DC,IC;
-    int pos;
-    unsigned int opcode;
-    unsigned code[3];
+    int type;
+    int DC;
+    int IC;
     int nums[30];
     char str[30];
     struct symbol *next;
@@ -24,8 +23,9 @@ void set_str(symbol *sym, char* str);
 void set_IC(symbol *sym,int IC);
 void set_DC(symbol *sym,int DC);
 symbol* add_symbol(symbol **head, char *label, unsigned int pos);
-void print_symbol(symbol *head);
+int print_symbol(symbol *head);
 int get_symbol(symbol *node,char* name);
 void print_num_arr(symbol *curr);
+void print_entry(symbol *head);
 void free_symbol(symbol *head);
 #endif

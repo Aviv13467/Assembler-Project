@@ -41,12 +41,32 @@ node* add_node(node **head, int pos, unsigned int code) {
 }
 
 
-void print_node(node *head) {
+void print_node(node *head)
+{
     node *curr = head;
     while (curr != NULL) {
         printf("%d\t%d\n", curr->pos,curr->code);
         curr = curr->next;
     }
+}
+
+void delete_node(node **head, node *removed)
+{
+    if (*head == NULL || removed == NULL) return;
+    if (*head == removed){
+        *head = removed->next;
+        free(removed);
+        return;
+    }
+    node* curr = *head;
+    while (curr->next != removed)
+        curr = curr->next;
+    curr->next = curr->next->next;
+    if (curr->next == NULL) {
+        return;
+    }
+    curr->next = removed->next;
+    free(removed);
 }
 
 void free_list(node *head)

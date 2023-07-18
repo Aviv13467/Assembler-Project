@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/aviv/CLionProjects/Maman14 copy/memory.c" "CMakeFiles/new.dir/memory.c.o" "gcc" "CMakeFiles/new.dir/memory.c.o.d"
   "/Users/aviv/CLionProjects/Maman14 copy/parse_line.c" "CMakeFiles/new.dir/parse_line.c.o" "gcc" "CMakeFiles/new.dir/parse_line.c.o.d"
   "/Users/aviv/CLionProjects/Maman14 copy/preprocessor.c" "CMakeFiles/new.dir/preprocessor.c.o" "gcc" "CMakeFiles/new.dir/preprocessor.c.o.d"
+  "/Users/aviv/CLionProjects/Maman14 copy/second_pass.c" "CMakeFiles/new.dir/second_pass.c.o" "gcc" "CMakeFiles/new.dir/second_pass.c.o.d"
   "/Users/aviv/CLionProjects/Maman14 copy/symbol_table.c" "CMakeFiles/new.dir/symbol_table.c.o" "gcc" "CMakeFiles/new.dir/symbol_table.c.o.d"
   "/Users/aviv/CLionProjects/Maman14 copy/utils.c" "CMakeFiles/new.dir/utils.c.o" "gcc" "CMakeFiles/new.dir/utils.c.o.d"
   )

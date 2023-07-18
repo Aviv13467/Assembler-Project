@@ -51,12 +51,31 @@ symbol* add_symbol(symbol **head, char *label, unsigned int pos) {
     return new;
 }
 
-void print_symbol(symbol *head)
+int print_symbol(symbol *head)
 {
+    int sum = 0;
     symbol *curr = head;
     while (curr!= NULL)
     {
-        printf("%s\t%d\t%s\n", curr->label, curr->label_pos, type_string(curr->type));
+        sum+=curr->DC;
+        if (curr->type == ext || curr->type == entry) {
+            curr = curr->next;
+            continue;
+            }
+        printf("%s\t%d\t%s\t%d\t%d\n", curr->label, curr->label_pos, type_string(curr->type),curr->IC,curr->DC);
+        curr = curr->next;
+    }
+    return sum;
+}
+void print_entry(symbol *head)
+{
+    symbol *curr = head;
+    putchar('\n');
+    while (curr!= NULL)
+    {
+        if (curr->type == entry){
+            printf("%s\t%d\t%s\n", curr->label, curr->label_pos, type_string(curr->type));
+        }
         curr = curr->next;
     }
 }

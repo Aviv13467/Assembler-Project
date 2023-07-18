@@ -1,6 +1,5 @@
 #include "parse_line.h"
 #include "globals.h"
-#include <string.h>
 #include "utils.h"
 int number_of_operands(opcode command)
 {
