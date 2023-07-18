@@ -153,6 +153,30 @@ LinkedList.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/LinkedList.c.s
 .PHONY : LinkedList.c.s
 
+entry_table.o: entry_table.c.o
+.PHONY : entry_table.o
+
+# target to build an object file
+entry_table.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/entry_table.c.o
+.PHONY : entry_table.c.o
+
+entry_table.i: entry_table.c.i
+.PHONY : entry_table.i
+
+# target to preprocess a source file
+entry_table.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/entry_table.c.i
+.PHONY : entry_table.c.i
+
+entry_table.s: entry_table.c.s
+.PHONY : entry_table.s
+
+# target to generate assembly for a file
+entry_table.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/entry_table.c.s
+.PHONY : entry_table.c.s
+
 first_pass.o: first_pass.c.o
 .PHONY : first_pass.o
 
@@ -381,6 +405,9 @@ help:
 	@echo "... LinkedList.o"
 	@echo "... LinkedList.i"
 	@echo "... LinkedList.s"
+	@echo "... entry_table.o"
+	@echo "... entry_table.i"
+	@echo "... entry_table.s"
 	@echo "... first_pass.o"
 	@echo "... first_pass.i"
 	@echo "... first_pass.s"

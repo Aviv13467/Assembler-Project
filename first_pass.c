@@ -7,7 +7,7 @@
 #include "memory.h"
 #include "LinkedList.h"
 #include "second_pass.h"
-
+#include "entry_table.h"
 #define add_line line_info = add_node(&head_list,counter++,0);
 void first_pass(char *ifp)
 {
@@ -28,6 +28,9 @@ void first_pass(char *ifp)
     char *token = NULL; /* for strtok function */
     symbol *head = NULL, *curr = NULL; /* symbol table nodes */
     node *head_list = NULL;
+
+    entry_table *head_entry = NULL, *curr_entry = NULL;
+
     int IC = IC_START, DC = 0,L = 0, i = 0,counter = 0; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
     char* first, *second; /* commands will be tokenized into 2 separate words */
     int command_code; /* opcode command (1-15) */
@@ -61,8 +64,10 @@ void first_pass(char *ifp)
                 token = strtok(NULL," ");
                 token[strlen(token)-1] = '\0';
                 if (isValid_macro(token) == 0) {
-                    curr = add_symbol(&head, token, 0);
-                    set_type(curr,entry);
+
+                    /* curr = add_symbol(&head, token, 0); */
+                    curr_entry = add_entry(&head_entry,token,0);
+                    /* set_type(curr,entry); */
                     delete_node(&head_list,line_info);
                 }
                 continue;
@@ -329,16 +334,23 @@ void first_pass(char *ifp)
     /*
     b64(head_list);
      */
+    /*
     printf("LinkedList:\n");
     print_node(head_list);
     putchar('\n');
     int DC_total;
     DC_total = print_symbol(head);
-    printf("%d %d",counter-DC_total,DC_total);
-    print_entry(head);
+    printf("%d %d\n",counter-DC_total,DC_total);
+     */
+    printf("Extern:");
+    print_extern(head);
+    putchar('\n');
+    printf("Entry:\n");
+    print_entry_table(head_entry);
+    putchar('\n');
     free(line);
     free(command);
-    second_pass(head_list,head);
+    second_pass(head_list,head,head_entry);
     print_node(head_list);
     b64(head_list);
     free_symbol(head);

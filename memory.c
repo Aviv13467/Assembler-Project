@@ -67,6 +67,11 @@ unsigned int encode_combine_label(unsigned int code)
     unsigned int combine = code<<2;
     return combine|ARE;
 }
+unsigned int encode_combine_extern()
+{
+    unsigned int ARE = EXTERNAL;
+    return ARE;
+}
 
 /*
  * Encodes the first 6 digit to the left to the modified ASCII to be later used to convert ot Base64

@@ -79,13 +79,27 @@ void print_entry(symbol *head)
         curr = curr->next;
     }
 }
+void print_extern(symbol *head)
+{
+    symbol *curr = head;
+    putchar('\n');
+    while (curr!= NULL)
+    {
+        if (curr->type == ext){
+            printf("%s\t%d\t%s\n", curr->label, curr->label_pos, type_string(curr->type));
+        }
+        curr = curr->next;
+    }
+}
 int get_symbol(symbol *node,char* name)
 {
     symbol *curr = node;
     while (curr != NULL)
     {
-        if (strcmp(curr->label,name)==0)
-            return curr->label_pos;
+        if (strcmp(curr->label,name)==0) {
+            if (curr->type == ext) return -2;
+            else return curr->label_pos;
+        }
         curr = curr->next;
     }
     return -1;
