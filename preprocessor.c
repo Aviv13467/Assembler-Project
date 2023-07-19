@@ -1,11 +1,10 @@
 #include "includes.h"
 #include "utils.h"
 #include "hashtable.h"
-#include "globals.h"
 
 int preproces_file(char *ifp) {
     hash_table *ht = ht_create();
-    bool isMacro = false;
+    int isMacro = 0;
     char *token = NULL;
     char *linecpy = (char*)malloc(sizeof(char)*MAX_LINE);
     char *macro_name = NULL;
@@ -45,9 +44,9 @@ int preproces_file(char *ifp) {
         strcpy(linecpy,line);
         if (line[0] == '\n' || line[0] == ';' || line[0] == EOF || line[0] == '\0')
             continue;
-        if(isMacro == true) {
+        if(isMacro == 1) {
             if (strcmp(token, "endmcro\n") == 0) {
-                isMacro = false;
+                isMacro = 0;
                 continue;
             }
             else{
@@ -69,7 +68,7 @@ int preproces_file(char *ifp) {
          * Check if the token is start of a macro
          */
         if (strcmp(token, "mcro") == 0) {
-            isMacro = true;
+            isMacro = 1;
             macro_name = (char *) malloc(sizeof(char) * MAX_MCRO_LEN);
             strcpy(macro_name, strtok(NULL, " "));
             if (strtok(NULL," ") != NULL){

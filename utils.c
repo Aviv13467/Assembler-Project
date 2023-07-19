@@ -56,6 +56,7 @@ unsigned int modifyASCII(int num)
         return 43;
     else if (num == 63)
         return 47;
+    return 0;
 }
 char* remove_newline(char* str)
 {
@@ -199,7 +200,7 @@ void write_counter(char *ofp, int IC,int DC)
         free(output_file_name);
         return;
     }
-    fprintf(output_file_des,"%d\t%d\n",IC,DC);
+    fprintf(output_file_des,"%d %d\n",IC,DC);
 }
 int export_obj(char *ofp, node *head)
 {

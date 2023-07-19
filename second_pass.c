@@ -42,14 +42,16 @@ void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
     }
     if (!isEmpty_ext(ext)){
         export_extern(ifp,ext);
+        fprintf(stderr,".ext file has been generated\n");
     }
     if (!isEmpty_entry(entry)){
         export_entry(ifp,entry);
+        fprintf(stderr,".ent file has been generated\n");
     }
     int IC = get_IC(head);
     int DC = get_DC(label);
     write_counter(ifp,IC-DC,DC);
-    export_obj(ifp,head);
+    if(export_obj(ifp,head) == 0) fprintf(stderr,".ob file has been generated\n");;
     free_extern(ext);
 
 }

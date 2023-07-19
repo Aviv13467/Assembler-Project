@@ -2,13 +2,13 @@
 #include "first_pass.h"
 #include <stdio.h>
 int main(int argc, char *argv[]) {
-    int i;
+    int i, result_pre, result_first;
     for (i = 1; i <argc; ++i) {
-        preproces_file(argv[i]);
-        if(preproces_file(argv[i]) == 0) {
+        result_pre = preproces_file(argv[i]);
+        if(result_pre == 0) {
             fprintf(stdout,"***** PREPROCESSOR SUCCESS for %s *****\n",argv[i]);
-            first_pass(argv[i]);
-            if(first_pass(argv[i]) == 0)
+            result_first = first_pass(argv[i]);
+            if(result_first == 0)
                 fprintf(stdout,"***** ASSEMBLER SUCCESS for %s *****\n",argv[i]);
             else
                 fprintf(stderr,"***** ASSEMBLER FAILED for %s *****\n",argv[i]);
