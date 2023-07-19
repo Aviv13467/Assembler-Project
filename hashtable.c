@@ -1,5 +1,4 @@
 #include "hashtable.h"
-#include "includes.h"
 
 unsigned int hash(const char *key) {
     unsigned long int value = 0;

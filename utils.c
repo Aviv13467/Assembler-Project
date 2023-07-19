@@ -1,15 +1,49 @@
-#include "includes.h"
-#include "string.h"
-#include "memory.h"
-#include "LinkedList.h"
-#include "extern_table.h"
-#include "entry_table.h"
+#include "utils.h"
 char *str_allocate_cat(char *first_str, char* second_str) {
     char *str = (char *)malloc(strlen(first_str) + strlen(second_str) + 1);
     strcpy(str, first_str);
     strcat(str, second_str);
     return str;
 }
+int number_of_operands(opcode command)
+{
+    switch (command) {
+        /*
+         * opcode with 2 operands: mov,cmp,add,sub,lea
+         */
+        case mov:
+        case cmp:
+        case add:
+        case sub:
+        case lea:
+            return 2;
+            /*
+            * opcode with 1 operand: not,clr,inc,dec,jmp,bne,red,prn,jsr
+            */
+        case not:
+        case clr:
+        case inc:
+        case dec:
+        case jmp:
+        case bne:
+        case red:
+        case prn:
+        case jsr:
+            return 1;
+            /*
+            * opcode with no operands: rts,stop
+            */
+        case rts:
+        case stop:
+            return 0;
+
+            /*
+             * INVALID command
+             */
+        case ILLEGAL_OPCODE: return -1;
+    }
+}
+
 /*
  * Flushes the strtok buffer.
  */

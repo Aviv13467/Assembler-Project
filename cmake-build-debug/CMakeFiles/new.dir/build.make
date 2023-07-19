@@ -53,10 +53,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/aviv/CLionProjects/Maman14_190723_0244
+CMAKE_SOURCE_DIR = /Users/aviv/CLionProjects/Maman14_190723_173300
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/new.dir/depend.make
@@ -70,172 +70,158 @@ include CMakeFiles/new.dir/progress.make
 include CMakeFiles/new.dir/flags.make
 
 CMakeFiles/new.dir/preprocessor.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/preprocessor.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/preprocessor.c
+CMakeFiles/new.dir/preprocessor.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/preprocessor.c
 CMakeFiles/new.dir/preprocessor.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/new.dir/preprocessor.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/preprocessor.c.o -MF CMakeFiles/new.dir/preprocessor.c.o.d -o CMakeFiles/new.dir/preprocessor.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/preprocessor.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/new.dir/preprocessor.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/preprocessor.c.o -MF CMakeFiles/new.dir/preprocessor.c.o.d -o CMakeFiles/new.dir/preprocessor.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/preprocessor.c
 
 CMakeFiles/new.dir/preprocessor.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/preprocessor.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/preprocessor.c > CMakeFiles/new.dir/preprocessor.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/preprocessor.c > CMakeFiles/new.dir/preprocessor.c.i
 
 CMakeFiles/new.dir/preprocessor.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/preprocessor.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/preprocessor.c -o CMakeFiles/new.dir/preprocessor.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/preprocessor.c -o CMakeFiles/new.dir/preprocessor.c.s
 
 CMakeFiles/new.dir/main.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/main.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/main.c
+CMakeFiles/new.dir/main.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/main.c
 CMakeFiles/new.dir/main.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/new.dir/main.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/main.c.o -MF CMakeFiles/new.dir/main.c.o.d -o CMakeFiles/new.dir/main.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/new.dir/main.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/main.c.o -MF CMakeFiles/new.dir/main.c.o.d -o CMakeFiles/new.dir/main.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/main.c
 
 CMakeFiles/new.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/main.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/main.c > CMakeFiles/new.dir/main.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/main.c > CMakeFiles/new.dir/main.c.i
 
 CMakeFiles/new.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/main.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/main.c -o CMakeFiles/new.dir/main.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/main.c -o CMakeFiles/new.dir/main.c.s
 
 CMakeFiles/new.dir/hashtable.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/hashtable.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/hashtable.c
+CMakeFiles/new.dir/hashtable.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/hashtable.c
 CMakeFiles/new.dir/hashtable.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/new.dir/hashtable.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/hashtable.c.o -MF CMakeFiles/new.dir/hashtable.c.o.d -o CMakeFiles/new.dir/hashtable.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/hashtable.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/new.dir/hashtable.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/hashtable.c.o -MF CMakeFiles/new.dir/hashtable.c.o.d -o CMakeFiles/new.dir/hashtable.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/hashtable.c
 
 CMakeFiles/new.dir/hashtable.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/hashtable.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/hashtable.c > CMakeFiles/new.dir/hashtable.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/hashtable.c > CMakeFiles/new.dir/hashtable.c.i
 
 CMakeFiles/new.dir/hashtable.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/hashtable.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/hashtable.c -o CMakeFiles/new.dir/hashtable.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/hashtable.c -o CMakeFiles/new.dir/hashtable.c.s
 
 CMakeFiles/new.dir/utils.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/utils.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/utils.c
+CMakeFiles/new.dir/utils.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/utils.c
 CMakeFiles/new.dir/utils.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/new.dir/utils.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/utils.c.o -MF CMakeFiles/new.dir/utils.c.o.d -o CMakeFiles/new.dir/utils.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/new.dir/utils.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/utils.c.o -MF CMakeFiles/new.dir/utils.c.o.d -o CMakeFiles/new.dir/utils.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/utils.c
 
 CMakeFiles/new.dir/utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/utils.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/utils.c > CMakeFiles/new.dir/utils.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/utils.c > CMakeFiles/new.dir/utils.c.i
 
 CMakeFiles/new.dir/utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/utils.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/utils.c -o CMakeFiles/new.dir/utils.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/utils.c -o CMakeFiles/new.dir/utils.c.s
 
 CMakeFiles/new.dir/symbol_table.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/symbol_table.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/symbol_table.c
+CMakeFiles/new.dir/symbol_table.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/symbol_table.c
 CMakeFiles/new.dir/symbol_table.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/new.dir/symbol_table.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/symbol_table.c.o -MF CMakeFiles/new.dir/symbol_table.c.o.d -o CMakeFiles/new.dir/symbol_table.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/symbol_table.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/new.dir/symbol_table.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/symbol_table.c.o -MF CMakeFiles/new.dir/symbol_table.c.o.d -o CMakeFiles/new.dir/symbol_table.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/symbol_table.c
 
 CMakeFiles/new.dir/symbol_table.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/symbol_table.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/symbol_table.c > CMakeFiles/new.dir/symbol_table.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/symbol_table.c > CMakeFiles/new.dir/symbol_table.c.i
 
 CMakeFiles/new.dir/symbol_table.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/symbol_table.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/symbol_table.c -o CMakeFiles/new.dir/symbol_table.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/symbol_table.c -o CMakeFiles/new.dir/symbol_table.c.s
 
 CMakeFiles/new.dir/first_pass.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/first_pass.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/first_pass.c
+CMakeFiles/new.dir/first_pass.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/first_pass.c
 CMakeFiles/new.dir/first_pass.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/new.dir/first_pass.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/first_pass.c.o -MF CMakeFiles/new.dir/first_pass.c.o.d -o CMakeFiles/new.dir/first_pass.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/first_pass.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/new.dir/first_pass.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/first_pass.c.o -MF CMakeFiles/new.dir/first_pass.c.o.d -o CMakeFiles/new.dir/first_pass.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/first_pass.c
 
 CMakeFiles/new.dir/first_pass.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/first_pass.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/first_pass.c > CMakeFiles/new.dir/first_pass.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/first_pass.c > CMakeFiles/new.dir/first_pass.c.i
 
 CMakeFiles/new.dir/first_pass.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/first_pass.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/first_pass.c -o CMakeFiles/new.dir/first_pass.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/first_pass.c -o CMakeFiles/new.dir/first_pass.c.s
 
 CMakeFiles/new.dir/memory.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/memory.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/memory.c
+CMakeFiles/new.dir/memory.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/memory.c
 CMakeFiles/new.dir/memory.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/new.dir/memory.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/memory.c.o -MF CMakeFiles/new.dir/memory.c.o.d -o CMakeFiles/new.dir/memory.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/memory.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/new.dir/memory.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/memory.c.o -MF CMakeFiles/new.dir/memory.c.o.d -o CMakeFiles/new.dir/memory.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/memory.c
 
 CMakeFiles/new.dir/memory.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/memory.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/memory.c > CMakeFiles/new.dir/memory.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/memory.c > CMakeFiles/new.dir/memory.c.i
 
 CMakeFiles/new.dir/memory.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/memory.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/memory.c -o CMakeFiles/new.dir/memory.c.s
-
-CMakeFiles/new.dir/parse_line.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/parse_line.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/parse_line.c
-CMakeFiles/new.dir/parse_line.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/new.dir/parse_line.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/parse_line.c.o -MF CMakeFiles/new.dir/parse_line.c.o.d -o CMakeFiles/new.dir/parse_line.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/parse_line.c
-
-CMakeFiles/new.dir/parse_line.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/parse_line.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/parse_line.c > CMakeFiles/new.dir/parse_line.c.i
-
-CMakeFiles/new.dir/parse_line.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/parse_line.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/parse_line.c -o CMakeFiles/new.dir/parse_line.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/memory.c -o CMakeFiles/new.dir/memory.c.s
 
 CMakeFiles/new.dir/LinkedList.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/LinkedList.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/LinkedList.c
+CMakeFiles/new.dir/LinkedList.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/LinkedList.c
 CMakeFiles/new.dir/LinkedList.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/new.dir/LinkedList.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/LinkedList.c.o -MF CMakeFiles/new.dir/LinkedList.c.o.d -o CMakeFiles/new.dir/LinkedList.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/LinkedList.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/new.dir/LinkedList.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/LinkedList.c.o -MF CMakeFiles/new.dir/LinkedList.c.o.d -o CMakeFiles/new.dir/LinkedList.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/LinkedList.c
 
 CMakeFiles/new.dir/LinkedList.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/LinkedList.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/LinkedList.c > CMakeFiles/new.dir/LinkedList.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/LinkedList.c > CMakeFiles/new.dir/LinkedList.c.i
 
 CMakeFiles/new.dir/LinkedList.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/LinkedList.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/LinkedList.c -o CMakeFiles/new.dir/LinkedList.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/LinkedList.c -o CMakeFiles/new.dir/LinkedList.c.s
 
 CMakeFiles/new.dir/second_pass.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/second_pass.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/second_pass.c
+CMakeFiles/new.dir/second_pass.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/second_pass.c
 CMakeFiles/new.dir/second_pass.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/new.dir/second_pass.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/second_pass.c.o -MF CMakeFiles/new.dir/second_pass.c.o.d -o CMakeFiles/new.dir/second_pass.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/second_pass.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/new.dir/second_pass.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/second_pass.c.o -MF CMakeFiles/new.dir/second_pass.c.o.d -o CMakeFiles/new.dir/second_pass.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/second_pass.c
 
 CMakeFiles/new.dir/second_pass.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/second_pass.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/second_pass.c > CMakeFiles/new.dir/second_pass.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/second_pass.c > CMakeFiles/new.dir/second_pass.c.i
 
 CMakeFiles/new.dir/second_pass.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/second_pass.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/second_pass.c -o CMakeFiles/new.dir/second_pass.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/second_pass.c -o CMakeFiles/new.dir/second_pass.c.s
 
 CMakeFiles/new.dir/entry_table.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/entry_table.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/entry_table.c
+CMakeFiles/new.dir/entry_table.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/entry_table.c
 CMakeFiles/new.dir/entry_table.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/new.dir/entry_table.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/entry_table.c.o -MF CMakeFiles/new.dir/entry_table.c.o.d -o CMakeFiles/new.dir/entry_table.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/entry_table.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/new.dir/entry_table.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/entry_table.c.o -MF CMakeFiles/new.dir/entry_table.c.o.d -o CMakeFiles/new.dir/entry_table.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/entry_table.c
 
 CMakeFiles/new.dir/entry_table.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/entry_table.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/entry_table.c > CMakeFiles/new.dir/entry_table.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/entry_table.c > CMakeFiles/new.dir/entry_table.c.i
 
 CMakeFiles/new.dir/entry_table.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/entry_table.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/entry_table.c -o CMakeFiles/new.dir/entry_table.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/entry_table.c -o CMakeFiles/new.dir/entry_table.c.s
 
 CMakeFiles/new.dir/extern_table.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/extern_table.c.o: /Users/aviv/CLionProjects/Maman14_190723_0244/extern_table.c
+CMakeFiles/new.dir/extern_table.c.o: /Users/aviv/CLionProjects/Maman14_190723_173300/extern_table.c
 CMakeFiles/new.dir/extern_table.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/new.dir/extern_table.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/extern_table.c.o -MF CMakeFiles/new.dir/extern_table.c.o.d -o CMakeFiles/new.dir/extern_table.c.o -c /Users/aviv/CLionProjects/Maman14_190723_0244/extern_table.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/new.dir/extern_table.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/extern_table.c.o -MF CMakeFiles/new.dir/extern_table.c.o.d -o CMakeFiles/new.dir/extern_table.c.o -c /Users/aviv/CLionProjects/Maman14_190723_173300/extern_table.c
 
 CMakeFiles/new.dir/extern_table.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/new.dir/extern_table.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_0244/extern_table.c > CMakeFiles/new.dir/extern_table.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aviv/CLionProjects/Maman14_190723_173300/extern_table.c > CMakeFiles/new.dir/extern_table.c.i
 
 CMakeFiles/new.dir/extern_table.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/new.dir/extern_table.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_0244/extern_table.c -o CMakeFiles/new.dir/extern_table.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aviv/CLionProjects/Maman14_190723_173300/extern_table.c -o CMakeFiles/new.dir/extern_table.c.s
 
 # Object files for target new
 new_OBJECTS = \
@@ -246,7 +232,6 @@ new_OBJECTS = \
 "CMakeFiles/new.dir/symbol_table.c.o" \
 "CMakeFiles/new.dir/first_pass.c.o" \
 "CMakeFiles/new.dir/memory.c.o" \
-"CMakeFiles/new.dir/parse_line.c.o" \
 "CMakeFiles/new.dir/LinkedList.c.o" \
 "CMakeFiles/new.dir/second_pass.c.o" \
 "CMakeFiles/new.dir/entry_table.c.o" \
@@ -262,14 +247,13 @@ new: CMakeFiles/new.dir/utils.c.o
 new: CMakeFiles/new.dir/symbol_table.c.o
 new: CMakeFiles/new.dir/first_pass.c.o
 new: CMakeFiles/new.dir/memory.c.o
-new: CMakeFiles/new.dir/parse_line.c.o
 new: CMakeFiles/new.dir/LinkedList.c.o
 new: CMakeFiles/new.dir/second_pass.c.o
 new: CMakeFiles/new.dir/entry_table.c.o
 new: CMakeFiles/new.dir/extern_table.c.o
 new: CMakeFiles/new.dir/build.make
 new: CMakeFiles/new.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking C executable new"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C executable new"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/new.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -281,6 +265,6 @@ CMakeFiles/new.dir/clean:
 .PHONY : CMakeFiles/new.dir/clean
 
 CMakeFiles/new.dir/depend:
-	cd /Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aviv/CLionProjects/Maman14_190723_0244 /Users/aviv/CLionProjects/Maman14_190723_0244 /Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug /Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug /Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles/new.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aviv/CLionProjects/Maman14_190723_173300 /Users/aviv/CLionProjects/Maman14_190723_173300 /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles/new.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/new.dir/depend
 

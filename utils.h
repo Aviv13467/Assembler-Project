@@ -1,10 +1,15 @@
 #ifndef UTILS_H
 #define UTILS_H
+
+/*** HEADER FILES  ***/
+#include "memory.h"
 #include "LinkedList.h"
 #include "extern_table.h"
 #include "entry_table.h"
+/*** HEADER FILES  ***/
 
 char *str_allocate_cat(char *first_str, char* second_str);
+int number_of_operands(opcode command);
 void flush_strtok(void);
 void decimalToBinary(unsigned int decimal,int zeros);
 unsigned int modifyASCII(int num);

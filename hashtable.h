@@ -1,5 +1,10 @@
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
+
+/*** HEADER FILES  ***/
+#include "includes.h"
+/*** HEADER FILES  ***/
+
 typedef struct item {
     char *key;
     char *value;

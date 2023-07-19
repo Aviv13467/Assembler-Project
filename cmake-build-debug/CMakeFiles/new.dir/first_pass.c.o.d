@@ -1,8 +1,9 @@
 CMakeFiles/new.dir/first_pass.c.o: \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/first_pass.c \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/first_pass.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/globals.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/includes.h \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/first_pass.c \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/first_pass.h \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/utils.h \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/memory.h \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/includes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/cdefs.h \
@@ -89,12 +90,9 @@ CMakeFiles/new.dir/first_pass.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_ctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/runetype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_wint_t.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/preprocessor.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/utils.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/LinkedList.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/extern_table.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/entry_table.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/symbol_table.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/memory.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/parse_line.h \
-  /Users/aviv/CLionProjects/Maman14_190723_0244/second_pass.h
+  /Users/aviv/CLionProjects/Maman14_190723_173300/symbol_table.h \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/globals.h \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/LinkedList.h \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/extern_table.h \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/entry_table.h \
+  /Users/aviv/CLionProjects/Maman14_190723_173300/second_pass.h

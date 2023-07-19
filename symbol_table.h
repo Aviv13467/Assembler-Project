@@ -1,10 +1,10 @@
 #ifndef SYMBOL_TABLE_H
 #define SYMBOL_TABLE_H
 
+/*** HEADER FILES  ***/
 #include "globals.h"
-#include "includes.h"
-#include "utils.h"
 #include "memory.h"
+/*** HEADER FILES  ***/
 
 typedef struct symbol{
     char label[31];

@@ -1,7 +1,11 @@
 #ifndef EXTERN_TABLE_H
 #define EXTERN_TABLE_H
 
-#include "includes.h"
+/*** HEADER FILES  ***/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+/*** HEADER FILES  ***/
 
 typedef struct extern_table{
     char label[31];

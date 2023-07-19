@@ -1,9 +1,11 @@
 #ifndef ENTRY_TABLE_H
 #define ENTRY_TABLE_H
 
+/*** HEADER FILES  ***/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+/*** HEADER FILES  ***/
 
 typedef struct entry_table{
     char label[31];

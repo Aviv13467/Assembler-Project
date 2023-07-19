@@ -1,14 +1,5 @@
 #include "first_pass.h"
-#include "includes.h"
-#include "utils.h"
-#include "globals.h"
-#include "symbol_table.h"
-#include "parse_line.h"
-#include "memory.h"
-#include "LinkedList.h"
-#include "second_pass.h"
-#include "entry_table.h"
-#include "extern_table.h"
+
 #define add_line line_info = add_node(&head_list,counter++,0);
 int first_pass(char *ifp)
 {

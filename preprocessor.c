@@ -1,6 +1,4 @@
-#include "includes.h"
-#include "utils.h"
-#include "hashtable.h"
+#include "preprocessor.h"
 
 int preproces_file(char *ifp) {
     hash_table *ht = ht_create();

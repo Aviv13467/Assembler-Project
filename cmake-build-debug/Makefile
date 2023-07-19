@@ -57,10 +57,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/aviv/CLionProjects/Maman14_190723_0244
+CMAKE_SOURCE_DIR = /Users/aviv/CLionProjects/Maman14_190723_173300
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles /Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aviv/CLionProjects/Maman14_190723_0244/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -297,30 +297,6 @@ memory.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/memory.c.s
 .PHONY : memory.c.s
 
-parse_line.o: parse_line.c.o
-.PHONY : parse_line.o
-
-# target to build an object file
-parse_line.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/parse_line.c.o
-.PHONY : parse_line.c.o
-
-parse_line.i: parse_line.c.i
-.PHONY : parse_line.i
-
-# target to preprocess a source file
-parse_line.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/parse_line.c.i
-.PHONY : parse_line.c.i
-
-parse_line.s: parse_line.c.s
-.PHONY : parse_line.s
-
-# target to generate assembly for a file
-parse_line.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/parse_line.c.s
-.PHONY : parse_line.c.s
-
 preprocessor.o: preprocessor.c.o
 .PHONY : preprocessor.o
 
@@ -447,9 +423,6 @@ help:
 	@echo "... memory.o"
 	@echo "... memory.i"
 	@echo "... memory.s"
-	@echo "... parse_line.o"
-	@echo "... parse_line.i"
-	@echo "... parse_line.s"
 	@echo "... preprocessor.o"
 	@echo "... preprocessor.i"
 	@echo "... preprocessor.s"

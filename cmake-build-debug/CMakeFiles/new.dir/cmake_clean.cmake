@@ -13,8 +13,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/new.dir/main.c.o.d"
   "CMakeFiles/new.dir/memory.c.o"
   "CMakeFiles/new.dir/memory.c.o.d"
-  "CMakeFiles/new.dir/parse_line.c.o"
-  "CMakeFiles/new.dir/parse_line.c.o.d"
   "CMakeFiles/new.dir/preprocessor.c.o"
   "CMakeFiles/new.dir/preprocessor.c.o.d"
   "CMakeFiles/new.dir/second_pass.c.o"

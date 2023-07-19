@@ -2,6 +2,7 @@
 #define GLOBALS_H
 
 #define IC_START 100
+#define MAX_LEN 80
 
 typedef enum opcode{
     mov,cmp,add,sub,not,clr,lea,inc,dec,jmp,bne,red,prn,jsr,rts,stop, ILLEGAL_OPCODE = -1

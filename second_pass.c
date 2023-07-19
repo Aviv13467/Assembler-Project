@@ -1,10 +1,5 @@
 #include "second_pass.h"
-#include "includes.h"
-#include "utils.h"
-#include "LinkedList.h"
-#include "symbol_table.h"
-#include "entry_table.h"
-#include "extern_table.h"
+
 void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
 {
     node *curr = head;

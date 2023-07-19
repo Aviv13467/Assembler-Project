@@ -1,9 +1,11 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
+/*** HEADER FILES  ***/
 #include "includes.h"
 #include "symbol_table.h"
 #include "utils.h"
+/*** HEADER FILES  ***/
 
 /*
  * These functions are responsible to shift each of the code to the corresponding location
