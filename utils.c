@@ -190,8 +190,7 @@ void export_entry(char *ofp,entry_table *entry)
     }
     fprint_entry_table(entry,output_file_des);
 }
-
-void export_obj(char *ofp, node *head)
+void write_counter(char *ofp, int IC,int DC)
 {
     char *output_file_name = str_allocate_cat(ofp, ".ob");
     FILE *output_file_des = fopen(output_file_name,"w+");
@@ -200,7 +199,19 @@ void export_obj(char *ofp, node *head)
         free(output_file_name);
         return;
     }
+    fprintf(output_file_des,"%d\t%d\n",IC,DC);
+}
+int export_obj(char *ofp, node *head)
+{
+    char *output_file_name = str_allocate_cat(ofp, ".ob");
+    FILE *output_file_des = fopen(output_file_name,"a+");
+    if (output_file_des == NULL) {
+        fprintf(stderr,"Error occurred while opening the file %s\n", output_file_name);
+        free(output_file_name);
+        exit(1);
+    }
     fprint_node(head,output_file_des);
+    return 0;
 }
 void b64(node *head)
 {

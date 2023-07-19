@@ -46,6 +46,9 @@ void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
     if (!isEmpty_entry(entry)){
         export_entry(ifp,entry);
     }
+    int IC = get_IC(head);
+    int DC = get_DC(label);
+    write_counter(ifp,IC-DC,DC);
     export_obj(ifp,head);
     free_extern(ext);
 

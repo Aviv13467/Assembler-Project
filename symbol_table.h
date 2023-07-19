@@ -29,6 +29,7 @@ int get_symbol(symbol *node,char* name);
 void print_num_arr(symbol *curr);
 void print_entry(symbol *head);
 void print_extern(symbol *head);
+int get_DC(symbol *head);
 void free_symbol(symbol *head);
 
 #endif

@@ -85,6 +85,19 @@ void delete_node(node **head, node *removed)
     curr->next = removed->next;
     free(removed);
 }
+int get_IC(node *head)
+{
+    int count = 1;
+    node *curr = head;
+    if (curr == NULL) return -1;
+    while (curr->next!=NULL)
+    {
+        count++;
+        curr = curr->next;
+
+    }
+    return count;
+}
 void set_label(node *curr,char *label)
 {
     strcpy(curr->label,label);

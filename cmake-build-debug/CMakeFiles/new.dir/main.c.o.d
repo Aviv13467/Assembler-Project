@@ -1,8 +1,8 @@
 CMakeFiles/new.dir/main.c.o: \
-  /Users/aviv/CLionProjects/Maman14\ copy/main.c \
-  /Users/aviv/CLionProjects/Maman14\ copy/preprocessor.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/globals.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/first_pass.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/main.c \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/preprocessor.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/globals.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/first_pass.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/cdefs.h \

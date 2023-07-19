@@ -1,7 +1,7 @@
 CMakeFiles/new.dir/memory.c.o: \
-  /Users/aviv/CLionProjects/Maman14\ copy/memory.c \
-  /Users/aviv/CLionProjects/Maman14\ copy/memory.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/includes.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/memory.c \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/memory.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/includes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/cdefs.h \
@@ -88,10 +88,10 @@ CMakeFiles/new.dir/memory.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_ctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/runetype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_wint_t.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/preprocessor.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/globals.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/symbol_table.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/utils.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/LinkedList.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/extern_table.h \
-  /Users/aviv/CLionProjects/Maman14\ copy/entry_table.h
+  /Users/aviv/CLionProjects/Maman14_190723_0244/preprocessor.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/globals.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/symbol_table.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/utils.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/LinkedList.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/extern_table.h \
+  /Users/aviv/CLionProjects/Maman14_190723_0244/entry_table.h

@@ -120,6 +120,18 @@ void print_num_arr(symbol *curr)
     }
     putchar('\n');
 }
+int get_DC(symbol *head)
+{
+    int sum = 0;
+    symbol *curr = head;
+    while (curr!=NULL)
+    {
+        sum+=curr->DC;
+        curr = curr->next;
+    }
+    return sum;
+}
+
 void free_symbol(symbol *head)
 {
     if (head == NULL) return;
