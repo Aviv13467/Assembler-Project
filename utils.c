@@ -146,21 +146,36 @@ int isValid_macro(char* name)
     copy = (char*) malloc(sizeof(char)* strlen(name));
     strcpy(copy,name);
     int i;
+
     for (i = 0; i < 15 ; ++i)
     {
-        if (strcmp(name,opcode_string(i)) == 0)
+        if (strcmp(name,opcode_string(i)) == 0) {
+            fprintf(stderr, "INVALID MACRO NAME: MACRO CANNOT BE NAMED AFTER A COMMAND\n");
             return 1;
+        }
     }
     i = 0;
     for (i = 0; i < 4; ++i) {
-        if (strcmp(name, type_string(i)) == 0)
+        if (strcmp(name, type_string(i)) == 0){
+            fprintf(stderr,"INVALID MACRO NAME: MACRO CANNOT BE NAMED AFTER A TYPE\n");
             return 1;
+        }
     }
     i = 0;
     for (i = 0; i <8; ++i) {
-        if (strcmp(name, register_string(i)) == 0)
+        if (strcmp(name, register_string(i)) == 0) {
+            fprintf(stderr,"INVALID MACRO NAME: MACRO CANNOT BE NAMED AFTER A REGISTER\n");
             return 1;
+        }
     }
+
+    /* Check whether the first letter of the name starts with a non alphabet character,
+     * this check is last since we want to inform the user if he used a register/type name. (will count as non-alphabet) */
+    if (!isalpha((int)name[0])){
+        fprintf(stderr,"INVALID MACRO NAME: MACRO CANNOT START WITH A NON ALPHABET CHARACTER\n");
+        return 1;
+    }
+
     return 0;
 }
 

@@ -21,7 +21,7 @@ int preproces_file(char *ifp) {
         free(input_file_name);
         free(output_file_name);
         ht_free(ht);
-        exit(1);
+        return 1;
     }
 
     /*
@@ -70,8 +70,8 @@ int preproces_file(char *ifp) {
             macro_name = (char *) malloc(sizeof(char) * MAX_MCRO_LEN);
             strcpy(macro_name, strtok(NULL, " "));
             if (strtok(NULL," ") != NULL){
-                fprintf(stderr,"ERROR: EXTRANEOUS TEXT AFTER MACRO");
-                exit(1);
+                fprintf(stderr,"ERROR: EXTRANEOUS TEXT AFTER MACRO\n");
+                return 1;
             }
             copy = (char*) malloc(sizeof(char) * strlen(macro_name));
             strcpy(copy,macro_name);
@@ -80,10 +80,7 @@ int preproces_file(char *ifp) {
                 ht_set(ht, macro_name, "");
                 continue;
             }
-            else {
-                fprintf(stderr, "ERROR: INVALID MACRO NAME");
-                exit(1);
-            }
+            else return 1; /* Corresponding output messages to stderr in case of invalid macro name is in isValid_macro function */
         }
         fputs(linecpy, am_file_des);
     }
