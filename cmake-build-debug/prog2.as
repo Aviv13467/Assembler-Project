@@ -1,5 +1,5 @@
 ; file ps.as
-.entry LENGTH
+TEST: .entry LENGTH
 .extern W
 MAIN: mov @r3 ,LENGTH
 mcro m1

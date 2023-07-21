@@ -104,6 +104,24 @@ int get_symbol(symbol *node,char* name)
     }
     return -1;
 }
+void delete_symbol(symbol **head, symbol *removed)
+{
+    if (*head == NULL || removed == NULL) return;
+    if (*head == removed){
+        *head = removed->next;
+        free(removed);
+        return;
+    }
+    node* curr = *head;
+    while (curr->next != removed)
+        curr = curr->next;
+    curr->next = curr->next->next;
+    if (curr->next == NULL) {
+        return;
+    }
+    curr->next = removed->next;
+    free(removed);
+}
 void print_num_arr(symbol *curr)
 {
     int i;

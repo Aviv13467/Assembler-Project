@@ -17,7 +17,7 @@ int first_pass(char *ifp)
         exit(1);
     }
     char *line = (char*)malloc(sizeof(char)*MAX_LINE); /* line output from fgets */
-    char *token = NULL; /* for strtok function */
+    char *token = NULL, *tokencpy = NULL, *garbage = NULL; /* for strtok,strtol function */
     symbol *head = NULL, *curr = NULL; /* symbol table nodes */
     node *head_list = NULL;
 
@@ -25,8 +25,9 @@ int first_pass(char *ifp)
 
     extern_table  *head_extern = NULL, *curr_extern = NULL;
 
-    int IC = IC_START, DC = 0,L = 0, i = 0,counter = 0; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
-    char* first, *second; /* commands will be tokenized into 2 separate words */
+    int IC = IC_START, DC = 0,L = 0;
+    int i = 0,counter = 0, line_count = 0, num; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
+    char* first, *second, err_flag = 'N'; /* commands will be tokenized into 2 separate words */
     int command_code; /* opcode command (1-15) */
     char* command; /* command name string*/
 
@@ -41,6 +42,15 @@ int first_pass(char *ifp)
      */
     while (fgets(line,MAX_LINE,input_file_des) != NULL) /* As long line != EOF */
     {
+        /*
+         * Checks if there are more words than the imaginary PC with 1024 byte of memory can handle
+         * If there are more bytes than 1024 a 'stackoverflow' error will end the program
+         */
+        if (counter>1023){
+            fprintf(stderr,"ERROR, STACKOVERFLOW, OUT OF MEMORY. USED %d/%d\n",counter,1024);
+            exit(1);
+        }
+        line_count++;
         node *line_info = add_node(&head_list,counter,0);
         counter++; /* Increment line counter used for error output */
         i = 0; L = 0; /* Reset command line counter and 'i' */
@@ -49,45 +59,14 @@ int first_pass(char *ifp)
         command_code = opcode_no(command); /* Assign an integer value (opcode) to the command */
 
         /*
-         * Check for .entry or .extern commands
-         */
-        if (strchr(token,'.') != NULL)
-        {
-            if (strcmp(token,".entry") == 0){
-                counter--;
-                token = strtok(NULL," ");
-                token[strlen(token)-1] = '\0';
-                if (isValid_macro(token) == 0) {
-
-                    /* curr = add_symbol(&head, token, 0); */
-                    curr_entry = add_entry(&head_entry,token,0);
-                    /* set_type(curr,entry); */
-                    delete_node(&head_list,line_info);
-                }
-                continue;
-            }
-            else if (strcmp(token,".extern") == 0){
-                counter--;
-                token = strtok(NULL," ");
-                token[strlen(token)-1] = '\0';
-                if (isValid_macro(token) == 0) {
-                    curr = add_symbol(&head, token, 0);
-                    set_type(curr,ext);
-                    curr_extern = add_extern(&head_extern,token,0);
-                    delete_node(&head_list,line_info);
-                }
-                continue;
-            }
-        }
-
-        /*
          * Check for label word
          */
 
         if (strchr(token,':') != NULL) {
             token[strlen(token)-1] = '\0';
+
             /* Checks if the name is valid, in other words, if it doesn't interfere with known commands such as opcodes,registers or label types */
-            if (isValid_macro(token) == 0) {
+            if (isValid_label(token) == 0) {
                 curr = add_symbol(&head, token, IC);
                 curr->IC = IC;
             }
@@ -96,7 +75,8 @@ int first_pass(char *ifp)
              */
             else
             {
-                fprintf(stderr,"ERROR line %d: INVALID LABEL NAME\n", counter);
+                fprintf(stderr,"ERROR line %d: INVALID LABEL NAME\n", line_count);
+                err_flag = 'Y';
             }
 
             /*
@@ -118,21 +98,53 @@ int first_pass(char *ifp)
              */
 
             if (strcspn(token,".") == 0) {
+                if (strcmp(token,".entry") == 0){
+                    counter--;
+                    token = strtok(NULL," ");
+                    token[strlen(token)-1] = '\0';
+                    if (isValid_label(token) == 0) {
+                        add_entry(&head_entry,token,0);
+                        delete_node(&head_list,line_info);
+                    }
+                    fprintf(stderr,"WARNING in line: %d label before .entry is redundant\n",line_count);
+                    delete_symbol(&head,curr);
+                }
                 if (strcmp(token,".data") == 0)
                 {
                     delete_node(&head_list,line_info);
                     counter--;
                     set_type(curr,data);
+
+                    tokencpy = (char*)malloc(sizeof(char)* strlen(token));
+                    strcpy(tokencpy,token);
+                    tokencpy = strtok(NULL," ");
+                    if (tokencpy[0] == ','){
+                        fprintf(stderr,"ERROR in line: %d illegal comma before first argument\n",line_count);
+                        err_flag = 'Y';
+                        continue;
+                    }
+                    if (comma_check(tokencpy) == 1){
+                        fprintf(stderr,"ERROR in line: %d two consecutive commas after an argument\n",line_count);
+                        err_flag = 'Y';
+                        continue;
+                    }
+                    token = strtok(tokencpy,",");
                     while (token != NULL) {
-                        token = strtok(NULL, ",");
                         if (token != NULL) {
                             add_line
-                            if (atoi(token)<0)
+                            num = (int)strtol(remove_newline(token),&garbage,10);
+                            if (garbage[0] != '\0'){
+                                fprintf(stderr,"ERROR in line: %d illegal argument, .data can only receive integers\n",line_count);
+                                err_flag = 'Y';
+                                break;
+                            }
+                            if (num<0)
                                 line_info->code = two_complement(atoi(token));
                             else line_info->code = atoi(token);
                             i++;
                         }
                         DC = i;
+                        token = strtok(NULL, ",");
                     }
                     curr->DC = DC;
                     IC += DC;
@@ -166,8 +178,46 @@ int first_pass(char *ifp)
                     }
                     continue;
                 }
+
             }
             continue; /* No more options, need to read a new line */
+        }
+
+        /*
+         * Check for .entry or .extern commands
+         */
+        if (strchr(token,'.') != NULL)
+        {
+            if (strcmp(token,".entry") == 0){
+                counter--;
+                token = strtok(NULL," ");
+                token[strlen(token)-1] = '\0';
+                if (isValid_macro(token) == 0) {
+
+                    /* curr = add_symbol(&head, token, 0); */
+                    add_entry(&head_entry,token,0);
+                    /* set_type(curr,entry); */
+                    delete_node(&head_list,line_info);
+                }
+                continue;
+            }
+            else if (strcmp(token,".extern") == 0){
+                counter--;
+                token = strtok(NULL," ");
+                token[strlen(token)-1] = '\0';
+                if (isValid_label(token) == 0) {
+                    curr = add_symbol(&head, token, 0);
+                    set_type(curr,ext);
+                    curr_extern = add_extern(&head_extern,token,0);
+                    delete_node(&head_list,line_info);
+                }
+                else {
+                    fprintf(stderr,"ERROR IN LINE %d: INVALID .extern ARGUMENT\n",line_count);
+                    err_flag = 'Y';
+                    continue;
+                }
+                continue;
+            }
         }
 
         /*
@@ -188,8 +238,10 @@ int first_pass(char *ifp)
                 switch (command_code) {
                     case mov:
                     case cmp:
-                        if (isDigit(remove_newline(second)))
-                            fprintf(stderr,"ERROR line: %d, 'mov' destination operand can't be a number\n",counter);
+                        if (isDigit(remove_newline(second))) {
+                            fprintf(stderr, "ERROR line: %d, 'mov' destination operand can't be a number\n",line_count);
+                            err_flag = 'Y';
+                        }
                     case add:
                     case sub:
                     {
@@ -219,7 +271,8 @@ int first_pass(char *ifp)
                     case lea:
                     {
                         if (isRegister(first) || isDigit(first)){
-                            fprintf(stderr,"ERROR line: %d, origin operand of lea needs to be a label\n",counter);
+                            fprintf(stderr,"ERROR line: %d, origin operand of lea needs to be a label\n",line_count);
+                            err_flag = 'Y';
                             L+=2;
                             break;
                         }
@@ -258,7 +311,8 @@ int first_pass(char *ifp)
                     case jsr:
                     {
                         if (isDigit(first)){
-                            fprintf(stderr,"ERROR line: %d %s can't have immediate destination operand",counter,first);
+                            fprintf(stderr,"ERROR line: %d %s can't have immediate destination operand",line_count,first);
+                            err_flag = 'Y';
                             break;
                         }
                         if (!isRegister(first)){
@@ -346,7 +400,9 @@ int first_pass(char *ifp)
     /********  EXCEPT THESE COMMAND **************/
     free(line);
     free(command);
-    second_pass(ifp,head_list,head,head_entry);
+    if (err_flag == 'N') second_pass(ifp,head_list,head,head_entry);
+    else return 1;
+
     /********  EXCEPT THESE COMMAND **************/
 
 
@@ -369,6 +425,7 @@ int first_pass(char *ifp)
     /*
      *
      */
+    if (!tokencpy) free(tokencpy);
     free_symbol(head);
     free_list(head_list);
     free_entry(head_entry);

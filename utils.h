@@ -25,6 +25,8 @@ int isDigit(char *c);
 int isRegister(char*str);
 void print_arr(char* arr);
 int isValid_macro(char* name);
+int isValid_label(char *name);
+int comma_check(char* str);
 void b64(node *head);
 void export_extern(char *ofp,extern_table *head);
 void export_entry(char *ofp,entry_table *entry);

@@ -178,6 +178,39 @@ int isValid_macro(char* name)
 
     return 0;
 }
+int isValid_label(char *name)
+{
+    char* copy;
+    copy = (char*) malloc(sizeof(char)* strlen(name));
+    strcpy(copy,name);
+    int i,j,k;
+    for (i = 0; i < 15 ; ++i)
+        if (strcmp(name,opcode_string(i)) == 0) return 1;
+    for (j = 0; j < 4; ++j)
+        if (strcmp(name, type_string(j)) == 0) return 1;
+    for (k = 0; k <8; ++k)
+        if (strcmp(name, register_string(k)) == 0) return 1;
+    /* Check whether the first letter of the name starts with a non alphabet character,
+     * this check is last since we want to inform the user if he used a register/type name. (will count as non-alphabet) */
+    if (!isalpha((int)name[0])) return 1;
+    return 0;
+}
+int comma_check(char* str)
+{
+    int consecutive_commas = 0;
+    while (*str) {
+        if (*str == ',') {
+            consecutive_commas++;
+            if (consecutive_commas == 2) {
+                return 1;
+            }
+        } else {
+            consecutive_commas = 0;
+        }
+        str++;
+    }
+    return 0;
+}
 
 int isDigit(char *c)
 {

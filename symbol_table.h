@@ -7,7 +7,7 @@
 /*** HEADER FILES  ***/
 
 typedef struct symbol{
-    char label[31];
+    char label[MAX_LABEL];
     int label_pos;
     int type;
     int DC;
@@ -26,6 +26,7 @@ void set_DC(symbol *sym,int DC);
 symbol* add_symbol(symbol **head, char *label, unsigned int pos);
 int print_symbol(symbol *head);
 int get_symbol(symbol *node,char* name);
+void delete_symbol(symbol **head, symbol *removed);
 void print_num_arr(symbol *curr);
 void print_entry(symbol *head);
 void print_extern(symbol *head);
