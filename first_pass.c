@@ -76,7 +76,8 @@ int first_pass(char *ifp)
             else
             {
                 fprintf(stderr,"ERROR line %d: INVALID LABEL NAME\n", line_count);
-                err_flag = 'Y';
+                error
+                continue;
             }
 
             /*
@@ -102,6 +103,11 @@ int first_pass(char *ifp)
                     counter--;
                     token = strtok(NULL," ");
                     token[strlen(token)-1] = '\0';
+                    if (strtok(NULL," ")){
+                        fprintf(stderr,"ERROR in line: %d .entry expect only 1 argument\n",line_count);
+                        error
+                        continue;
+                    }
                     if (isValid_label(token) == 0) {
                         add_entry(&head_entry,token,0);
                         delete_node(&head_list,line_info);
@@ -120,12 +126,12 @@ int first_pass(char *ifp)
                     tokencpy = strtok(NULL," ");
                     if (tokencpy[0] == ','){
                         fprintf(stderr,"ERROR in line: %d illegal comma before first argument\n",line_count);
-                        err_flag = 'Y';
+                        error
                         continue;
                     }
                     if (comma_check(tokencpy) == 1){
                         fprintf(stderr,"ERROR in line: %d two consecutive commas after an argument\n",line_count);
-                        err_flag = 'Y';
+                        error
                         continue;
                     }
                     token = strtok(tokencpy,",");
@@ -135,7 +141,7 @@ int first_pass(char *ifp)
                             num = (int)strtol(remove_newline(token),&garbage,10);
                             if (garbage[0] != '\0'){
                                 fprintf(stderr,"ERROR in line: %d illegal argument, .data can only receive integers\n",line_count);
-                                err_flag = 'Y';
+                                error
                                 break;
                             }
                             if (num<0)
@@ -192,6 +198,11 @@ int first_pass(char *ifp)
                 counter--;
                 token = strtok(NULL," ");
                 token[strlen(token)-1] = '\0';
+                if (strtok(NULL," ")){
+                    fprintf(stderr,"ERROR in line: %d .entry expect only 1 argument\n",line_count);
+                    error
+                    continue;
+                }
                 if (isValid_macro(token) == 0) {
 
                     /* curr = add_symbol(&head, token, 0); */
@@ -204,16 +215,22 @@ int first_pass(char *ifp)
             else if (strcmp(token,".extern") == 0){
                 counter--;
                 token = strtok(NULL," ");
-                token[strlen(token)-1] = '\0';
+                remove_newline(token);
+                if (strtok(NULL," ")){
+                    fprintf(stderr,"ERROR in line: %d .extern expect only 1 argument\n",line_count);
+                    error
+                    continue;
+                }
+
                 if (isValid_label(token) == 0) {
                     curr = add_symbol(&head, token, 0);
                     set_type(curr,ext);
-                    curr_extern = add_extern(&head_extern,token,0);
+                    add_extern(&head_extern,token,0);
                     delete_node(&head_list,line_info);
                 }
                 else {
                     fprintf(stderr,"ERROR IN LINE %d: INVALID .extern ARGUMENT\n",line_count);
-                    err_flag = 'Y';
+                    error
                     continue;
                 }
                 continue;
@@ -231,6 +248,11 @@ int first_pass(char *ifp)
                 first = strtok(NULL,",");
                 second = strtok(NULL," ");
                 if (second!=NULL) remove_newline(second);
+                if (strtok(NULL," ")){
+                    fprintf(stderr,"ERROR in line: %d extraneous argument passed\n",line_count);
+                    error
+                    continue;
+                }
                 /*printf("opcode: %s first: %s second: %s\n",opcode_string(command_code),first,second);*/
                 /*
                  * Check if origin and destination operand are both registers that share a single code.
@@ -240,7 +262,7 @@ int first_pass(char *ifp)
                     case cmp:
                         if (isDigit(remove_newline(second))) {
                             fprintf(stderr, "ERROR line: %d, 'mov' destination operand can't be a number\n",line_count);
-                            err_flag = 'Y';
+                            error
                         }
                     case add:
                     case sub:
@@ -272,7 +294,7 @@ int first_pass(char *ifp)
                     {
                         if (isRegister(first) || isDigit(first)){
                             fprintf(stderr,"ERROR line: %d, origin operand of lea needs to be a label\n",line_count);
-                            err_flag = 'Y';
+                            error
                             L+=2;
                             break;
                         }
@@ -312,7 +334,7 @@ int first_pass(char *ifp)
                     {
                         if (isDigit(first)){
                             fprintf(stderr,"ERROR line: %d %s can't have immediate destination operand",line_count,first);
-                            err_flag = 'Y';
+                            error
                             break;
                         }
                         if (!isRegister(first)){
@@ -407,9 +429,9 @@ int first_pass(char *ifp)
 
 
     /* printf("Extern:\n"); */
-    /*
+
     print_extern(head);
-     */
+
     /* print_extern_table(head_extern);
     putchar('\n');
     printf("Entry:\n");
@@ -425,6 +447,7 @@ int first_pass(char *ifp)
     /*
      *
      */
+
     if (!tokencpy) free(tokencpy);
     free_symbol(head);
     free_list(head_list);

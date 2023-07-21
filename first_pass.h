@@ -5,6 +5,11 @@
 #include "utils.h"
 #include "symbol_table.h"
 #include "second_pass.h"
-/*** HEADER FILES  ***/int first_pass(char *ifp);
+/*** HEADER FILES  ***/
+
+/*** DEFINES ***/
+#define error err_flag = 'Y';
+
+int first_pass(char *ifp);
 
 #endif
