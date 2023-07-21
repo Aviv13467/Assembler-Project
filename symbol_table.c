@@ -104,6 +104,16 @@ int get_symbol(symbol *node,char* name)
     }
     return -1;
 }
+symbol *get_actual_symbol(symbol *head, char* name)
+{
+    symbol *curr = head;
+    while (curr != NULL)
+    {
+        if (strcmp(curr->label,name)==0)
+            return curr;
+        curr = curr->next;
+    }
+}
 void delete_symbol(symbol **head, symbol *removed)
 {
     if (*head == NULL || removed == NULL) return;

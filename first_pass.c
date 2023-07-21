@@ -259,14 +259,19 @@ int first_pass(char *ifp)
                  */
                 switch (command_code) {
                     case mov:
-                    case cmp:
                         if (isDigit(remove_newline(second))) {
                             fprintf(stderr, "ERROR line: %d, 'mov' destination operand can't be a number\n",line_count);
                             error
                         }
+                    case cmp:
                     case add:
                     case sub:
                     {
+                        if (!isRegister(first) && first[0] == '@'){
+                            fprintf(stderr,"ERROR in line: %d invalid register name\n",line_count);
+                            error
+                            continue;
+                        }
                         if (isRegister(first) == 1) {
                             if (isRegister(second) == 1) {
                                 line_info->code = encode_combine(command_code,DIRECT_REGISTER,DIRECT_REGISTER);
@@ -321,6 +326,11 @@ int first_pass(char *ifp)
             }
             else if(number_of_operands(command_code) == 1){
                 first = strtok(NULL,",");
+                if (strtok(NULL,", ")){
+                    fprintf(stderr,"ERROR in line: %d extraneous argument passed\n",line_count);
+                    error
+                    continue;
+                }
                 if (first!=NULL) remove_newline(first);
                 switch (command_code) {
                     case not:
@@ -387,6 +397,11 @@ int first_pass(char *ifp)
                 /*printf("opcode: %s first: %s\n",opcode_string(command_code),first);*/
             }
             else if(number_of_operands(command_code) == 0){
+                if (strtok(NULL," ")){
+                    fprintf(stderr,"ERROR in line: %d extraneous argument passed\n",line_count);
+                    error
+                    continue;
+                }
                 switch (command_code) {
                     case rts:
                     case stop:
@@ -403,51 +418,10 @@ int first_pass(char *ifp)
         }
     }
 
-    /*
-     ********* Test Commands | Can be deleted later ************
-     */
-    /*
-    b64(head_list);
-     */
-    /*
-    printf("LinkedList:\n");
-    print_node(head_list);
-    putchar('\n');
-    int DC_total;
-    DC_total = print_symbol(head);
-    printf("%d %d\n",counter-DC_total,DC_total);
-     */
-
-
-    /********  EXCEPT THESE COMMAND **************/
     free(line);
     free(command);
     if (err_flag == 'N') second_pass(ifp,head_list,head,head_entry);
     else return 1;
-
-    /********  EXCEPT THESE COMMAND **************/
-
-
-    /* printf("Extern:\n"); */
-
-    print_extern(head);
-
-    /* print_extern_table(head_extern);
-    putchar('\n');
-    printf("Entry:\n");
-    print_entry_table(head_entry);
-    putchar('\n');
-    print_node(head_list);
-    b64(head_list);
-     */
-
-    /*
-    ********* Test Commands | Can be deleted later ************
-    */
-    /*
-     *
-     */
-
     if (!tokencpy) free(tokencpy);
     free_symbol(head);
     free_list(head_list);
