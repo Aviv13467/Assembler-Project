@@ -35,14 +35,15 @@ node *return_label(node* head)
 node* add_node(node **head, int pos, unsigned int code) {
     node *new = create_list();
     if (new == NULL)
-        return NULL; // Handle allocation failure
+        return NULL;
     set_node(new, pos, code);
     new->next = NULL;
     if (*head == NULL) {
         *head = new;
         return new;
     }
-    node *curr = *head;
+    node *curr;
+    curr = *head;
     while (curr->next != NULL)
         curr = curr->next;
     curr->next = new;
@@ -75,7 +76,8 @@ void delete_node(node **head, node *removed)
         free(removed);
         return;
     }
-    node* curr = *head;
+    node *curr;
+    curr = *head;
     while (curr->next != removed)
         curr = curr->next;
     curr->next = curr->next->next;
@@ -104,10 +106,11 @@ void set_label(node *curr,char *label)
 }
 void free_list(node *head)
 {
+    node *curr, *temp;
     if (head == NULL) return;
-    node* curr = head;
+    curr = head;
     while (curr != NULL) {
-        node* temp = curr;
+        temp = curr;
         curr = curr->next;
         free(temp);
     }
