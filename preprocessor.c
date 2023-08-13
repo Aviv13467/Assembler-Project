@@ -12,6 +12,7 @@ int preproces_file(char *ifp) {
     char *output_file_name = str_allocate_cat(ifp, ".am");
 
     FILE *input_file_des = fopen(input_file_name, "r");
+    FILE *am_file_des;
 
     /*
      * Opening failed, setting free the allocated memory
@@ -27,7 +28,7 @@ int preproces_file(char *ifp) {
     /*
      * Opening of output file failed, setting free the allocated memory and closing the other files
      */
-    FILE *am_file_des = fopen(output_file_name, "w+");
+    am_file_des = fopen(output_file_name, "w+");
     if (am_file_des == NULL) {
         printf("Couldn't open a file named %s.am\n", output_file_name);
         free(output_file_name);

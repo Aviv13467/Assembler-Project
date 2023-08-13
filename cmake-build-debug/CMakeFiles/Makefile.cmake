@@ -27,7 +27,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25/Modules/Platform/Darwin.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25/Modules/Platform/UnixPaths.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25/Modules/ProcessorCount.cmake"
-  "/Users/aviv/CLionProjects/Maman14_190723_173300/CMakeLists.txt"
+  "/Users/aviv/CLionProjects/Maman14/CMakeLists.txt"
   "CMakeFiles/3.25.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.25.2/CMakeSystem.cmake"
   )
@@ -45,5 +45,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/new.dir/DependInfo.cmake"
+  "CMakeFiles/Maman14.dir/DependInfo.cmake"
   )

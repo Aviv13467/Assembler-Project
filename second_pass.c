@@ -3,7 +3,10 @@
 void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
 {
     node *curr = head;
-    int position;
+    int position,pos_entry;
+    entry_table *curr_entry;
+    extern_table *ext, *curr_ext;
+    int IC,DC;
     while (curr != NULL)
     {
         if (curr->label[0] != 0){
@@ -16,8 +19,7 @@ void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
         }
         curr = curr->next;
     }
-    entry_table *curr_entry = entry;
-    int pos_entry;
+    curr_entry = entry;
     while (curr_entry != NULL)
     {
         pos_entry = get_symbol(label,curr_entry->label);
@@ -25,7 +27,7 @@ void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
         curr_entry = curr_entry->next;
     }
     curr = head;
-    extern_table *ext = NULL, *curr_ext = NULL;
+    ext = NULL, curr_ext = NULL;
 
     while(curr != NULL)
     {
@@ -43,10 +45,10 @@ void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
         export_entry(ifp,entry);
         fprintf(stderr,".ent file has been generated\n");
     }
-    int IC = get_IC(head);
-    int DC = get_DC(label);
+    IC = get_IC(head);
+    DC = get_DC(label);
     write_counter(ifp,IC-DC,DC);
-    if(export_obj(ifp,head) == 0) fprintf(stderr,".ob file has been generated\n");;
+    if(export_obj(ifp,head) == 0) fprintf(stderr,".ob file has been generated\n");
     free_extern(ext);
 
 }

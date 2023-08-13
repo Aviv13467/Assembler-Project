@@ -57,10 +57,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/aviv/CLionProjects/Maman14_190723_173300
+CMAKE_SOURCE_DIR = /Users/aviv/CLionProjects/Maman14
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aviv/CLionProjects/Maman14/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aviv/CLionProjects/Maman14/cmake-build-debug/CMakeFiles /Users/aviv/CLionProjects/Maman14/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aviv/CLionProjects/Maman14/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named new
+# Target rules for targets named Maman14
 
 # Build rule for target.
-new: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 new
-.PHONY : new
+Maman14: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Maman14
+.PHONY : Maman14
 
 # fast build rule for target.
-new/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/build
-.PHONY : new/fast
+Maman14/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/build
+.PHONY : Maman14/fast
 
 LinkedList.o: LinkedList.c.o
 .PHONY : LinkedList.o
 
 # target to build an object file
 LinkedList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/LinkedList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/LinkedList.c.o
 .PHONY : LinkedList.c.o
 
 LinkedList.i: LinkedList.c.i
@@ -142,7 +142,7 @@ LinkedList.i: LinkedList.c.i
 
 # target to preprocess a source file
 LinkedList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/LinkedList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/LinkedList.c.i
 .PHONY : LinkedList.c.i
 
 LinkedList.s: LinkedList.c.s
@@ -150,7 +150,7 @@ LinkedList.s: LinkedList.c.s
 
 # target to generate assembly for a file
 LinkedList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/LinkedList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/LinkedList.c.s
 .PHONY : LinkedList.c.s
 
 entry_table.o: entry_table.c.o
@@ -158,7 +158,7 @@ entry_table.o: entry_table.c.o
 
 # target to build an object file
 entry_table.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/entry_table.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/entry_table.c.o
 .PHONY : entry_table.c.o
 
 entry_table.i: entry_table.c.i
@@ -166,7 +166,7 @@ entry_table.i: entry_table.c.i
 
 # target to preprocess a source file
 entry_table.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/entry_table.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/entry_table.c.i
 .PHONY : entry_table.c.i
 
 entry_table.s: entry_table.c.s
@@ -174,7 +174,7 @@ entry_table.s: entry_table.c.s
 
 # target to generate assembly for a file
 entry_table.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/entry_table.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/entry_table.c.s
 .PHONY : entry_table.c.s
 
 extern_table.o: extern_table.c.o
@@ -182,7 +182,7 @@ extern_table.o: extern_table.c.o
 
 # target to build an object file
 extern_table.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/extern_table.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/extern_table.c.o
 .PHONY : extern_table.c.o
 
 extern_table.i: extern_table.c.i
@@ -190,7 +190,7 @@ extern_table.i: extern_table.c.i
 
 # target to preprocess a source file
 extern_table.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/extern_table.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/extern_table.c.i
 .PHONY : extern_table.c.i
 
 extern_table.s: extern_table.c.s
@@ -198,7 +198,7 @@ extern_table.s: extern_table.c.s
 
 # target to generate assembly for a file
 extern_table.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/extern_table.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/extern_table.c.s
 .PHONY : extern_table.c.s
 
 first_pass.o: first_pass.c.o
@@ -206,7 +206,7 @@ first_pass.o: first_pass.c.o
 
 # target to build an object file
 first_pass.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/first_pass.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/first_pass.c.o
 .PHONY : first_pass.c.o
 
 first_pass.i: first_pass.c.i
@@ -214,7 +214,7 @@ first_pass.i: first_pass.c.i
 
 # target to preprocess a source file
 first_pass.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/first_pass.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/first_pass.c.i
 .PHONY : first_pass.c.i
 
 first_pass.s: first_pass.c.s
@@ -222,7 +222,7 @@ first_pass.s: first_pass.c.s
 
 # target to generate assembly for a file
 first_pass.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/first_pass.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/first_pass.c.s
 .PHONY : first_pass.c.s
 
 hashtable.o: hashtable.c.o
@@ -230,7 +230,7 @@ hashtable.o: hashtable.c.o
 
 # target to build an object file
 hashtable.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/hashtable.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/hashtable.c.o
 .PHONY : hashtable.c.o
 
 hashtable.i: hashtable.c.i
@@ -238,7 +238,7 @@ hashtable.i: hashtable.c.i
 
 # target to preprocess a source file
 hashtable.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/hashtable.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/hashtable.c.i
 .PHONY : hashtable.c.i
 
 hashtable.s: hashtable.c.s
@@ -246,7 +246,7 @@ hashtable.s: hashtable.c.s
 
 # target to generate assembly for a file
 hashtable.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/hashtable.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/hashtable.c.s
 .PHONY : hashtable.c.s
 
 main.o: main.c.o
@@ -254,7 +254,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/main.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -262,7 +262,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -270,7 +270,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/main.c.s
 .PHONY : main.c.s
 
 memory.o: memory.c.o
@@ -278,7 +278,7 @@ memory.o: memory.c.o
 
 # target to build an object file
 memory.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/memory.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/memory.c.o
 .PHONY : memory.c.o
 
 memory.i: memory.c.i
@@ -286,7 +286,7 @@ memory.i: memory.c.i
 
 # target to preprocess a source file
 memory.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/memory.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/memory.c.i
 .PHONY : memory.c.i
 
 memory.s: memory.c.s
@@ -294,7 +294,7 @@ memory.s: memory.c.s
 
 # target to generate assembly for a file
 memory.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/memory.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/memory.c.s
 .PHONY : memory.c.s
 
 preprocessor.o: preprocessor.c.o
@@ -302,7 +302,7 @@ preprocessor.o: preprocessor.c.o
 
 # target to build an object file
 preprocessor.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/preprocessor.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/preprocessor.c.o
 .PHONY : preprocessor.c.o
 
 preprocessor.i: preprocessor.c.i
@@ -310,7 +310,7 @@ preprocessor.i: preprocessor.c.i
 
 # target to preprocess a source file
 preprocessor.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/preprocessor.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/preprocessor.c.i
 .PHONY : preprocessor.c.i
 
 preprocessor.s: preprocessor.c.s
@@ -318,7 +318,7 @@ preprocessor.s: preprocessor.c.s
 
 # target to generate assembly for a file
 preprocessor.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/preprocessor.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/preprocessor.c.s
 .PHONY : preprocessor.c.s
 
 second_pass.o: second_pass.c.o
@@ -326,7 +326,7 @@ second_pass.o: second_pass.c.o
 
 # target to build an object file
 second_pass.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/second_pass.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/second_pass.c.o
 .PHONY : second_pass.c.o
 
 second_pass.i: second_pass.c.i
@@ -334,7 +334,7 @@ second_pass.i: second_pass.c.i
 
 # target to preprocess a source file
 second_pass.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/second_pass.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/second_pass.c.i
 .PHONY : second_pass.c.i
 
 second_pass.s: second_pass.c.s
@@ -342,7 +342,7 @@ second_pass.s: second_pass.c.s
 
 # target to generate assembly for a file
 second_pass.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/second_pass.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/second_pass.c.s
 .PHONY : second_pass.c.s
 
 symbol_table.o: symbol_table.c.o
@@ -350,7 +350,7 @@ symbol_table.o: symbol_table.c.o
 
 # target to build an object file
 symbol_table.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/symbol_table.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/symbol_table.c.o
 .PHONY : symbol_table.c.o
 
 symbol_table.i: symbol_table.c.i
@@ -358,7 +358,7 @@ symbol_table.i: symbol_table.c.i
 
 # target to preprocess a source file
 symbol_table.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/symbol_table.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/symbol_table.c.i
 .PHONY : symbol_table.c.i
 
 symbol_table.s: symbol_table.c.s
@@ -366,7 +366,7 @@ symbol_table.s: symbol_table.c.s
 
 # target to generate assembly for a file
 symbol_table.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/symbol_table.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/symbol_table.c.s
 .PHONY : symbol_table.c.s
 
 utils.o: utils.c.o
@@ -374,7 +374,7 @@ utils.o: utils.c.o
 
 # target to build an object file
 utils.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/utils.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/utils.c.o
 .PHONY : utils.c.o
 
 utils.i: utils.c.i
@@ -382,7 +382,7 @@ utils.i: utils.c.i
 
 # target to preprocess a source file
 utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/utils.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/utils.c.i
 .PHONY : utils.c.i
 
 utils.s: utils.c.s
@@ -390,7 +390,7 @@ utils.s: utils.c.s
 
 # target to generate assembly for a file
 utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/utils.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Maman14.dir/build.make CMakeFiles/Maman14.dir/utils.c.s
 .PHONY : utils.c.s
 
 # Help Target
@@ -401,7 +401,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... new"
+	@echo "... Maman14"
 	@echo "... LinkedList.o"
 	@echo "... LinkedList.i"
 	@echo "... LinkedList.s"

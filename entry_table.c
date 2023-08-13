@@ -18,7 +18,7 @@ entry_table* add_entry(entry_table **head, char *label,int pos)
 {
     entry_table *new = create_entry();
     if (new == NULL)
-        return NULL; // Handle allocation failure
+        return NULL;
 
     set_entry(new, label, pos);
     new->next = NULL;
@@ -71,11 +71,12 @@ int isEmpty_entry(entry_table *head)
 }
 void free_entry(entry_table *head)
 {
+    entry_table* curr,*temp;
     if (head == NULL) return;
-    entry_table* curr = head;
+    curr = head;
     while (curr != NULL) {
-        entry_table* temp = curr;
+        temp = curr;
         curr = curr->next;
-        free(temp);
+        if (temp!=NULL) free(temp);
     }
 }

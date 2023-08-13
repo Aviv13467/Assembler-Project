@@ -8,6 +8,17 @@ int first_pass(char *ifp)
      */
     char *input_file_name = str_allocate_cat(ifp, ".am");
     FILE *input_file_des = fopen(input_file_name,"r");
+    char *line, *token, *tokencpy, *garbage;
+    symbol *head,*curr;
+    node *head_list;
+    entry_table *head_entry;
+    extern_table  *head_extern;
+    int IC,DC,L,i,counter,line_count,num;
+    char *first, *second, err_flag;
+    int command_code; /* opcode command (1-15) */
+    char* command; /* command name string*/
+    node *line_info;
+    int k;
     /*
      * Opening failed, output an error
      */
@@ -16,20 +27,17 @@ int first_pass(char *ifp)
         free(input_file_name);
         exit(1);
     }
-    char *line = (char*)malloc(sizeof(char)*MAX_LINE); /* line output from fgets */
-    char *token = NULL, *tokencpy = NULL, *garbage = NULL; /* for strtok,strtol function */
-    symbol *head = NULL, *curr = NULL; /* symbol table nodes */
-    node *head_list = NULL;
+    line = (char*)malloc(sizeof(char)*MAX_LINE); /* line output from fgets */
+    token = NULL, tokencpy = NULL, garbage = NULL; /* for strtok,strtol function */
+    head = NULL, curr = NULL; /* symbol table nodes */
+    head_list = NULL;
 
-    entry_table *head_entry = NULL, *curr_entry = NULL;
+    head_entry = NULL;
+    head_extern = NULL;
 
-    extern_table  *head_extern = NULL, *curr_extern = NULL;
-
-    int IC = IC_START, DC = 0,L = 0;
-    int i = 0,counter = 0, line_count = 0, num; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
-    char* first, *second, err_flag = 'N'; /* commands will be tokenized into 2 separate words */
-    int command_code; /* opcode command (1-15) */
-    char* command; /* command name string*/
+    IC = IC_START, DC = 0,L = 0;
+    i = 0,counter = 0, line_count = 0; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
+    err_flag = 'N'; /* commands will be tokenized into 2 separate words */
 
     command = (char*)malloc(sizeof(char)*MAX_LEN); /* Allocating memory for the command char* ptr*/
     if (command == NULL){
@@ -46,12 +54,12 @@ int first_pass(char *ifp)
          * Checks if there are more words than the imaginary PC with 1024 byte of memory can handle
          * If there are more bytes than 1024 a 'stackoverflow' error will end the program
          */
-        if (counter>1023){
+        if (counter>923){ /* 923 because the memory starts at 100 */
             fprintf(stderr,"ERROR, STACKOVERFLOW, OUT OF MEMORY. USED %d/%d\n",counter,1024);
             exit(1);
         }
         line_count++;
-        node *line_info = add_node(&head_list,counter,0);
+        line_info = add_node(&head_list,counter,0);
         counter++; /* Increment line counter used for error output */
         i = 0; L = 0; /* Reset command line counter and 'i' */
         token = strtok(line," "); /* Tokenize the next word */
@@ -171,7 +179,6 @@ int first_pass(char *ifp)
                     if (token!=NULL) {
                         if (token[strlen(token)-1] == '\n') token[strlen(token)-1] = '\0';
                         set_str(curr,token);
-                        int k;
                         for (k = 0; k < strlen(token)+1 ; ++k) {
                             add_line;
                             line_info->code = (int)token[k];

@@ -1,3 +1,3 @@
-/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles/new.dir
-/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/aviv/CLionProjects/Maman14_190723_173300/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/aviv/CLionProjects/Maman14/cmake-build-debug/CMakeFiles/Maman14.dir
+/Users/aviv/CLionProjects/Maman14/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/aviv/CLionProjects/Maman14/cmake-build-debug/CMakeFiles/rebuild_cache.dir

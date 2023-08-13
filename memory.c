@@ -34,11 +34,11 @@ unsigned int encode_des_operand(unsigned int des_operand)
  */
 unsigned int encode_combine(unsigned int opcode, unsigned int origin_operand,unsigned int des_operand)
 {
+    unsigned int ARE, combine;
     opcode = encode_opcode(opcode);
     origin_operand = encode_origin_operand(origin_operand);
     des_operand = encode_des_operand(des_operand);
-    unsigned int ARE = 0; /* In Instructions code, ARE bits are always ABSOLUTE */
-    unsigned int combine;
+    ARE = 0; /* In Instructions code, ARE bits are always ABSOLUTE */
     combine = opcode | origin_operand | des_operand | ARE;
     return combine;
 }
@@ -67,10 +67,9 @@ unsigned int encode_combine_label(unsigned int code)
     unsigned int combine = code<<2;
     return combine|ARE;
 }
-unsigned int encode_combine_extern()
+unsigned int encode_combine_extern(void)
 {
-    unsigned int ARE = EXTERNAL;
-    return ARE;
+    return EXTERNAL;
 }
 
 /*

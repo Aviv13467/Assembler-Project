@@ -18,7 +18,7 @@ extern_table* add_extern(extern_table **head, char *label,int pos)
 {
     extern_table *new = create_extern();
     if (new == NULL)
-        return NULL; // Handle allocation failure
+        return NULL;
 
     set_extern(new, label, pos);
     new->next = NULL;
@@ -71,8 +71,9 @@ int isEmpty_ext(extern_table *head)
 }
 void free_extern(extern_table *head)
 {
+    extern_table* curr;
     if (head == NULL) return;
-    extern_table* curr = head;
+    curr = head;
     while (curr != NULL) {
         extern_table* temp = curr;
         curr = curr->next;

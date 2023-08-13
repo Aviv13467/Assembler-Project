@@ -34,7 +34,7 @@ void set_DC(symbol *sym,int DC)
 symbol* add_symbol(symbol **head, char *label, unsigned int pos) {
     symbol *new = create_symbol();
     if (new == NULL)
-        return NULL; // Handle allocation failure
+        return NULL;
 
     set_symbol(new, label, pos);
     new->next = NULL;
@@ -113,16 +113,18 @@ symbol *get_actual_symbol(symbol *head, char* name)
             return curr;
         curr = curr->next;
     }
+    return NULL;
 }
 void delete_symbol(symbol **head, symbol *removed)
 {
+    symbol *curr;
+    curr = *head;
     if (*head == NULL || removed == NULL) return;
     if (*head == removed){
         *head = removed->next;
         free(removed);
         return;
     }
-    node* curr = *head;
     while (curr->next != removed)
         curr = curr->next;
     curr->next = curr->next->next;
@@ -134,14 +136,13 @@ void delete_symbol(symbol **head, symbol *removed)
 }
 void print_num_arr(symbol *curr)
 {
-    int i;
+    int i,j;
     putchar('\n');
-    for (i = 0; i < 3, curr->nums[i]!=0; ++i) {
+    for (i = 0; i < 3 && curr->nums[i]!=0; ++i) {
         printf("%d ",curr->nums[i]);
     }
     putchar('\n');
-    int j;
-    for (j = 0; j < 3, curr->nums[j]!=0; ++j) {
+    for (j = 0; j < 3 && curr->nums[j]!=0; ++j) {
         if (curr->nums[j] > 0) decimalToBinary(curr->nums[j],12);
         else decimalToBinary(two_complement(curr->nums[j]),12);
         putchar('\n');
@@ -162,8 +163,9 @@ int get_DC(symbol *head)
 
 void free_symbol(symbol *head)
 {
+    symbol *curr;
     if (head == NULL) return;
-    symbol* curr = head;
+    curr = head;
     while (curr != NULL) {
         symbol* temp = curr;
         curr = curr->next;

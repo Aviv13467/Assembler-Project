@@ -34,6 +34,7 @@ node *return_label(node* head)
 
 node* add_node(node **head, int pos, unsigned int code) {
     node *new = create_list();
+    node *curr;
     if (new == NULL)
         return NULL;
     set_node(new, pos, code);
@@ -42,7 +43,6 @@ node* add_node(node **head, int pos, unsigned int code) {
         *head = new;
         return new;
     }
-    node *curr;
     curr = *head;
     while (curr->next != NULL)
         curr = curr->next;
@@ -70,13 +70,13 @@ void fprint_node(node *head,FILE *ofp)
 
 void delete_node(node **head, node *removed)
 {
+    node *curr;
     if (*head == NULL || removed == NULL) return;
     if (*head == removed){
         *head = removed->next;
         free(removed);
         return;
     }
-    node *curr;
     curr = *head;
     while (curr->next != removed)
         curr = curr->next;

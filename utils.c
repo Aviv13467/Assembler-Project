@@ -42,32 +42,23 @@ int number_of_operands(opcode command)
              */
         case ILLEGAL_OPCODE: return -1;
     }
+    return ILLEGAL_OPCODE;
 }
 
 /*
- * Flushes the strtok buffer.
- */
-void flush_strtok(void)
-{
-    char *trash = NULL;
-    trash = strtok(NULL," ");
-}
-/*
- * This functions converts a decimal number into it's binary representation, the user has a control over how many leading-zeros to add.
+ * This functions converts a decimal number into its binary representation, the user has a control over how many leading-zeros to add.
  * for example if the users inputs the decimal number 3 and 4 as leading zeros, the output will be: 0011;
  */
 void decimalToBinary(unsigned int decimal,int zeros) {
 
-    unsigned binary[16]; // Assuming 16-bit short integers
-    int i = 0;
+    unsigned binary[16];
+    int i = 0,j;
 
     while (decimal > 0) {
-        binary[i] = decimal & 1; // Get the least significant bit
-        decimal >>= 1; // Right-shift decimal by 1 bit
+        binary[i] = decimal & 1;
+        decimal >>= 1;
         i++;
     }
-    // Print leading zeros if necessary
-    int j;
     for (j = i; j < zeros; j++) {
         printf("0 ");
     }
@@ -115,8 +106,8 @@ char* type_string(enum TYPE index)
 }
 int opcode_no(char* name)
 {
-    if (name[strlen(name)-1] == '\n') name[strlen(name)-1] = '\0';
     int i;
+    if (name[strlen(name)-1] == '\n') name[strlen(name)-1] = '\0';
     for (i = 0; i <= 15; i++) {
         if (strcmp(name, opcode_string(i)) == 0)
             return i;
@@ -125,11 +116,12 @@ int opcode_no(char* name)
 }
 int register_no(char* reg)
 {
-    if (reg[strlen(reg)-1] == '\n') reg[strlen(reg)-1] = '\0';
     int i;
+    if (reg[strlen(reg)-1] == '\n') reg[strlen(reg)-1] = '\0';
     for (i = 0; i < 8; ++i) {
         if (strcmp(reg, register_string(i)) == 0) return i;
     }
+    return -1;
 }
 int command_valid(char* opcode)
 {
@@ -137,15 +129,16 @@ int command_valid(char* opcode)
     result = opcode_no(opcode);
     if (result == -1){
         fprintf(stderr,"ERROR: ILLEGAL COMMAND\n");
+        return 1;
     }
-    else return 0;
+    return 0;
 }
 int isValid_macro(char* name)
 {
+    int i;
     char* copy;
     copy = (char*) malloc(sizeof(char)* strlen(name));
     strcpy(copy,name);
-    int i;
 
     for (i = 0; i < 15 ; ++i)
     {
@@ -180,10 +173,10 @@ int isValid_macro(char* name)
 }
 int isValid_label(char *name)
 {
+    int i,j,k;
     char* copy;
     copy = (char*) malloc(sizeof(char)* strlen(name));
     strcpy(copy,name);
-    int i,j,k;
     for (i = 0; i < 15 ; ++i)
         if (strcmp(name,opcode_string(i)) == 0) return 1;
     for (j = 0; j < 4; ++j)
@@ -215,14 +208,13 @@ int comma_check(char* str)
 int isDigit(char *c)
 {
     char* ptr;
-    int result;
-    result = (int)strtol(c,&ptr,10);
+    strtol(c, &ptr, 10);
     return (ptr[0]=='\0')? 1:0;
 }
 int isRegister(char*str)
 {
-    if (str[strlen(str)-1] =='\n' ||str[strlen(str)-1] ==' ')  str[strlen(str)-1] = '\0';
     int i;
+    if (str[strlen(str)-1] =='\n' ||str[strlen(str)-1] ==' ')  str[strlen(str)-1] = '\0';
     for (i = 0; i < 8; ++i) {
         if (strcmp(str, register_string(i)) == 0) return 1;
     }
