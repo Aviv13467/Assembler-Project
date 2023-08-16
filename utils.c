@@ -1,5 +1,5 @@
 #include "utils.h"
-char *str_allocate_cat(char *first_str, char* second_str) {
+char *str_join(char *first_str, char* second_str) {
     char *str = (char *)malloc(strlen(first_str) + strlen(second_str) + 1);
     strcpy(str, first_str);
     strcat(str, second_str);
@@ -244,7 +244,7 @@ void print_arr(char* arr)
 }
 void export_extern(char *ofp,extern_table *head)
 {
-    char *output_file_name = str_allocate_cat(ofp, ".ext");
+    char *output_file_name = str_join(ofp, ".ext");
     FILE *output_file_des = fopen(output_file_name,"w+");
     if (output_file_des == NULL) {
         fprintf(stderr,"Error occurred while opening the file %s\n", output_file_name);
@@ -256,7 +256,7 @@ void export_extern(char *ofp,extern_table *head)
 
 void export_entry(char *ofp,entry_table *entry)
 {
-    char *output_file_name = str_allocate_cat(ofp, ".ent");
+    char *output_file_name = str_join(ofp, ".ent");
     FILE *output_file_des = fopen(output_file_name,"w+");
     if (output_file_des == NULL) {
         fprintf(stderr,"Error occurred while opening the file %s\n", output_file_name);
@@ -267,7 +267,7 @@ void export_entry(char *ofp,entry_table *entry)
 }
 void write_counter(char *ofp, int IC,int DC)
 {
-    char *output_file_name = str_allocate_cat(ofp, ".ob");
+    char *output_file_name = str_join(ofp, ".ob");
     FILE *output_file_des = fopen(output_file_name,"w+");
     if (output_file_des == NULL) {
         fprintf(stderr,"Error occurred while opening the file %s\n", output_file_name);
@@ -278,7 +278,7 @@ void write_counter(char *ofp, int IC,int DC)
 }
 int export_obj(char *ofp, node *head)
 {
-    char *output_file_name = str_allocate_cat(ofp, ".ob");
+    char *output_file_name = str_join(ofp, ".ob");
     FILE *output_file_des = fopen(output_file_name,"a+");
     if (output_file_des == NULL) {
         fprintf(stderr,"Error occurred while opening the file %s\n", output_file_name);

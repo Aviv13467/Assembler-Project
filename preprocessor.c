@@ -1,5 +1,9 @@
 #include "preprocessor.h"
 
+/*
+ * This is the first stage of the assembler program
+ * replacing macro with its content
+ */
 int preproces_file(char *ifp) {
     hash_table *ht = ht_create();
     int isMacro = 0;
@@ -8,8 +12,8 @@ int preproces_file(char *ifp) {
     char *macro_name = NULL;
     char line[MAX_LINE];
     char* copy;
-    char *input_file_name = str_allocate_cat(ifp, ".as");
-    char *output_file_name = str_allocate_cat(ifp, ".am");
+    char *input_file_name = str_join(ifp, ".as");
+    char *output_file_name = str_join(ifp, ".am");
 
     FILE *input_file_des = fopen(input_file_name, "r");
     FILE *am_file_des;
@@ -39,17 +43,20 @@ int preproces_file(char *ifp) {
         exit(1);
     }
 
+    /*
+     * Rrad the next line as long as haven't reached EOF
+     */
     while (fgets(line, MAX_LINE, input_file_des) != NULL) {
         strcpy(linecpy,line);
-        if (line[0] == '\n' || line[0] == ';' || line[0] == EOF || line[0] == '\0')
+        if (line[0] == '\n' || line[0] == ';' || line[0] == EOF || line[0] == '\0') /* Ignore any whitespaces or comments */
             continue;
-        if(isMacro == 1) {
+        if(isMacro == 1) { /* Inside a macro, look for endmcro command */
             if (strcmp(token, "endmcro\n") == 0) {
                 isMacro = 0;
                 continue;
             }
-            else{
-                char *updated_macro = str_allocate_cat(ht_get(ht, macro_name), linecpy);
+            else{ /* While in macro, keep reading the next line and update the current macro context into the table */
+                char *updated_macro = str_join(ht_get(ht, macro_name), linecpy);
                 ht_set(ht, macro_name, updated_macro);
                 free(updated_macro);
                 continue;
@@ -70,7 +77,7 @@ int preproces_file(char *ifp) {
             isMacro = 1;
             macro_name = (char *) malloc(sizeof(char) * MAX_MCRO_LEN);
             strcpy(macro_name, strtok(NULL, " "));
-            if (strtok(NULL," ") != NULL){
+            if (strtok(NULL," ") != NULL){ /* Yield error due to  extraneous text */
                 fprintf(stderr,"ERROR: EXTRANEOUS TEXT AFTER MACRO\n");
                 return 1;
             }

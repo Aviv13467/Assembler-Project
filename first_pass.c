@@ -6,7 +6,7 @@ int first_pass(char *ifp)
     /*
      * Opening the preprocessed file .am to start the first assembler pass
      */
-    char *input_file_name = str_allocate_cat(ifp, ".am");
+    char *input_file_name = str_join(ifp, ".am");
     FILE *input_file_des = fopen(input_file_name,"r");
     char *line, *token, *tokencpy, *garbage;
     symbol *head,*curr;
@@ -111,7 +111,7 @@ int first_pass(char *ifp)
                     counter--;
                     token = strtok(NULL," ");
                     token[strlen(token)-1] = '\0';
-                    if (strtok(NULL," ")){
+                    if (strtok(NULL," ")){ /* Yield error, more than 1 argument */
                         fprintf(stderr,"ERROR in line: %d .entry expect only 1 argument\n",line_count);
                         error
                         continue;
@@ -120,11 +120,12 @@ int first_pass(char *ifp)
                         add_entry(&head_entry,token,0);
                         delete_node(&head_list,line_info);
                     }
-                    fprintf(stderr,"WARNING in line: %d label before .entry is redundant\n",line_count);
+                    fprintf(stderr,"WARNING in line: %d label before .entry is redundant\n",line_count); /* Yield a warning, any label before .entry is not necessary  */
                     delete_symbol(&head,curr);
                 }
-                if (strcmp(token,".data") == 0)
+                if (strcmp(token,".data") == 0) /* Handle .data */
                 {
+                    /* Since not a command, we'll delete the node and command counter used to track commands in my algorithm */
                     delete_node(&head_list,line_info);
                     counter--;
                     set_type(curr,data);
@@ -132,12 +133,12 @@ int first_pass(char *ifp)
                     tokencpy = (char*)malloc(sizeof(char)* strlen(token));
                     strcpy(tokencpy,token);
                     tokencpy = strtok(NULL," ");
-                    if (tokencpy[0] == ','){
+                    if (tokencpy[0] == ','){ /* Checks for illgeal comma before argument */
                         fprintf(stderr,"ERROR in line: %d illegal comma before first argument\n",line_count);
                         error
                         continue;
                     }
-                    if (comma_check(tokencpy) == 1){
+                    if (comma_check(tokencpy) == 1){ /* Checks for illgeal consecutive commas between or after arguments */
                         fprintf(stderr,"ERROR in line: %d two consecutive commas after an argument\n",line_count);
                         error
                         continue;
@@ -147,13 +148,13 @@ int first_pass(char *ifp)
                         if (token != NULL) {
                             add_line
                             num = (int)strtol(remove_newline(token),&garbage,10);
-                            if (garbage[0] != '\0'){
+                            if (garbage[0] != '\0'){ /* Checks for illegal characters after .data */
                                 fprintf(stderr,"ERROR in line: %d illegal argument, .data can only receive integers\n",line_count);
                                 error
                                 break;
                             }
                             if (num<0)
-                                line_info->code = two_complement(atoi(token));
+                                line_info->code = two_complement(atoi(token)); /* Need to send the binary  representation of a negative number using the two-complements method */
                             else line_info->code = atoi(token);
                             i++;
                         }
@@ -201,8 +202,8 @@ int first_pass(char *ifp)
          */
         if (strchr(token,'.') != NULL)
         {
-            if (strcmp(token,".entry") == 0){
-                counter--;
+            if (strcmp(token,".entry") == 0){ /* Handles .entry */
+                counter--; /* Not a command */
                 token = strtok(NULL," ");
                 token[strlen(token)-1] = '\0';
                 if (strtok(NULL," ")){
@@ -219,8 +220,8 @@ int first_pass(char *ifp)
                 }
                 continue;
             }
-            else if (strcmp(token,".extern") == 0){
-                counter--;
+            else if (strcmp(token,".extern") == 0){ /* Handles .extern */
+                counter--; /* Not a command */
                 token = strtok(NULL," ");
                 remove_newline(token);
                 if (strtok(NULL," ")){

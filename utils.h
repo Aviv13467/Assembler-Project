@@ -8,7 +8,7 @@
 #include "entry_table.h"
 /*** HEADER FILES  ***/
 
-char *str_allocate_cat(char *first_str, char* second_str);
+char *str_join(char *first_str, char* second_str);
 int number_of_operands(opcode command);
 void flush_strtok(void);
 void decimalToBinary(unsigned int decimal,int zeros);
