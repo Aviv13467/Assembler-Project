@@ -22,14 +22,6 @@ void set_str(symbol *sym, char* str)
 {
     strcpy(sym->str,str);
 }
-void set_IC(symbol *sym,int IC)
-{
-    sym->IC = IC;
-}
-void set_DC(symbol *sym,int DC)
-{
-    sym->DC = DC;
-}
 
 symbol* add_symbol(symbol **head, char *label, unsigned int pos) {
     symbol *new = create_symbol();
@@ -51,46 +43,6 @@ symbol* add_symbol(symbol **head, char *label, unsigned int pos) {
     return new;
 }
 
-int print_symbol(symbol *head)
-{
-    int sum = 0;
-    symbol *curr = head;
-    while (curr!= NULL)
-    {
-        sum+=curr->DC;
-        if (curr->type == ext || curr->type == entry) {
-            curr = curr->next;
-            continue;
-            }
-        printf("%s\t%d\t%s\t%d\t%d\n", curr->label, curr->label_pos, type_string(curr->type),curr->IC,curr->DC);
-        curr = curr->next;
-    }
-    return sum;
-}
-void print_entry(symbol *head)
-{
-    symbol *curr = head;
-    putchar('\n');
-    while (curr!= NULL)
-    {
-        if (curr->type == entry){
-            printf("%s\t%d\t%s\n", curr->label, curr->label_pos, type_string(curr->type));
-        }
-        curr = curr->next;
-    }
-}
-void print_extern(symbol *head)
-{
-    symbol *curr = head;
-    putchar('\n');
-    while (curr!= NULL)
-    {
-        if (curr->type == ext){
-            printf("%s\t%d\t%s\n", curr->label, curr->label_pos, type_string(curr->type));
-        }
-        curr = curr->next;
-    }
-}
 int get_symbol(symbol *node,char* name)
 {
     symbol *curr = node;
@@ -103,17 +55,6 @@ int get_symbol(symbol *node,char* name)
         curr = curr->next;
     }
     return -1;
-}
-symbol *get_actual_symbol(symbol *head, char* name)
-{
-    symbol *curr = head;
-    while (curr != NULL)
-    {
-        if (strcmp(curr->label,name)==0)
-            return curr;
-        curr = curr->next;
-    }
-    return NULL;
 }
 void delete_symbol(symbol **head, symbol *removed)
 {
@@ -133,21 +74,6 @@ void delete_symbol(symbol **head, symbol *removed)
     }
     curr->next = removed->next;
     free(removed);
-}
-void print_num_arr(symbol *curr)
-{
-    int i,j;
-    putchar('\n');
-    for (i = 0; i < 3 && curr->nums[i]!=0; ++i) {
-        printf("%d ",curr->nums[i]);
-    }
-    putchar('\n');
-    for (j = 0; j < 3 && curr->nums[j]!=0; ++j) {
-        if (curr->nums[j] > 0) decimalToBinary(curr->nums[j],12);
-        else decimalToBinary(two_complement(curr->nums[j]),12);
-        putchar('\n');
-    }
-    putchar('\n');
 }
 int get_DC(symbol *head)
 {

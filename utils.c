@@ -46,27 +46,6 @@ int number_of_operands(opcode command)
 }
 
 /*
- * This functions converts a decimal number into its binary representation, the user has a control over how many leading-zeros to add.
- * for example if the users inputs the decimal number 3 and 4 as leading zeros, the output will be: 0011;
- */
-void decimalToBinary(unsigned int decimal,int zeros) {
-
-    unsigned binary[16];
-    int i = 0,j;
-
-    while (decimal > 0) {
-        binary[i] = decimal & 1;
-        decimal >>= 1;
-        i++;
-    }
-    for (j = i; j < zeros; j++) {
-        printf("0 ");
-    }
-    for (j= i - 1; j >= 0; j--) {
-        printf("%d ", binary[j]);
-    }
-}
-/*
  * This function modifies ASCII values, so it can return the corresponding values to translate to Base64
  */
 unsigned int modifyASCII(int num)
@@ -147,14 +126,12 @@ int isValid_macro(char* name)
             return 1;
         }
     }
-    i = 0;
     for (i = 0; i < 4; ++i) {
         if (strcmp(name, type_string(i)) == 0){
             fprintf(stderr,"INVALID MACRO NAME: MACRO CANNOT BE NAMED AFTER A TYPE\n");
             return 1;
         }
     }
-    i = 0;
     for (i = 0; i <8; ++i) {
         if (strcmp(name, register_string(i)) == 0) {
             fprintf(stderr,"INVALID MACRO NAME: MACRO CANNOT BE NAMED AFTER A REGISTER\n");
@@ -220,28 +197,7 @@ int isRegister(char*str)
     }
     return 0;
 }
-void print_arr(char* arr)
-{
-    int i = 0, j;
-    for (i = 0; i < strlen(arr)+1; ++i) {
-        printf("%c ",arr[i]);
-    }
-    putchar('\n');
-    for (j = 0; j < strlen(arr)+1; ++j) {
-        printf("%d ",arr[j]);
-    }
-    /*
-     * prints the machine code
-     *
-    putchar('\n');
-    for (j = 0; j < strlen(arr)+1; ++j) {
-        decimalToBinary(encode_combine_direct(arr[j],ABSOLUTE),12);
-        putchar('\n');
-    }
-     */
 
-    putchar('\n');
-}
 void export_extern(char *ofp,extern_table *head)
 {
     char *output_file_name = str_join(ofp, ".ext");
@@ -287,14 +243,5 @@ int export_obj(char *ofp, node *head)
     }
     fprint_node(head,output_file_des);
     return 0;
-}
-void b64(node *head)
-{
-    while(head!=NULL) {
-        encodeBase64(head->code);
-        putchar('\n');
-        head = head->next;
-    }
-
 }
 
