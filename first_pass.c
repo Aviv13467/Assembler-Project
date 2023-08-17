@@ -254,6 +254,11 @@ int first_pass(char *ifp)
             if(number_of_operands(command_code) == 2){
                 first = strtok(NULL,",");
                 second = strtok(NULL," ");
+                if (first == NULL || second == NULL){
+                    fprintf(stderr,"ERROR in line %d: '%s' is missing operands\n",line_count, opcode_string(command_code));
+                    error
+                    continue;
+                }
                 if (second!=NULL) remove_newline(second);
                 if (strtok(NULL," ")){
                     fprintf(stderr,"ERROR in line %d: extraneous argument passed\n",line_count);
@@ -341,6 +346,11 @@ int first_pass(char *ifp)
             }
             else if(number_of_operands(command_code) == 1){
                 first = strtok(NULL,",");
+                if (first == NULL){
+                    fprintf(stderr,"ERROR in line %d: '%s' is missing operands\n",line_count, opcode_string(command_code));
+                    error
+                    continue;
+                }
                 if (strtok(NULL,", ")){
                     fprintf(stderr,"ERROR in line %d: extraneous argument passed\n",line_count);
                     error
