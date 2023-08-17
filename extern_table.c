@@ -13,7 +13,6 @@ void set_extern(extern_table *ext,char *name,int pos)
     strcpy(ext->label,name);
     ext->label_pos = pos;
 }
-
 extern_table* add_extern(extern_table **head, char *label,int pos)
 {
     extern_table *new = create_extern();
@@ -34,16 +33,6 @@ extern_table* add_extern(extern_table **head, char *label,int pos)
 
     return new;
 }
-
-void print_extern_table(extern_table *head)
-{
-    extern_table *curr = head;
-    while (curr!= NULL)
-    {
-        printf("%s\t%d\n", curr->label, curr->label_pos);
-        curr = curr->next;
-    }
-}
 void fprint_extern_table(extern_table *head,FILE *ofp)
 {
     extern_table *curr = head;
@@ -52,18 +41,6 @@ void fprint_extern_table(extern_table *head,FILE *ofp)
         fprintf(ofp,"%s\t%d\n", curr->label, curr->label_pos);
         curr = curr->next;
     }
-}
-
-int get_extern(extern_table *node,char* name)
-{
-    extern_table *curr = node;
-    while (curr != NULL)
-    {
-        if (strcmp(curr->label,name)==0)
-            return curr->label_pos;
-        curr = curr->next;
-    }
-    return -1;
 }
 int isEmpty_ext(extern_table *head)
 {

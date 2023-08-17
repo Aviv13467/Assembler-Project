@@ -62,6 +62,7 @@ unsigned int modifyASCII(int num)
 }
 char* remove_newline(char* str)
 {
+    if (str == NULL) return "error";
     if (str[strlen(str)-1] == '\n') str[strlen(str)-1] = '\0';
     return str;
 }
@@ -83,6 +84,7 @@ char* type_string(enum TYPE index)
 int opcode_no(char* name)
 {
     int i;
+    if (name == NULL) return -1;
     if (name[strlen(name)-1] == '\n') name[strlen(name)-1] = '\0';
     for (i = 0; i <= 15; i++) {
         if (strcmp(name, opcode_string(i)) == 0)
@@ -177,6 +179,16 @@ int comma_check(char* str)
     }
     return 0;
 }
+int redundant_comma_check(char* str)
+{
+    if (str == NULL) return 2;
+    while (*str) {
+        if (*str == ',') return 1;
+        else
+            str++;
+    }
+    return 0;
+}
 
 int isDigit(char *c)
 {
@@ -240,4 +252,20 @@ int export_obj(char *ofp, node *head)
     fprint_node(head,output_file_des);
     return 0;
 }
-
+void remove_whitespaces(char *str)
+{
+    unsigned len = strlen(str)-1;
+    while(str[len]==' '){
+      str[len] = '\0';
+        len--;
+    }
+}
+void removeLeadingWhitespaces(char *str)
+{
+    int len = strlen(str);
+    int leadingSpaces = 0;
+    while (isspace(str[leadingSpaces])) {
+        leadingSpaces++;
+    }
+    memmove(str, str + leadingSpaces, len - leadingSpaces + 1);
+}

@@ -258,7 +258,8 @@ CMakeFiles/Maman14.dir/extern_table.c.o: /Users/aviv/CLionProjects/Maman14/exter
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_errno_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/strings.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_strings.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_string.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/secure/_string.h \
+  /Users/aviv/CLionProjects/Maman14/globals.h
 
 CMakeFiles/Maman14.dir/first_pass.c.o: /Users/aviv/CLionProjects/Maman14/first_pass.c \
   /Users/aviv/CLionProjects/Maman14/first_pass.h \

@@ -82,7 +82,10 @@ int isValid_label(char *name);
  * comma_check function is used to check if there are any consecutive commas present in the string
  */
 int comma_check(char* str);
-
+/*
+ * redundant_comma_check function is used to check if there are any spare commas after a certain string.
+ */
+int redundant_comma_check(char* str);
 /*
  * export_extern function is used to create and print to the .ext file
  */
@@ -99,6 +102,11 @@ void write_counter(char *ofp, int IC,int DC);
  * export_obj function is used to update and write to the .ob file the Base64 encoding
  */
 int export_obj(char *ofp, node *head);
+/*
+ * remove_whitespaces functions removes trailing whitespaces from a given string
+ */
+void remove_whitespaces(char *str);
+void removeLeadingWhitespaces(char *str);
 #endif
 
 

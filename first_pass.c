@@ -193,6 +193,11 @@ int first_pass(char *ifp)
                 }
 
             }
+            else if (command_code == -1) {
+                fprintf(stderr,"ERROR in line %d: ILLEGAL COMMAND NAME\n",line_count);
+                error
+                continue;
+            }
             continue; /* No more options, need to read a new line */
         }
 
@@ -253,7 +258,14 @@ int first_pass(char *ifp)
             check_opcode:
             if(number_of_operands(command_code) == 2){
                 first = strtok(NULL,",");
+                removeLeadingWhitespaces(first);
+                remove_whitespaces(first); /* Removes whitespaces in case there are */
                 second = strtok(NULL," ");
+                if (redundant_comma_check(second) == 1){
+                    fprintf(stderr,"ERROR in line %d: redundant comma after a command\n",line_count);
+                    error
+                    continue;
+                }
                 if (first == NULL || second == NULL){
                     fprintf(stderr,"ERROR in line %d: '%s' is missing operands\n",line_count, opcode_string(command_code));
                     error
@@ -277,10 +289,32 @@ int first_pass(char *ifp)
                             continue;
                         }
                     case cmp:
+                        if (isRegister(first) == 1) {
+                            if (isDigit(second)){
+                                line_info->code = encode_combine(command_code, DIRECT_REGISTER, DIRECT);
+                                add_line
+                                line_info->code = encode_origin_reg_direct(register_no(first));
+                                add_line
+                                if (atoi(second) < 0)
+                                    line_info->code = two_complement(encode_absolute(atoi(second)));
+                                else
+                                    line_info->code = encode_absolute(atoi(second));
+                                set_label(line_info,second);
+                                L += 3;
+                                continue;
+                            }
+                        }
+
+
                     case add:
                     case sub:
                     {
                         if (!isRegister(first) && first[0] == '@'){
+                            fprintf(stderr,"ERROR in line %d: invalid register name\n",line_count);
+                            error
+                            continue;
+                        }
+                        if (!isRegister(second) && second[0] == '@'){
                             fprintf(stderr,"ERROR in line %d: invalid register name\n",line_count);
                             error
                             continue;
@@ -346,6 +380,7 @@ int first_pass(char *ifp)
             }
             else if(number_of_operands(command_code) == 1){
                 first = strtok(NULL,",");
+                removeLeadingWhitespaces(first);
                 if (first == NULL){
                     fprintf(stderr,"ERROR in line %d: '%s' is missing operands\n",line_count, opcode_string(command_code));
                     error
@@ -432,7 +467,18 @@ int first_pass(char *ifp)
                     case rts:
                     case stop:
                     {
-                        line_info->code = encode_combine(command_code,0,0);
+                        if (redundant_comma_check(tokencpy) == 1){
+                            fprintf(stderr,"ERROR in line %d: redundant comma after a command\n",line_count);
+                            error
+                            continue;
+                        }
+                        if (strtok(NULL,", ")){
+                            fprintf(stderr,"ERROR in line %d: extraneous argument passed\n",line_count);
+                            error
+                            continue;
+                        }
+                        else
+                            line_info->code = encode_combine(command_code,0,0);
                     }
                     default:;
                 }
