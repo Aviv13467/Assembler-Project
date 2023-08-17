@@ -26,6 +26,11 @@ void set_entry(entry_table *sym,char *name,int pos);
  */
 entry_table* add_entry(entry_table **head, char *label,int pos);
 /*
+ * get_entry function is used to determine whether a label exist within the table.
+ */
+int get_entry(entry_table *head,char *label);
+
+/*
  * fprint_entry_table function writes all the entries to the given file.
  */
 void fprint_entry_table(entry_table *head,FILE *ofp);

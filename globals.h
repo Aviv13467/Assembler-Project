@@ -5,10 +5,12 @@
 #define IC_START 100
 #define MAX_LEN 80
 #define MAX_STR 30
-#define TABLE_SIZE 80
+#define TABLE_SIZE 100
 #define MAX_LABEL 31
 #define MAX_LINE 80
 #define MAX_MCRO_LEN 30
+#define MAX_MEMORY 923
+#define MAX_MEMORY_LOADED 1024
 /*** DEFINES  ***/
 
 

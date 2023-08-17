@@ -5,7 +5,7 @@ extern_table *create_extern(void)
     extern_table *new;
     new = (extern_table*) malloc(sizeof(extern_table));
     if(new == NULL)
-        exit(1);
+        exit(EXIT_FAILURE);
     else return new;
 }
 void set_extern(extern_table *ext,char *name,int pos)
@@ -32,6 +32,18 @@ extern_table* add_extern(extern_table **head, char *label,int pos)
     }
 
     return new;
+}
+int get_extern(extern_table *head,char *label)
+{
+    extern_table *curr;
+    curr = head;
+    if (curr == NULL) return -2;
+    while (curr!=NULL)
+    {
+        if (strcmp(curr->label,label) == 0) return 0;
+        curr = curr->next;
+    }
+    return -1;
 }
 void fprint_extern_table(extern_table *head,FILE *ofp)
 {

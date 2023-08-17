@@ -11,6 +11,10 @@ void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
     {
         if (curr->label[0] != 0){
             position = get_symbol(label,curr->label);
+            if (position == -1){
+                fprintf(stderr,"ERROR: label %s wasn't declared in this scope\n",curr->label);
+                exit(EXIT_FAILURE);
+            }
             if (position == -2)
                 curr->code = encode_extern();
             else

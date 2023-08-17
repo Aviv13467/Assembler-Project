@@ -25,7 +25,7 @@ int first_pass(char *ifp)
     if (input_file_des == NULL) {
         fprintf(stderr,"Error occurred while opening the file %s\n", input_file_name);
         free(input_file_name);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     line = (char*)malloc(sizeof(char)*MAX_LINE); /* line output from fgets */
     token = NULL, tokencpy = NULL, garbage = NULL; /* for strtok,strtol function */
@@ -43,7 +43,7 @@ int first_pass(char *ifp)
     if (command == NULL){
         fprintf(stderr,"ALLOCATION FAILED");
         free(command);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     /*
      * The main loop in this function, parses each line in the .am file
@@ -54,9 +54,9 @@ int first_pass(char *ifp)
          * Checks if there are more words than the imaginary PC with 1024 byte of memory can handle
          * If there are more bytes than 1024 a 'stackoverflow' error will end the program
          */
-        if (counter>923){ /* 923 because the memory starts at 100 */
-            fprintf(stderr,"ERROR, STACKOVERFLOW, OUT OF MEMORY. USED %d/%d\n",counter,1024);
-            exit(1);
+        if (counter>MAX_MEMORY){ /* MAX_MEMORY = 923 because the memory starts at 100 */
+            fprintf(stderr,"ERROR, STACKOVERFLOW, OUT OF MEMORY. USED %d/%d\n",counter,MAX_MEMORY_LOADED); /* MAX_MEMORY_LOADED = 1024 */
+            exit(EXIT_FAILURE);
         }
         line_count++;
         line_info = add_node(&head_list,counter,0);
@@ -75,7 +75,12 @@ int first_pass(char *ifp)
 
             /* Checks if the name is valid, in other words, if it doesn't interfere with known commands such as opcodes,registers or label types */
             if (isValid_label(token) == 0) {
-                curr = add_symbol(&head, token, IC);
+                if (get_symbol(head,token) == -1) curr = add_symbol(&head, token, IC);
+                else{
+                    fprintf(stderr,"ERROR in line %d: '%s' has been defined before\n",line_count,token);
+                    error
+                    continue;
+                }
             }
             /*
              * Name interferes with known command, output an error
@@ -217,9 +222,12 @@ int first_pass(char *ifp)
                 }
                 if (isValid_macro(token) == 0) {
 
-                    /* curr = add_symbol(&head, token, 0); */
+                    if (get_extern(head_extern,token) == 0){
+                        fprintf(stderr,"ERROR in line %d: '%s' was already declared as an extern, can't be declared as an entry\n",line_count,token);
+                        error
+                        continue;
+                    }
                     add_entry(&head_entry,token,0);
-                    /* set_type(curr,entry); */
                     delete_node(&head_list,line_info);
                 }
                 continue;
@@ -235,6 +243,11 @@ int first_pass(char *ifp)
                 }
 
                 if (isValid_label(token) == 0) {
+                    if (get_entry(head_entry,token) == 0){
+                        fprintf(stderr,"ERROR in line %d: '%s' was already declared as an entry, can't be declared as an extern\n",line_count,token);
+                        error
+                        continue;
+                    }
                     curr = add_symbol(&head, token, 0);
                     set_type(curr,ext);
                     add_extern(&head_extern,token,0);
@@ -350,7 +363,7 @@ int first_pass(char *ifp)
                     case lea:
                     {
                         if (isRegister(first) || isDigit(first)){
-                            fprintf(stderr,"ERROR line %d:, origin operand of lea needs to be a label\n",line_count);
+                            fprintf(stderr,"ERROR line %d: origin operand of 'lea' needs to be a label\n",line_count);
                             error
                             L+=2;
                             break;
@@ -379,7 +392,7 @@ int first_pass(char *ifp)
                 }
             }
             else if(number_of_operands(command_code) == 1){
-                first = strtok(NULL,",");
+                first = strtok(NULL," , ");
                 removeLeadingWhitespaces(first);
                 if (first == NULL){
                     fprintf(stderr,"ERROR in line %d: '%s' is missing operands\n",line_count, opcode_string(command_code));

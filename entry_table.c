@@ -5,7 +5,7 @@ entry_table *create_entry(void)
     entry_table *new;
     new = (entry_table*) malloc(sizeof(entry_table));
     if(new == NULL)
-        exit(1);
+        exit(EXIT_FAILURE);
     else return new;
 }
 void set_entry(entry_table *sym,char *name,int pos)
@@ -34,7 +34,18 @@ entry_table* add_entry(entry_table **head, char *label,int pos)
 
     return new;
 }
-
+int get_entry(entry_table *head,char *label)
+{
+    entry_table *curr;
+    curr = head;
+    if (curr == NULL) return -2;
+    while (curr!=NULL)
+    {
+        if (strcmp(curr->label,label) == 0) return 0;
+        curr = curr->next;
+    }
+    return -1;
+}
 void fprint_entry_table(entry_table *head,FILE *ofp)
 {
     entry_table *curr = head;

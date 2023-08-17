@@ -262,6 +262,7 @@ void remove_whitespaces(char *str)
 }
 void removeLeadingWhitespaces(char *str)
 {
+    if (str==NULL) return;
     int len = strlen(str);
     int leadingSpaces = 0;
     while (isspace(str[leadingSpaces])) {

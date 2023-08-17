@@ -62,7 +62,8 @@ void delete_node(node **head, node *removed)
 int get_IC(node *head)
 {
     int count = 1;
-    node *curr = head;
+    node *curr;
+    curr = head;
     if (curr == NULL) return -1;
     while (curr->next!=NULL)
     {

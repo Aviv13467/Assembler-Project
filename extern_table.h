@@ -27,6 +27,11 @@ void set_extern(extern_table *ext,char *name,int pos);
  */
 extern_table* add_extern(extern_table **head, char *label,int pos);
 /*
+ * get_extern function is used to determine if a certain label is in the table
+ */
+int get_extern(extern_table *head,char *label);
+
+/*
  * fprint_extern_table function prints the extern labels into the given file.
  */
 void fprint_extern_table(extern_table *head,FILE *ofp);
