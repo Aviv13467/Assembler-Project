@@ -112,7 +112,7 @@ int first_pass(char *ifp)
                     token = strtok(NULL," ");
                     token[strlen(token)-1] = '\0';
                     if (strtok(NULL," ")){ /* Yield error, more than 1 argument */
-                        fprintf(stderr,"ERROR in line: %d .entry expect only 1 argument\n",line_count);
+                        fprintf(stderr,"ERROR in line %d: .entry expect only 1 argument\n",line_count);
                         error
                         continue;
                     }
@@ -120,7 +120,7 @@ int first_pass(char *ifp)
                         add_entry(&head_entry,token,0);
                         delete_node(&head_list,line_info);
                     }
-                    fprintf(stderr,"WARNING in line: %d label before .entry is redundant\n",line_count); /* Yield a warning, any label before .entry is not necessary  */
+                    fprintf(stderr,"WARNING in line %d: label before .entry is redundant\n",line_count); /* Yield a warning, any label before .entry is not necessary  */
                     delete_symbol(&head,curr);
                 }
                 if (strcmp(token,".data") == 0) /* Handle .data */
@@ -134,12 +134,12 @@ int first_pass(char *ifp)
                     strcpy(tokencpy,token);
                     tokencpy = strtok(NULL," ");
                     if (tokencpy[0] == ','){ /* Checks for illgeal comma before argument */
-                        fprintf(stderr,"ERROR in line: %d illegal comma before first argument\n",line_count);
+                        fprintf(stderr,"ERROR in line %d: illegal comma before first argument\n",line_count);
                         error
                         continue;
                     }
                     if (comma_check(tokencpy) == 1){ /* Checks for illgeal consecutive commas between or after arguments */
-                        fprintf(stderr,"ERROR in line: %d two consecutive commas after an argument\n",line_count);
+                        fprintf(stderr,"ERROR in line %d: two consecutive commas after an argument\n",line_count);
                         error
                         continue;
                     }
@@ -149,7 +149,7 @@ int first_pass(char *ifp)
                             add_line
                             num = (int)strtol(remove_newline(token),&garbage,10);
                             if (garbage[0] != '\0'){ /* Checks for illegal characters after .data */
-                                fprintf(stderr,"ERROR in line: %d illegal argument, .data can only receive integers\n",line_count);
+                                fprintf(stderr,"ERROR in line %d: illegal argument, .data can only receive integers\n",line_count);
                                 error
                                 break;
                             }
@@ -207,7 +207,7 @@ int first_pass(char *ifp)
                 token = strtok(NULL," ");
                 token[strlen(token)-1] = '\0';
                 if (strtok(NULL," ")){
-                    fprintf(stderr,"ERROR in line: %d .entry expect only 1 argument\n",line_count);
+                    fprintf(stderr,"ERROR in line %d: .entry expect only 1 argument\n",line_count);
                     error
                     continue;
                 }
@@ -225,7 +225,7 @@ int first_pass(char *ifp)
                 token = strtok(NULL," ");
                 remove_newline(token);
                 if (strtok(NULL," ")){
-                    fprintf(stderr,"ERROR in line: %d .extern expect only 1 argument\n",line_count);
+                    fprintf(stderr,"ERROR in line %d: .extern expect only 1 argument\n",line_count);
                     error
                     continue;
                 }
@@ -257,7 +257,7 @@ int first_pass(char *ifp)
                 second = strtok(NULL," ");
                 if (second!=NULL) remove_newline(second);
                 if (strtok(NULL," ")){
-                    fprintf(stderr,"ERROR in line: %d extraneous argument passed\n",line_count);
+                    fprintf(stderr,"ERROR in line %d: extraneous argument passed\n",line_count);
                     error
                     continue;
                 }
@@ -268,7 +268,7 @@ int first_pass(char *ifp)
                 switch (command_code) {
                     case mov:
                         if (isDigit(remove_newline(second))) {
-                            fprintf(stderr, "ERROR line: %d, 'mov' destination operand can't be a number\n",line_count);
+                            fprintf(stderr, "ERROR line %d: 'mov' destination operand can't be a number\n",line_count);
                             error
                         }
                     case cmp:
@@ -276,7 +276,7 @@ int first_pass(char *ifp)
                     case sub:
                     {
                         if (!isRegister(first) && first[0] == '@'){
-                            fprintf(stderr,"ERROR in line: %d invalid register name\n",line_count);
+                            fprintf(stderr,"ERROR in line %d: invalid register name\n",line_count);
                             error
                             continue;
                         }
@@ -286,6 +286,9 @@ int first_pass(char *ifp)
                                 add_line
                                 line_info->code = encode_combine_reg(register_no(first), register_no(second));
                                 L += 2; /* Only need to add 2 lines, one for the command and one for the operands*/
+                            }
+                            else if (isDigit(second)){
+                                fprintf(stderr,"ERROR in line %d: invalid destination operand\n",line_count);
                             }
                             else {
                                 line_info->code = encode_combine(command_code, DIRECT_REGISTER, DIRECT);
@@ -306,7 +309,7 @@ int first_pass(char *ifp)
                     case lea:
                     {
                         if (isRegister(first) || isDigit(first)){
-                            fprintf(stderr,"ERROR line: %d, origin operand of lea needs to be a label\n",line_count);
+                            fprintf(stderr,"ERROR line %d:, origin operand of lea needs to be a label\n",line_count);
                             error
                             L+=2;
                             break;
@@ -335,7 +338,7 @@ int first_pass(char *ifp)
             else if(number_of_operands(command_code) == 1){
                 first = strtok(NULL,",");
                 if (strtok(NULL,", ")){
-                    fprintf(stderr,"ERROR in line: %d extraneous argument passed\n",line_count);
+                    fprintf(stderr,"ERROR in line %d: extraneous argument passed\n",line_count);
                     error
                     continue;
                 }
@@ -351,7 +354,7 @@ int first_pass(char *ifp)
                     case jsr:
                     {
                         if (isDigit(first)){
-                            fprintf(stderr,"ERROR line: %d %s can't have immediate destination operand",line_count,first);
+                            fprintf(stderr,"ERROR line %d: can't have immediate destination operand\n",line_count);
                             error
                             break;
                         }
@@ -406,7 +409,7 @@ int first_pass(char *ifp)
             }
             else if(number_of_operands(command_code) == 0){
                 if (strtok(NULL," ")){
-                    fprintf(stderr,"ERROR in line: %d extraneous argument passed\n",line_count);
+                    fprintf(stderr,"ERROR in line %d: extraneous argument passed\n",line_count);
                     error
                     continue;
                 }
@@ -424,6 +427,13 @@ int first_pass(char *ifp)
             IC += L;
             continue;
         }
+        else
+        {
+            fprintf(stderr,"ERROR in line %d: ILLEGAL COMMAND\n",line_count);
+            error
+            continue;
+        }
+
     }
 
     free(line);

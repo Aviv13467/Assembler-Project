@@ -128,7 +128,7 @@ int command_valid(char* opcode)
     int result;
     result = opcode_no(opcode);
     if (result == -1){
-        fprintf(stderr,"ERROR: ILLEGAL COMMAND\n");
+        /* fprintf(stderr,"ERROR: ILLEGAL COMMAND\n"); */
         return 1;
     }
     return 0;
