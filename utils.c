@@ -1,4 +1,5 @@
 #include "utils.h"
+
 char *str_join(char *first_str, char* second_str) {
     char *str = (char *)malloc(strlen(first_str) + strlen(second_str) + 1);
     strcpy(str, first_str);
@@ -37,7 +38,7 @@ int number_of_operands(opcode command)
         case stop:
             return 0;
 
-            /*
+             /*
              * INVALID command
              */
         case ILLEGAL_OPCODE: return -1;
@@ -45,9 +46,6 @@ int number_of_operands(opcode command)
     return ILLEGAL_OPCODE;
 }
 
-/*
- * This function modifies ASCII values, so it can return the corresponding values to translate to Base64
- */
 unsigned int modifyASCII(int num)
 {
     if (num >= 0 && num <= 25)
@@ -77,7 +75,6 @@ char* register_string(enum REGISTER reg)
     char* str[] = {"@r0","@r1","@r2","@r3","@r4","@r5","@r6","@r7"};
     return str[reg];
 }
-
 char* type_string(enum TYPE index)
 {
     char* str[] = {".data",".string",".entry",".extern","IC"};
@@ -107,7 +104,6 @@ int command_valid(char* opcode)
     int result;
     result = opcode_no(opcode);
     if (result == -1){
-        /* fprintf(stderr,"ERROR: ILLEGAL COMMAND\n"); */
         return 1;
     }
     return 0;
@@ -186,7 +182,7 @@ int isDigit(char *c)
 {
     char* ptr;
     strtol(c, &ptr, 10);
-    return (ptr[0]=='\0')? 1:0;
+    return (ptr[0]=='\0')? 1:0; /* if in index 0 there is a character different from the null terminator it means there was a non-digit character in the string */
 }
 int isRegister(char*str)
 {

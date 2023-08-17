@@ -5,6 +5,9 @@
 #include "symbol_table.h"
 /*** HEADER FILES  ***/
 
+/*
+ * second_pass is the second assembler pass that write missing addresses locations for labels
+ */
 void second_pass(char* ifp, node *head, symbol *label, entry_table *entry);
 
 #endif

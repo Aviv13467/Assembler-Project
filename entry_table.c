@@ -35,15 +35,6 @@ entry_table* add_entry(entry_table **head, char *label,int pos)
     return new;
 }
 
-void print_entry_table(entry_table *head)
-{
-    entry_table *curr = head;
-    while (curr!= NULL)
-    {
-        printf("%s\t%d\n", curr->label, curr->label_pos);
-        curr = curr->next;
-    }
-}
 void fprint_entry_table(entry_table *head,FILE *ofp)
 {
     entry_table *curr = head;
@@ -54,17 +45,6 @@ void fprint_entry_table(entry_table *head,FILE *ofp)
     }
 }
 
-int get_entry(entry_table *node,char* name)
-{
-    entry_table *curr = node;
-    while (curr != NULL)
-    {
-        if (strcmp(curr->label,name)==0)
-            return curr->label_pos;
-        curr = curr->next;
-    }
-    return -1;
-}
 int isEmpty_entry(entry_table *head)
 {
     return head == NULL;

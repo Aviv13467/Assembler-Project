@@ -11,27 +11,45 @@ typedef struct symbol{
     int label_pos;
     int type;
     int DC;
-    int IC;
-    int nums[30];
-    char str[30];
+    char str[MAX_STR];
     struct symbol *next;
 }symbol;
-
+/*
+ * create_symbol function creates a new symbol table based on a LinkedList.
+ */
 symbol *create_symbol(void);
-void set_symbol(symbol *sym,char *name,unsigned int pos);
+/*
+ * set_symbol function set values to a node *sym in a symbol table.
+ */
+void set_symbol(symbol *sym,char *name,int pos);
+/*
+ * set_type function sets the type of node *sym.
+ */
 void set_type(symbol *sym, TYPE type);
+/*
+ * set_type function sets the str field in a node *sym.
+ */
 void set_str(symbol *sym, char* str);
-void set_IC(symbol *sym,int IC);
-void set_DC(symbol *sym,int DC);
-symbol* add_symbol(symbol **head, char *label, unsigned int pos);
-int print_symbol(symbol *head);
+/*
+ * add_symbol function adds a node to the symbol table.
+ */
+symbol* add_symbol(symbol **head, char *label, int pos);
+/*
+ * get_symbol function returns the corresponding node from the symbol table.
+ */
 int get_symbol(symbol *node,char* name);
-symbol *get_actual_symbol(symbol *head, char* name);
+/*
+ * delete_symbol function deletes the given node from the symbol table.
+ */
 void delete_symbol(symbol **head, symbol *removed);
-void print_num_arr(symbol *curr);
-void print_entry(symbol *head);
-void print_extern(symbol *head);
+/*
+ * get_DC function returns the DC field of the given node.
+ */
 int get_DC(symbol *head);
+/*
+ * free_symbol function deletes the symbol table and free the allocated memory assigned to it.
+ */
 void free_symbol(symbol *head);
 
 #endif
+

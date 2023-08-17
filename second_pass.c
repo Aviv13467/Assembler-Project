@@ -5,17 +5,16 @@ void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
     node *curr = head;
     int position,pos_entry;
     entry_table *curr_entry;
-    extern_table *ext, *curr_ext;
+    extern_table *ext;
     int IC,DC;
     while (curr != NULL)
     {
         if (curr->label[0] != 0){
             position = get_symbol(label,curr->label);
             if (position == -2)
-                curr->code = encode_combine_extern();
+                curr->code = encode_extern();
             else
-            curr->code = encode_combine_label(position);
-            /* curr->code = position; */
+            curr->code = encode_relocatable(position);
         }
         curr = curr->next;
     }
@@ -27,14 +26,11 @@ void second_pass(char* ifp,node *head, symbol *label, entry_table *entry)
         curr_entry = curr_entry->next;
     }
     curr = head;
-    ext = NULL, curr_ext = NULL;
+    ext = NULL;
 
     while(curr != NULL)
     {
-        if (curr->code == 1){
-            curr_ext = add_extern(&ext,curr->label,curr->pos+100);
-            curr_ext = curr_ext->next;
-        }
+        if (curr->code == 1) add_extern(&ext,curr->label,curr->pos+100);
         curr = curr->next;
     }
     if (!isEmpty_ext(ext)){

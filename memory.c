@@ -46,11 +46,10 @@ unsigned int encode_combine(unsigned int opcode, unsigned int origin_operand,uns
 /*
  * This functions combines value of immediate action (for ex. mov 23,...) and A,R,E bits into a machine code.
  */
-unsigned int encode_immediate(unsigned int value)
+unsigned int encode_absolute(unsigned int value)
 {
-    int ARE = 0;
     value = value<<2;
-    return value|ARE;
+    return value|ABSOLUTE;
 }
 
 /*
@@ -61,13 +60,13 @@ unsigned int encode_combine_direct(unsigned int code,ARE type)
     unsigned int combine = code|type;
     return combine;
 }
-unsigned int encode_combine_label(unsigned int code)
+unsigned int encode_relocatable(unsigned int code)
 {
     unsigned int ARE = RELOCATABLE;
     unsigned int combine = code<<2;
     return combine|ARE;
 }
-unsigned int encode_combine_extern(void)
+unsigned int encode_extern(void)
 {
     return EXTERNAL;
 }
@@ -154,5 +153,5 @@ unsigned int encode_combine_reg(unsigned int r1, unsigned int r2)
  */
 unsigned int two_complement(signed int num)
 {
-    return num&4095;
+    return num & 0xFFF;
 }

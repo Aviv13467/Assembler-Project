@@ -2,7 +2,9 @@
 #define HASHTABLE_H
 
 /*** HEADER FILES  ***/
-#include "includes.h"
+#include <string.h>
+#include <stdlib.h>
+#include "globals.h"
 /*** HEADER FILES  ***/
 
 typedef struct item {
@@ -23,3 +25,4 @@ void ht_del(hash_table *hashtable, const char *key);
 void ht_free(hash_table *hashtable);
 
 #endif
+

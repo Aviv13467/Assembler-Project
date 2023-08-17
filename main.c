@@ -2,9 +2,10 @@
 #include "first_pass.h"
 #include <stdio.h>
 int main(int argc, char *argv[]) {
+    /* printf("two_complemets of %d is: %d",-5, two_complement(-5)); */
     int i, result_pre, result_first;
     for (i = 1; i <argc; ++i) {
-        result_pre = preproces_file(argv[i]);
+        result_pre = preprocess_file(argv[i]);
         if(result_pre == 0) {
             fprintf(stdout,"***** PREPROCESSOR SUCCESS for %s *****\n",argv[i]);
             result_first = first_pass(argv[i]);

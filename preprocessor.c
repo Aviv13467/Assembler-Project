@@ -1,10 +1,6 @@
 #include "preprocessor.h"
 
-/*
- * This is the first stage of the assembler program
- * replacing macro with its content
- */
-int preproces_file(char *ifp) {
+int preprocess_file(char *ifp) {
     hash_table *ht = ht_create();
     int isMacro = 0;
     char *token = NULL;
@@ -44,7 +40,7 @@ int preproces_file(char *ifp) {
     }
 
     /*
-     * Rrad the next line as long as haven't reached EOF
+     * Read the next line as long as haven't reached EOF
      */
     while (fgets(line, MAX_LINE, input_file_des) != NULL) {
         strcpy(linecpy,line);

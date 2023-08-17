@@ -4,6 +4,11 @@
 /*** DEFINES  ***/
 #define IC_START 100
 #define MAX_LEN 80
+#define MAX_STR 30
+#define TABLE_SIZE 80
+#define MAX_LABEL 31
+#define MAX_LINE 80
+#define MAX_MCRO_LEN 30
 /*** DEFINES  ***/
 
 
@@ -19,7 +24,6 @@ typedef enum REGISTER{
 
 /* ENUM for ADDRESSING TYPES */
 typedef enum ADDRESS{
-    NONE = 0,
     IMMEDIATE = 1,
     DIRECT = 3,
     DIRECT_REGISTER = 5

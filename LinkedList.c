@@ -1,5 +1,6 @@
 #include "LinkedList.h"
 #include "memory.h"
+
 node *create_list(void) {
     node *new = (node*)malloc(sizeof(node));
     if (new == NULL)
@@ -10,26 +11,6 @@ node *create_list(void) {
 void set_node(node *sym, int pos, unsigned int code) {
     sym->pos = pos;
     sym->code = code;
-}
-
-node *get_node(node *head, int pos) {
-    node *curr = head;
-    while (curr != NULL) {
-        if (curr->pos == pos)
-            return curr;
-        curr = curr->next;
-    }
-    return NULL;
-}
-
-node *return_label(node* head)
-{
-    node *curr = head;
-    while (curr != NULL){
-        if (curr->label[0] != 0)
-            return curr;
-    }
-    return NULL;
 }
 
 node* add_node(node **head, int pos, unsigned int code) {
@@ -50,15 +31,6 @@ node* add_node(node **head, int pos, unsigned int code) {
     return new;
 }
 
-
-void print_node(node *head)
-{
-    node *curr = head;
-    while (curr != NULL) {
-        printf("%d\t%d\t%s\n", curr->pos,curr->code,curr->label);
-        curr = curr->next;
-    }
-}
 void fprint_node(node *head,FILE *ofp)
 {
     node *curr = head;

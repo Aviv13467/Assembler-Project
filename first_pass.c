@@ -35,8 +35,8 @@ int first_pass(char *ifp)
     head_entry = NULL;
     head_extern = NULL;
 
-    IC = IC_START, DC = 0,L = 0;
-    i = 0,counter = 0, line_count = 0; /* Insructcion counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
+    IC = IC_START, DC = 0;
+    counter = 0, line_count = 0; /* Instruction counter, Data counter and Lines  counter (how many lines for each word of code) and 'i' index for later in the code*/
     err_flag = 'N'; /* commands will be tokenized into 2 separate words */
 
     command = (char*)malloc(sizeof(char)*MAX_LEN); /* Allocating memory for the command char* ptr*/
@@ -76,7 +76,6 @@ int first_pass(char *ifp)
             /* Checks if the name is valid, in other words, if it doesn't interfere with known commands such as opcodes,registers or label types */
             if (isValid_label(token) == 0) {
                 curr = add_symbol(&head, token, IC);
-                curr->IC = IC;
             }
             /*
              * Name interferes with known command, output an error
@@ -133,12 +132,12 @@ int first_pass(char *ifp)
                     tokencpy = (char*)malloc(sizeof(char)* strlen(token));
                     strcpy(tokencpy,token);
                     tokencpy = strtok(NULL," ");
-                    if (tokencpy[0] == ','){ /* Checks for illgeal comma before argument */
+                    if (tokencpy[0] == ','){ /* Checks for illegal comma before argument */
                         fprintf(stderr,"ERROR in line %d: illegal comma before first argument\n",line_count);
                         error
                         continue;
                     }
-                    if (comma_check(tokencpy) == 1){ /* Checks for illgeal consecutive commas between or after arguments */
+                    if (comma_check(tokencpy) == 1){ /* Checks for illegal consecutive commas between or after arguments */
                         fprintf(stderr,"ERROR in line %d: two consecutive commas after an argument\n",line_count);
                         error
                         continue;
@@ -181,7 +180,7 @@ int first_pass(char *ifp)
                         if (token[strlen(token)-1] == '\n') token[strlen(token)-1] = '\0';
                         set_str(curr,token);
                         for (k = 0; k < strlen(token)+1 ; ++k) {
-                            add_line;
+                            add_line
                             line_info->code = (int)token[k];
                         }
                         /* print_arr(curr->str); */
@@ -268,8 +267,9 @@ int first_pass(char *ifp)
                 switch (command_code) {
                     case mov:
                         if (isDigit(remove_newline(second))) {
-                            fprintf(stderr, "ERROR line %d: 'mov' destination operand can't be a number\n",line_count);
+                            fprintf(stderr, "ERROR in line %d: 'mov' destination operand can't be a number\n",line_count);
                             error
+                            continue;
                         }
                     case cmp:
                     case add:
@@ -289,6 +289,8 @@ int first_pass(char *ifp)
                             }
                             else if (isDigit(second)){
                                 fprintf(stderr,"ERROR in line %d: invalid destination operand\n",line_count);
+                                error
+                                continue;
                             }
                             else {
                                 line_info->code = encode_combine(command_code, DIRECT_REGISTER, DIRECT);
@@ -333,6 +335,8 @@ int first_pass(char *ifp)
                         }
                     }
                     break;
+                    default:
+                        continue;
                 }
             }
             else if(number_of_operands(command_code) == 1){
@@ -354,7 +358,7 @@ int first_pass(char *ifp)
                     case jsr:
                     {
                         if (isDigit(first)){
-                            fprintf(stderr,"ERROR line %d: can't have immediate destination operand\n",line_count);
+                            fprintf(stderr,"ERROR in line %d: can't have immediate destination operand\n",line_count);
                             error
                             break;
                         }
@@ -381,10 +385,10 @@ int first_pass(char *ifp)
                             line_info->code = encode_combine(command_code,0,IMMEDIATE);
                             add_line
                             if (atoi(first) < 0) {
-                                line_info->code = two_complement(encode_immediate((atoi(first))));
+                                line_info->code = two_complement(encode_absolute((atoi(first))));
                             }
                             else
-                                line_info->code = encode_immediate((atoi(first)));
+                                line_info->code = encode_absolute((atoi(first)));
                             L+=2;
                             break;
                         }
@@ -404,8 +408,9 @@ int first_pass(char *ifp)
                         }
                         break;
                     }
+                    default:
+                        continue;
                 }
-                /*printf("opcode: %s first: %s\n",opcode_string(command_code),first);*/
             }
             else if(number_of_operands(command_code) == 0){
                 if (strtok(NULL," ")){
@@ -419,9 +424,8 @@ int first_pass(char *ifp)
                     {
                         line_info->code = encode_combine(command_code,0,0);
                     }
-
+                    default:;
                 }
-                /*printf("opcode: %s \n",opcode_string(command_code));*/
                 L+=1;
             }
             IC += L;

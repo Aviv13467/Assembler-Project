@@ -8,7 +8,7 @@ symbol *create_symbol(void)
         exit(1);
     else return new;
 }
-void set_symbol(symbol *sym,char *name,unsigned int pos)
+void set_symbol(symbol *sym,char *name,int pos)
 {
     strcpy(sym->label,name);
     sym->label_pos = pos;
@@ -23,7 +23,7 @@ void set_str(symbol *sym, char* str)
     strcpy(sym->str,str);
 }
 
-symbol* add_symbol(symbol **head, char *label, unsigned int pos) {
+symbol* add_symbol(symbol **head, char *label, int pos) {
     symbol *new = create_symbol();
     if (new == NULL)
         return NULL;
