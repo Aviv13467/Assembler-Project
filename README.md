@@ -167,3 +167,5 @@ running the assembler program on file prog2.asm with `./assembler prog2` and dis
 
 running the assembler program on file prog1.asm with `./assembler prog1` and getting all the correpsonding errors for a failed execution. `.ob`,`.ext`,`.ent` files aren't generated in case of a failed execution.
 ![failed-run](https://github.com/Aviv13467/Maman14/blob/main/failed-run.png?raw=true "failed-run")
+
+You can use the two files I've attached to the repository named `prog1.as` and `prog2.as` to try to program for yourself. 
