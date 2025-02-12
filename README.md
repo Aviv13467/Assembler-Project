@@ -153,3 +153,17 @@ e.g.
 This directive takes a label name as a parameter, marking it as external (defined in a different file) and indicating that it will be referenced in the current file.
 
 This way, the directive `.extern HELLO` in `file2.as` will match the `.entry` directive in the previous example.
+
+
+## Run Examples
+
+running the `make` command 
+
+![make-command](https://github.com/Aviv13467/Maman14/blob/main/make-command.png?raw=true "make-command")
+
+running the assembler program on file prog2.asm with `./assembler prog2` and display the content of the object, extern and entry files that were generated with the successful execution with the`cat prog2.ob`, `cat prog2.ext`, `cat prog2.ent` shell commands.
+
+![successful-run](https://github.com/Aviv13467/Maman14/blob/main/successful-run.png?raw=true "successful-run")
+
+running the assembler program on file prog1.asm with `./assembler prog1` and getting all the correpsonding errors for a failed execution. `.ob`,`.ext`,`.ent` files aren't generated in case of a failed execution.
+![failed-run](https://github.com/Aviv13467/Maman14/blob/main/failed-run.png?raw=true "failed-run")
