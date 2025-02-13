@@ -144,9 +144,11 @@ This directive takes a string as an operand and saves it in the data segment. Ea
 This directive records a given label name in the symbol table, allowing it to be recognized by other assembly files later and enabling them to reference it. 
 
 e.g.
-    ;file1.as
+```
+   ;file1.as
     .entry HELLO
     HELLO: add 1, @r1
+```
 
 ### **`.extern`**
 
