@@ -95,7 +95,7 @@ There are 3 kinds of Addressing Methods in this Imaginary language denoted by 5,
 |14|O|30|e|46|u|62|+|
 |15|P|31|f|47|v|63|/|
 
-Each word in memory is encoded to 2-digits in Base6 for example Aa, Az, /s, etc...
+Each word in memory is encoded to 2-digits in Base64 for example Aa, Az, /s, etc...
 
 ## Operands
 
